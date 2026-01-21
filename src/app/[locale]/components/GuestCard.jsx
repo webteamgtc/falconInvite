@@ -84,11 +84,10 @@ function GuestCard({ g, variant = "a" }) {
             <div className=" h-[120px] relative z-20 md:h-[250px] lg:h-[300px] xl:h-[300px] w-full overflow-hidden">
                 <img src={g.img} alt={g.name} className="z-10  relative w-full h-full object-cover object-top" />
                 {/* dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061024]/75 via-[#061024]/25 to-transparent" />
-                {isGLogo && (
+                 {isGLogo && (
                 <div className="pointer-events-none z-0 absolute inset-0 flex items-center justify-center">
                     <img
-                        src="/G.svg"
+                        src="/G.png"
                         alt="G logo"
                         className="w-full h-full object-contain"
                     />
@@ -127,10 +126,10 @@ export default function DistinguishedGuestsGrid() {
     return (
         <section className="w-full overflow-x-hidden bg-[#050816]">
             {/* match the poster width */}
-            <div className="mx-auto w-full max-w-[300px] md:max-w-full overflow-hidden relative">
+            <div className="mx-auto w-full max-w-full md:max-w-full overflow-hidden relative">
                 {/* Background image using absolute positioning */}
                 <div
-                    className="absolute inset-0 bg-[url('/bg-guest.svg')] bg-cover bg-center bg-no-repeat z-0"
+                    className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
                 />
 
                 {/* Inner container with max-width for content */}

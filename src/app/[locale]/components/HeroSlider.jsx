@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const rightTabs = [
-    { id: "home", label: "Home", active: true },
+    { id: "home", label: "Home" },
     { id: "gallery", label: "Gallery" },
     { id: "agenda", label: "Agenda" },
     { id: "guest", label: "Guest" },
@@ -15,23 +15,105 @@ const rightTabs = [
 
 export default function GoldenFalconHeroMobile() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
+    const [activeTab, setActiveTab] = useState("home");
+
+    // Some tabs may share the same visual section on the page.
+    // Map tab -> real DOM section id for scrolling + scroll-spy.
+    const tabToSectionId = useMemo(
+        () => ({
+            home: "home",
+            gallery: "gallery", // Gallery points to Guest grid section
+            agenda: "agenda",
+            guest: "guest",
+            media: "media",
+            contact: "contact",
+            policy: "policy",
+        }),
+        []
+    );
+
+    const observedSectionIds = useMemo(() => {
+        const ids = Object.values(tabToSectionId);
+        return Array.from(new Set(ids));
+    }, [tabToSectionId]);
+
+    useEffect(() => {
+        // Scroll-spy: update active tab while scrolling.
+        // Mobile needs a more stable selection than intersectionRatio alone.
+        const els = observedSectionIds
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+
+        if (!els.length) return;
+
+        const isMobile = window.matchMedia?.("(max-width: 767px)")?.matches ?? false;
+        // We want the section whose top is closest to a "reading line" slightly below the top.
+        const readingLine = isMobile ? 120 : 160;
+
+        const chooseActiveFromViewport = () => {
+            let bestId = null;
+            let bestDist = Infinity;
+            for (const el of els) {
+                const r = el.getBoundingClientRect();
+                // Skip sections far below/above
+                if (r.bottom <= 0) continue;
+                const dist = Math.abs(r.top - readingLine);
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    bestId = el.id;
+                }
+            }
+            if (!bestId) return;
+            // Convert section id back to tab id (prefer exact matches, else first mapping).
+            const tabId =
+                Object.keys(tabToSectionId).find((k) => tabToSectionId[k] === bestId) ?? bestId;
+            setActiveTab(tabId);
+        };
+
+        // IntersectionObserver to reduce work; on callback we still compute via viewport for stability.
+        const obs = new IntersectionObserver(
+            () => {
+                chooseActiveFromViewport();
+            },
+            {
+                root: null,
+                // Mobile: bigger middle band; Desktop: tighter
+                rootMargin: isMobile ? "-15% 0px -70% 0px" : "-25% 0px -65% 0px",
+                threshold: [0, 0.01, 0.05, 0.1],
+            }
+        );
+
+        els.forEach((el) => obs.observe(el));
+        // Initial pick
+        chooseActiveFromViewport();
+        return () => obs.disconnect();
+    }, [observedSectionIds, tabToSectionId]);
+
+    function handleNavClick(id) {
+        setActiveTab(id);
+        const targetId = tabToSectionId[id] ?? id;
+        const el = document.getElementById(targetId);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
     return (
         <section className="w-full overflow-x-hidden">
             {/* PHONE / POSTER FRAME */}
             <div 
-                className="w-full mx-auto overflow-hidden bg-[url('/bg-1.svg')] bg-cover bg-center bg-no-repeat md:rounded-none"
+                className="w-full mx-auto overflow-hidden bg-[url('/bg.png')] bg-[length:100%_100%] bg-center md:bg-[center_76%] bg-no-repeat md:rounded-none"
             >
                 <div className="relative flex flex-col w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
 
                     {/* RIGHT VERTICAL MENU (INSIDE IMAGE) - Sticky */}
-                    <div className="fixed right-0 md:right-[1px] top-1/2 -translate-y-1/2 z-30 flex items-center gap-2">
+                    <div className="fixed right-0 md:right-[1px] top-1/2 -translate-y-1/2 z-30 flex items-center gap-1 md:gap-2">
                         {/* Toggle Arrow Button - Centered with menu */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className={[
                                 "relative z-40 flex items-center justify-center flex-shrink-0",
-                                "w-[32px] md:w-[36px] lg:w-[40px]",
-                                "h-[48px] md:h-[54px] lg:h-[60px]",
+                                "w-[26px] md:w-[36px] lg:w-[40px]",
+                                "h-[40px] md:h-[54px] lg:h-[60px]",
                                 "rounded-lg md:rounded-xl",
                                 "bg-gradient-to-b from-[#000000]/90 via-[#0A0C14]/90 to-[#0B1022]/90",
                                 "backdrop-blur-md border border-white/30",
@@ -43,7 +125,7 @@ export default function GoldenFalconHeroMobile() {
                             ].join(" ")}
                         >
                             <svg
-                                className={`w-4 h-4 md:w-[18px] md:h-[18px] lg:w-5 lg:h-5 text-white/80 group-hover:text-white transition-all duration-500 ${
+                                className={`w-3.5 h-3.5 md:w-[18px] md:h-[18px] lg:w-5 lg:h-5 text-white/80 group-hover:text-white transition-all duration-500 ${
                                     isMenuOpen ? 'rotate-180' : 'rotate-0'
                                 }`}
                                 fill="none"
@@ -82,18 +164,22 @@ export default function GoldenFalconHeroMobile() {
                             {/* Premium vertical separator line with glow */}
                             <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-white/50 via-white/35 to-white/25 shadow-[0_0_12px_rgba(255,255,255,0.15)]" />
                             
-                            {rightTabs.map((t, idx) => (
+                            {rightTabs.map((t, idx) => {
+                                const isActive = activeTab === t.id;
+                                return (
                                 <button
                                     key={t.id}
                                     type="button"
+                                    onClick={() => handleNavClick(t.id)}
+                                    aria-current={isActive ? "page" : undefined}
                                     className={[
                                         "group relative transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
                                         "flex items-center justify-center",
-                                        "w-[58px] md:w-[68px] lg:w-[78px]",
+                                        "w-[48px] md:w-[68px] lg:w-[78px]",
                                         "h-[75px] md:h-[85px] lg:h-[95px]",
                                         "border-b border-white/[0.12] last:border-b-0",
                                         "overflow-visible",
-                                        t.active
+                                        isActive
                                             ? "bg-gradient-to-br from-[#7C5EFF]/20 via-[#7C5EFF]/12 to-transparent backdrop-blur-[1px]"
                                             : "bg-transparent hover:bg-gradient-to-br hover:from-white/[0.08] hover:via-white/[0.04] hover:to-transparent",
                                     ].join(" ")}
@@ -102,7 +188,7 @@ export default function GoldenFalconHeroMobile() {
                                     }}
                                 >
                                     {/* Active state - Elegant premium styling */}
-                                    {t.active && (
+                                    {isActive && (
                                         <>
                                             {/* Glowing left border with multiple shadows */}
                                             <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#7C5EFF] via-[#9C7EFF] to-[#7C5EFF]/90 shadow-[0_0_16px_rgba(124,94,255,0.9),0_0_32px_rgba(124,94,255,0.5)]" />
@@ -134,7 +220,7 @@ export default function GoldenFalconHeroMobile() {
                                                 "transition-all duration-500 ease-out",
                                                 "select-none cursor-pointer",
                                                 "transform-gpu will-change-transform",
-                                                t.active 
+                                                isActive 
                                                     ? "text-white font-bold drop-shadow-[0_0_20px_rgba(124,94,255,0.7),0_0_40px_rgba(124,94,255,0.4),0_2px_8px_rgba(0,0,0,0.8)]" 
                                                     : "text-white/65 group-hover:text-white/95 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.25)]",
                                             ].join(" ")}
@@ -153,7 +239,8 @@ export default function GoldenFalconHeroMobile() {
                                     {/* Ripple effect on click */}
                                     <div className="absolute inset-0 rounded-lg bg-white/15 scale-0 group-active:scale-100 opacity-0 group-active:opacity-100 transition-all duration-400 ease-out pointer-events-none" />
                                 </button>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
 
@@ -222,7 +309,7 @@ export default function GoldenFalconHeroMobile() {
                     </div>
 
                     {/* JOIN US BUTTON */}
-                    <div className="mt-6 md:mt-0  mb-6 md:mb-10 lg:mb-16 flex justify-center">
+                    <div className="  mb-6 md:mb-10 lg:mb-16 flex justify-center">
                         <button
                             type="button"
                             className="px-6 py-2 md:px-8 md:py-2 lg:px-12 lg:py-4 min-w-[160px] md:min-w-[200px] lg:min-w-[280px] text-sm md:text-[18px] lg:text-2xl xl:text-3xl font-medium text-white"

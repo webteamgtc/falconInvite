@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif;
+  font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif;
 }
 @theme {
   --color-primary: #1a2256;     /* Dark blue */
   --color-secondary: #b98751;   /* Gold yellow */
-  --font-family-sans: "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif;
+  --font-family-sans: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif;
 }
 
 html {
-  font-family: "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
+  font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
 }
 
 body {
-  font-family: "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
+  font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
 }
 
 * {
-  font-family: "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
+  font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
 }
 
 .flip-container {
