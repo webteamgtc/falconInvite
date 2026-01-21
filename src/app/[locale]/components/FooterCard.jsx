@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GtcFooterStrip() {
   return (
-    <section className="w-full bg-[#050816] md:pt-10">
+    <section className="w-full bg-[#050816] md:pt-10 min-h-screen">
       {/* strip height like screenshot */}
       <div className="relative mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
         <div className="text-center">

@@ -158,3 +158,91 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Smooth Slide & Fade Transitions - Modern & Elegant */
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.page-turn-next {
+  animation: slide-out-left 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.page-turn-prev {
+  animation: slide-out-right 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.page-turn-next-incoming {
+  animation: slide-in-right 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.page-turn-prev-incoming {
+  animation: slide-in-left 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+/* Custom scrollbar styling for content areas */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #956E42 0%, #E9DDCF 100%);
+  border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B88A5A 0%, #F5E8D5 100%);
+}
+

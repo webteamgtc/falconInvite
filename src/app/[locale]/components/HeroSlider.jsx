@@ -1,101 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
 
-const rightTabs = [
-    { id: "home", label: "Home" },
-    { id: "gallery", label: "Gallery" },
-    { id: "agenda", label: "Agenda" },
-    { id: "guest", label: "Guest" },
-    { id: "media", label: "Media" },
-    { id: "contact", label: "Contact" },
-    { id: "policy", label: "Policy" },
-];
-
-export default function GoldenFalconHeroMobile() {
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
-    const [activeTab, setActiveTab] = useState("home");
-
-    // Some tabs may share the same visual section on the page.
-    // Map tab -> real DOM section id for scrolling + scroll-spy.
-    const tabToSectionId = useMemo(
-        () => ({
-            home: "home",
-            gallery: "gallery", // Gallery points to Guest grid section
-            agenda: "agenda",
-            guest: "guest",
-            media: "media",
-            contact: "contact",
-            policy: "policy",
-        }),
-        []
-    );
-
-    const observedSectionIds = useMemo(() => {
-        const ids = Object.values(tabToSectionId);
-        return Array.from(new Set(ids));
-    }, [tabToSectionId]);
-
-    useEffect(() => {
-        // Scroll-spy: update active tab while scrolling.
-        // Mobile needs a more stable selection than intersectionRatio alone.
-        const els = observedSectionIds
-            .map((id) => document.getElementById(id))
-            .filter(Boolean);
-
-        if (!els.length) return;
-
-        const isMobile = window.matchMedia?.("(max-width: 767px)")?.matches ?? false;
-        // We want the section whose top is closest to a "reading line" slightly below the top.
-        const readingLine = isMobile ? 120 : 160;
-
-        const chooseActiveFromViewport = () => {
-            let bestId = null;
-            let bestDist = Infinity;
-            for (const el of els) {
-                const r = el.getBoundingClientRect();
-                // Skip sections far below/above
-                if (r.bottom <= 0) continue;
-                const dist = Math.abs(r.top - readingLine);
-                if (dist < bestDist) {
-                    bestDist = dist;
-                    bestId = el.id;
-                }
-            }
-            if (!bestId) return;
-            // Convert section id back to tab id (prefer exact matches, else first mapping).
-            const tabId =
-                Object.keys(tabToSectionId).find((k) => tabToSectionId[k] === bestId) ?? bestId;
-            setActiveTab(tabId);
-        };
-
-        // IntersectionObserver to reduce work; on callback we still compute via viewport for stability.
-        const obs = new IntersectionObserver(
-            () => {
-                chooseActiveFromViewport();
-            },
-            {
-                root: null,
-                // Mobile: bigger middle band; Desktop: tighter
-                rootMargin: isMobile ? "-15% 0px -70% 0px" : "-25% 0px -65% 0px",
-                threshold: [0, 0.01, 0.05, 0.1],
-            }
-        );
-
-        els.forEach((el) => obs.observe(el));
-        // Initial pick
-        chooseActiveFromViewport();
-        return () => obs.disconnect();
-    }, [observedSectionIds, tabToSectionId]);
-
-    function handleNavClick(id) {
-        setActiveTab(id);
-        const targetId = tabToSectionId[id] ?? id;
-        const el = document.getElementById(targetId);
-        if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange }) {
 
     return (
         <section className="w-full overflow-x-hidden">
@@ -105,147 +12,8 @@ export default function GoldenFalconHeroMobile() {
             >
                 <div className="relative flex flex-col w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
 
-                    {/* RIGHT VERTICAL MENU (INSIDE IMAGE) - Sticky */}
-                    <div className="fixed right-0 md:right-[1px] top-1/2 -translate-y-1/2 z-30 flex items-center gap-1 md:gap-2">
-                        {/* Toggle Arrow Button - Centered with menu */}
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className={[
-                                "relative z-40 flex items-center justify-center flex-shrink-0",
-                                "w-[26px] md:w-[36px] lg:w-[40px]",
-                                "h-[40px] md:h-[54px] lg:h-[60px]",
-                                "rounded-lg md:rounded-xl",
-                                "bg-gradient-to-b from-[#000000]/90 via-[#0A0C14]/90 to-[#0B1022]/90",
-                                "backdrop-blur-md border border-white/30",
-                                "shadow-[0_4px_16px_rgba(0,0,0,0.8)]",
-                                "hover:bg-gradient-to-b hover:from-[#7C5EFF]/20 hover:via-[#7C5EFF]/10 hover:to-transparent",
-                                "hover:border-[#7C5EFF]/50",
-                                "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                                "group",
-                            ].join(" ")}
-                        >
-                            <svg
-                                className={`w-3.5 h-3.5 md:w-[18px] md:h-[18px] lg:w-5 lg:h-5 text-white/80 group-hover:text-white transition-all duration-500 ${
-                                    isMenuOpen ? 'rotate-180' : 'rotate-0'
-                                }`}
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path d="M15 19l-7-7 7-7" />
-                            </svg>
-                            
-                            {/* Glow effect on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#7C5EFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg md:rounded-xl" />
-                        </button>
-
-                        {/* Main menu container - Premium Design with Slide Animation */}
-                        <div
-                            className={[
-                                "relative flex flex-col overflow-hidden rounded-l-xl md:rounded-xl",
-                                "border-l-[3px] border-white/40",
-                                "shadow-[0_8px_32px_rgba(0,0,0,0.9),inset_-1px_0_0_rgba(255,255,255,0.1)]",
-                                "backdrop-blur-sm",
-                                "transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                                "transform-gpu",
-                                isMenuOpen
-                                    ? "translate-x-0 opacity-100 scale-100"
-                                    : "translate-x-full opacity-0 scale-95 pointer-events-none w-0",
-                            ].join(" ")}
-                        >
-                            {/* Sophisticated layered background */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#0A0C14] to-[#0B1022]" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/[0.03] via-transparent to-transparent" />
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_left_center,rgba(124,94,255,0.08),transparent_80%)]" />
-                            
-                            {/* Premium vertical separator line with glow */}
-                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-white/50 via-white/35 to-white/25 shadow-[0_0_12px_rgba(255,255,255,0.15)]" />
-                            
-                            {rightTabs.map((t, idx) => {
-                                const isActive = activeTab === t.id;
-                                return (
-                                <button
-                                    key={t.id}
-                                    type="button"
-                                    onClick={() => handleNavClick(t.id)}
-                                    aria-current={isActive ? "page" : undefined}
-                                    className={[
-                                        "group relative transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                                        "flex items-center justify-center",
-                                        "w-[48px] md:w-[68px] lg:w-[78px]",
-                                        "h-[75px] md:h-[85px] lg:h-[95px]",
-                                        "border-b border-white/[0.12] last:border-b-0",
-                                        "overflow-visible",
-                                        isActive
-                                            ? "bg-gradient-to-br from-[#7C5EFF]/20 via-[#7C5EFF]/12 to-transparent backdrop-blur-[1px]"
-                                            : "bg-transparent hover:bg-gradient-to-br hover:from-white/[0.08] hover:via-white/[0.04] hover:to-transparent",
-                                    ].join(" ")}
-                                    style={{
-                                        animationDelay: `${idx * 50}ms`,
-                                    }}
-                                >
-                                    {/* Active state - Elegant premium styling */}
-                                    {isActive && (
-                                        <>
-                                            {/* Glowing left border with multiple shadows */}
-                                            <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#7C5EFF] via-[#9C7EFF] to-[#7C5EFF]/90 shadow-[0_0_16px_rgba(124,94,255,0.9),0_0_32px_rgba(124,94,255,0.5)]" />
-                                            {/* Multiple gradient overlays for depth */}
-                                            <div className="absolute inset-0 bg-gradient-to-b from-[#7C5EFF]/18 via-[#7C5EFF]/8 to-transparent" />
-                                            <div className="absolute inset-0 bg-gradient-to-r from-[#7C5EFF]/10 via-transparent to-transparent" />
-                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_left_center,rgba(124,94,255,0.2),transparent_70%)]" />
-                                            {/* Subtle inner highlight */}
-                                            <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-transparent" />
-                                        </>
-                                    )}
-                                    
-                                    {/* Elegant hover effect for inactive items */}
-                                    {!isActive && (
-                                        <>
-                                            <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        </>
-                                    )}
-
-                                    {/* Premium rotated text label with perfect styling */}
-                                    <div className="relative z-10 flex items-center justify-center w-full h-full px-1">
-                                        <span
-                                            className={[
-                                                "inline-block whitespace-nowrap",
-                                                "text-[9px] md:text-[10px] lg:text-xs xl:text-sm",
-                                                "font-semibold tracking-[0.8px] md:tracking-[1px] lg:tracking-[1.2px]",
-                                                "transition-all duration-500 ease-out",
-                                                "select-none cursor-pointer",
-                                                "transform-gpu will-change-transform",
-                                                isActive 
-                                                    ? "text-white font-bold drop-shadow-[0_0_20px_rgba(124,94,255,0.7),0_0_40px_rgba(124,94,255,0.4),0_2px_8px_rgba(0,0,0,0.8)]" 
-                                                    : "text-white/65 group-hover:text-white/95 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.25)]",
-                                            ].join(" ")}
-                                            style={{
-                                                transform: 'rotate(90deg)',
-                                                transformOrigin: 'center center',
-                                            }}
-                                        >
-                                            {t.label}
-                                        </span>
-                                    </div>
-                                    
-                                    {/* Subtle scale effect on interaction */}
-                                    <div className="absolute inset-0 scale-100 group-hover:scale-[1.02] group-active:scale-[0.98] transition-transform duration-300 pointer-events-none" />
-                                    
-                                    {/* Ripple effect on click */}
-                                    <div className="absolute inset-0 rounded-lg bg-white/15 scale-0 group-active:scale-100 opacity-0 group-active:opacity-100 transition-all duration-400 ease-out pointer-events-none" />
-                                </button>
-                                );
-                            })}
-                        </div>
-                    </div>
-
                     {/* TOP LOGO */}
-                    <div className="flex items-center justify-center py-6 md:py-10 animate-fade-in-down">
+                    <div className="flex items-center justify-center py-6 md:py-6 animate-fade-in-down">
                         <div className="relative group">
                             <div className="absolute inset-0 bg-gradient-to-b from-[#956E42]/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                             <img 
@@ -258,7 +26,7 @@ export default function GoldenFalconHeroMobile() {
 
                     {/* TITLES */}
                     <div className="left-0 right-0 z-10 px-4 md:px-6 lg:px-8 text-center animate-fade-in-up">
-                        <div className="text-[32px] md:text-[50px] lg:text-[64px] xl:text-[80px] font-medium tracking-[0.6px] text-transparent animate-fade-in-down"
+                        <div className="text-[32px] md:text-[50px] lg:text-[64px] xl:text-[80px] leading-[1.1] font-medium tracking-[0.6px] text-transparent animate-fade-in-down"
                            style={{
                             background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                             backgroundClip: "text",
@@ -279,7 +47,7 @@ export default function GoldenFalconHeroMobile() {
                         >
                             Golden
                         </div>
-                        <div className="mt-[2px] font-serif text-[32px] md:text-[50px] lg:text-[64px] xl:text-[80px] tracking-[0.4px] text-transparent animate-fade-in-up"
+                        <div className="mt-[2px] font-serif text-[32px] leading-[1.1] md:text-[50px] lg:text-[64px] xl:text-[80px] tracking-[0.4px] text-transparent animate-fade-in-up"
                            style={{
                             background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                             backgroundClip: "text",
