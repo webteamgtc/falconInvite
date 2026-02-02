@@ -2,15 +2,14 @@
 
 export default function PartnerOrganizationsSection() {
     return (
-        <section className="w-full bg-[#050816] min-h-screen">
+        <section className="w-full  relative bg-[#050816]">
+              <div
+                    className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
+                />
             {/* poster width like your design */}
-            <div className="relative mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
+            <div className="mx-auto w-full max-w-full md:max-w-6xl relative px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
                 <div className="relative ">
-                    {/* subtle vignette */}
-                    <div className="pointer-events-none absolute inset-0">
-                        <div className="absolute inset-0 bg-[radial-gradient(260px_180px_at_50%_0%,rgba(255,255,255,0.10),transparent_65%)]" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#050816] via-[#050816]/90 to-[#050816]" />
-                    </div>
+                   
 
                     <div className="relative text-center">
 
@@ -18,6 +17,8 @@ export default function PartnerOrganizationsSection() {
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 backgroundClip: "text",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
                             }}
                         >
                             Partner Organizations
@@ -26,6 +27,8 @@ export default function PartnerOrganizationsSection() {
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 backgroundClip: "text",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
                             }}
                         >
                             A selection of industry partners and

@@ -48,7 +48,9 @@ function Row({ t, title, sub }) {
           style={{
             background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
             backgroundClip: "text",
-        }}
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
           {title}
         </div>
@@ -64,26 +66,24 @@ function Row({ t, title, sub }) {
 
 export default function EventAgendaSection() {
   return (
-    <section className="w-full">
+    <section className="w-full relative bg-[#050816]">
       {/* match poster width */}
-      <div className="mx-auto w-full max-w-full md:w-screen md:max-w-none md:ml-[calc(50%-50vw)] md:mr-[calc(50%-50vw)] overflow-hidden relative">
-        {/* Background image using absolute positioning */}
-        <div className="absolute inset-0 bg-[#050816] z-0" />
-{/* 
-         <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(260px_200px_at_50%_0%,rgba(255,255,255,0.10),transparent_65%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050816] via-[#050816]/85 to-[#050816]" />
-          <div className="absolute inset-0 opacity-[0.10] [background-image:radial-gradient(rgba(255,255,255,0.55)_1px,transparent_1px)] [background-size:3px_3px]" />
-        </div> */}
+      <div
+        className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
+      />
+      <div className="mx-auto w-full max-w-full md:max-w-6xl relative">
+
 
         {/* Inner container with max-width for content */}
-        <div className="relative mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
+        <div className="relative px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
           {/* Heading */}
           <div className="relative text-center mb-6 md:mb-8 lg:mb-10">
             <div className="font-serif text-lg md:text-[48px] font-semibold tracking-[0.2px] text-transparent"
               style={{
                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                 backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
               Event Agenda
@@ -100,6 +100,8 @@ export default function EventAgendaSection() {
                   style={{
                     background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                     backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
                   }}
                 >
                   Morning Session
@@ -124,6 +126,8 @@ export default function EventAgendaSection() {
                   style={{
                     background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                     backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
                   }}
                 >
                   Afternoon Session

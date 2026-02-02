@@ -3,6 +3,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ToastContainer } from "react-toastify";
+import "react-vertical-timeline-component/style.min.css";
+
 import Script from "next/script";
 
 export default async function LocaleLayout({ children, params }) {

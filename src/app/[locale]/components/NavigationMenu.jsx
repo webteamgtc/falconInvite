@@ -1,30 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const rightTabs = [
-    { id: "home", label: "Home" },
-    { id: "gallery", label: "Gallery" },
-    { id: "agenda", label: "Agenda" },
-    { id: "guest", label: "Guest" },
-    { id: "media", label: "Media" },
-     { id: "policy", label: "Policy" },
+    { id: "home", label: "Home", ariaLabel: "Navigate to Home page" },
+    { id: "gallery", label: "Gallery", ariaLabel: "Navigate to Gallery page" },
+    { id: "agenda", label: "Agenda", ariaLabel: "Navigate to Agenda page" },
+    { id: "guest", label: "Guest", ariaLabel: "Navigate to Guest page" },
+    { id: "media", label: "Media", ariaLabel: "Navigate to Media page" },
+    { id: "policy", label: "Policy", ariaLabel: "Navigate to Policy page" },
 ];
 
 export default function NavigationMenu({ activeTab, onTabChange }) {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
+    const [isAnimating, setIsAnimating] = useState(false);
 
-    function handleNavClick(id) {
-        if (onTabChange) {
+    const handleNavClick = useCallback((id) => {
+        if (onTabChange && id !== activeTab) {
+            setIsAnimating(true);
             onTabChange(id);
+            setTimeout(() => setIsAnimating(false), 500);
         }
-    }
+    }, [onTabChange, activeTab]);
+
+    // Keyboard navigation support
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                setIsMenuOpen(false);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isMenuOpen]);
 
     return (
         <div className="fixed right-0 md:right-[8px] top-1/2 -translate-y-1/2 z-50 flex items-center gap-1 md:gap-2">
             {/* Toggle Arrow Button - Centered with menu */}
             <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMenuOpen}
                 className={[
                     "relative z-40 flex items-center justify-center flex-shrink-0",
                     "w-[26px] md:w-[36px] lg:w-[40px]",
@@ -35,8 +51,9 @@ export default function NavigationMenu({ activeTab, onTabChange }) {
                     "shadow-[0_4px_16px_rgba(0,0,0,0.8)]",
                     "hover:bg-gradient-to-b hover:from-[#7C5EFF]/20 hover:via-[#7C5EFF]/10 hover:to-transparent",
                     "hover:border-[#7C5EFF]/50",
+                    "focus:outline-none focus:ring-2 focus:ring-[#7C5EFF]/50 focus:ring-offset-2 focus:ring-offset-transparent",
                     "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                    "group",
+                    "group active:scale-95",
                 ].join(" ")}
             >
                 <svg
@@ -49,12 +66,17 @@ export default function NavigationMenu({ activeTab, onTabChange }) {
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path d="M15 19l-7-7 7-7" />
                 </svg>
                 
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#7C5EFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg md:rounded-xl" />
+                {/* Pulse effect when menu is open */}
+                {isMenuOpen && (
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#7C5EFF]/5 to-transparent animate-pulse-slow rounded-lg md:rounded-xl" />
+                )}
             </button>
 
             {/* Main menu container - Premium Design with Slide Animation */}
@@ -87,6 +109,8 @@ export default function NavigationMenu({ activeTab, onTabChange }) {
                         type="button"
                         onClick={() => handleNavClick(t.id)}
                         aria-current={isActive ? "page" : undefined}
+                        aria-label={t.ariaLabel || `Navigate to ${t.label} page`}
+                        disabled={isAnimating}
                         className={[
                             "group relative transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
                             "flex items-center justify-center",
@@ -94,9 +118,11 @@ export default function NavigationMenu({ activeTab, onTabChange }) {
                             "h-[75px] md:h-[85px] lg:h-[95px]",
                             "border-b border-white/[0.12] last:border-b-0",
                             "overflow-visible",
+                            "focus:outline-none focus:ring-2 focus:ring-[#7C5EFF]/50 focus:ring-inset",
                             isActive
                                 ? "bg-gradient-to-br from-[#7C5EFF]/20 via-[#7C5EFF]/12 to-transparent backdrop-blur-[1px]"
                                 : "bg-transparent hover:bg-gradient-to-br hover:from-white/[0.08] hover:via-white/[0.04] hover:to-transparent",
+                            isAnimating && !isActive ? "opacity-50 cursor-wait" : "",
                         ].join(" ")}
                         style={{
                             animationDelay: `${idx * 50}ms`,
@@ -153,6 +179,11 @@ export default function NavigationMenu({ activeTab, onTabChange }) {
                         
                         {/* Ripple effect on click */}
                         <div className="absolute inset-0 rounded-lg bg-white/15 scale-0 group-active:scale-100 opacity-0 group-active:opacity-100 transition-all duration-400 ease-out pointer-events-none" />
+                        
+                        {/* Active indicator pulse */}
+                        {isActive && (
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[4px] h-8 bg-[#7C5EFF] rounded-r-full animate-pulse-slow opacity-80" />
+                        )}
                     </button>
                     );
                 })}

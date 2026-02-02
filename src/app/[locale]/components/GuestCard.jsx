@@ -124,21 +124,24 @@ function GuestCard({ g, variant = "a" }) {
 
 export default function DistinguishedGuestsGrid() {
     return (
-        <section className="w-full overflow-x-hidden bg-[#050816]">
+        <section className="w-full relative  bg-[#050816]">
             {/* match the poster width */}
-            <div className="mx-auto w-full max-w-full md:max-w-full overflow-hidden relative">
-                {/* Background image using absolute positioning */}
-                <div
+             {/* Background image using absolute positioning */}
+             <div
                     className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
                 />
+            <div className="mx-auto w-full max-w-full md:max-w-6xl relative">
+               
 
                 {/* Inner container with max-width for content */}
-                <div className="relative mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
+                <div className="relative mx-auto  px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
                     <div className="relative text-center">
                         <h2 className="font-serif text-lg md:text-[48px] font-semibold tracking-[0.2px] text-transparent"
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 backgroundClip: "text",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
                             }}
                         >
                             Distinguished Guests
@@ -147,6 +150,8 @@ export default function DistinguishedGuestsGrid() {
                           style={{
                             background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                             backgroundClip: "text",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
                         }}
                         >
                             Lineup in particular order.
@@ -154,7 +159,7 @@ export default function DistinguishedGuestsGrid() {
                     </div>
 
                     {/* grid - 12 cards in 3 rows x 4 columns */}
-                    <div className="relative mt-4 md:mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-[10px] lg:gap-4 xl:gap-5">
+                    <div className="relative mt-4 md:mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
                         {GUESTS.map((g, idx) => {
                             // Calculate row based on desktop grid (4 columns) for variant assignment
                             // The grid will automatically adjust on smaller screens
