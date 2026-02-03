@@ -5,6 +5,7 @@ import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 import EventSection from "./components/EventSection";
 import GuestFooter from "./components/GuestFooter";
 import EventSectionLast from "./components/AnnualMeeting";
+import Meta from "../components/MetaData";
 
 export default function GuestPage() {
   const [activeNavTab, setActiveNavTab] = useState("guest");
@@ -67,7 +68,11 @@ export default function GuestPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div className="w-full min-h-screen bg-[#0A091A]">
+       <Meta
+        title="Golden Falcon Awards 2026 Invitation | GTC"
+        description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
+      />
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
       <main className="relative">
         <div className="relative z-10">

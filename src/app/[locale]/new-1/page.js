@@ -2,11 +2,6 @@
 
 import { useState, useEffect } from "react";
 import GoldenFalconHeroMobile from "../components/HeroSlider";
-import DistinguishedGuestsGrid from "../components/GuestCard";
-import EventAgendaSection from "../components/EventCard";
-import PartnerOrganizationsSection from "../components/PartnerOrg";
-import PartnerMediaSection from "../components/PartnerMedia";
-import GtcFooterStrip from "../components/FooterCard";
 import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 
 export default function NewPage() {
