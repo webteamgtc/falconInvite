@@ -5,9 +5,38 @@ import { useState, useEffect } from "react";
 
 export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange }) {
     const [isVisible, setIsVisible] = useState(false);
+    const [tokenResponse, setTokenResponse] = useState(null);
 
     useEffect(() => {
         setIsVisible(true);
+    }, []);
+
+    useEffect(() => {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 15000);
+
+        async function fetchToken() {
+            try {
+                const res = await fetch("/api/auth/token", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    signal: ctrl.signal,
+                });
+                const data = await res.json();
+                if (res.ok) setTokenResponse(data);
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    console.error("Token fetch failed:", err);
+                }
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+        fetchToken();
+        return () => {
+            clearTimeout(timeout);
+            ctrl.abort();
+        };
     }, []);
 
     return (

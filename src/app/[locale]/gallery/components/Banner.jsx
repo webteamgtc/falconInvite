@@ -10,7 +10,7 @@ const TIMELINE_CARD_IMAGE = "/images/dummy-card.jpg"; // replace
 
 export function GtcfxBanner() {
   return (
-    <section className="relative w-full min-h-[400px] md:min-h-[800px] overflow-hidden">
+    <section className=" w-full min-h-[400px] md:min-h-[800px] overflow-hidden">
       {/* Background - contained within section */}
       <div className="absolute inset-0 z-0">
         <Image

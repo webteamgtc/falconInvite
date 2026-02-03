@@ -31,8 +31,8 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         w-full sticky top-0 z-50
         transition-all duration-500 ease-in-out
         ${scrolled
-          ? "bg-gradient-to-b from-black/95 via-black/90 to-black/85 backdrop-blur-xl shadow-2xl border-b border-white/30"
-          : "bg-gradient-to-b from-black/80 via-black/70 to-black/60 backdrop-blur-lg border-b border-white/20"
+          ? " backdrop-blur-xl shadow-2xl"
+          : "bg-transparent"
         }
       `}
     >
@@ -61,7 +61,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
                     router.push(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="group relative px-3 py-2 lg:px-4 lg:py-2.5 transition-all duration-300"
+                  className="group cursor-pointer relative px-3 py-2 lg:px-4 lg:py-2.5 transition-all duration-300"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {/* Label */}
@@ -138,7 +138,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
                     router.push(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="group w-full relative flex items-center px-4 py-3 transition-all duration-300 text-left"
+                  className="group cursor-pointer w-full relative flex items-center px-4 py-3 transition-all duration-300 text-left"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {/* Label */}

@@ -29,10 +29,13 @@ export default function GalleryPage() {
   return (
     <div className="w-full min-h-screen bg-black">
       {/* Navigation Menu */}
-      <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
-      <GtcfxBanner/>
-      <AboutTour/>
-    
+      <div className="relative z-10">
+        <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
+        <GtcfxBanner />
+      </div>
+
+      <AboutTour />
+
       {/* Gallery Content */}
       <div className="relative bg-black py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">

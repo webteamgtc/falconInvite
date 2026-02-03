@@ -67,11 +67,9 @@ export default function GuestPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#0A091A]">
+    <div className="w-full min-h-screen bg-black">
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
-
       <main className="relative">
-    
         <div className="relative z-10">
           <EventSection data={preDinnerData} />
           <EventSectionLast data={annualMeetingData} />
