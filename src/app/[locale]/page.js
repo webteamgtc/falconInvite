@@ -39,7 +39,7 @@ export default function NewPage() {
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       />
     
-    <div className="w-full min-h-screen relative">
+    <div className="w-full min-h-screen relative bg-[#020307]">
       
 
       {/* Navigation Menu - Fixed at top */}
