@@ -18,13 +18,10 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
   }, []);
 
   const navItems = [
-    { id: "", label: "Home" },
+    { id: "/", label: "Home" },
     { id: "/history", label: "History" },
     { id: "/guest", label: "Agenda" },
-    { id: "/guest", label: "Guests" },
-    { id: "/media", label: "Media" },
     { id: "/ticket", label: "Ticket" },
-    { id: "/policy", label: "Policy" },
   ];
 
   return (
