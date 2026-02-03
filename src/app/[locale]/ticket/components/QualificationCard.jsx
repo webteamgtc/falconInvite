@@ -74,26 +74,26 @@ export default function QualificationCard({ badge, title, description, subtitle,
       <div className="relative p-8">
         <div className="flex flex-col gap-2">
           <div className="flex w-full items-center gap-2">
-            <div className="relative z-20 mt-[-30px]">
+            <div className="relative z-20 mt-[-20px] md:mt-[-30px]">
               {badge ? (
-                <Image src={badge} alt={title} className="w-[120px] h-[120px]" width={120} height={120} />
+                <Image src={badge} alt={title} className=" w-[80px] md:w-[120px] h-[80px] md:h-[120px]" width={100} height={100} />
               ) : (
-                <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-gradient-to-br from-[#F3D8AA] to-[#C49959] text-[#3c2911] text-2xl font-bold">
+                <div className="flex h-[50px] md:h-[70px] w-[50px] md:w-[70px] items-center justify-center rounded-full bg-gradient-to-br from-[#F3D8AA] to-[#C49959] text-[#3c2911] text-2xl font-bold">
                   1
                 </div>
               )}
             </div>
             <div className="flex-1">
-              <h2 className="font-serif text-[30px] leading-[1.1] text-white/90">{title}</h2>
+              <h2 className="font-serif text-[24px] md:text-[30px] leading-[1.1] text-white/90">{title}</h2>
               <div className="mt-[16px] h-px w-full bg-white/25" />
             </div>
           </div>
 
-          <p className="font-serif text-[18px] leading-[1.35] text-white/85">{description}</p>
-          <p className="font-serif mt-3 text-[19px] text-white/85">{subtitle}</p>
+          <p className="font-serif text-[16px] md:text-[18px] leading-[1.35] text-white/85">{description}</p>
+          <p className="font-serif mt-3 text-[16px] md:text-[19px] text-white/85">{subtitle}</p>
 
           <div className="flex-1">
-            <ul className="mt-2 space-y-[10px] font-serif text-[19px] text-white/85">
+            <ul className="mt-2 space-y-[10px] font-serif text-[16px] md:text-[19px] text-white/85">
               {items.map((item, index) => {
                 const IconComponent = typeof item.icon === "string" ? ICON_MAP[item.icon.replace("/", "").replace(".svg", "")] : null;
                 return (
@@ -111,7 +111,7 @@ export default function QualificationCard({ badge, title, description, subtitle,
               })}
             </ul>
 
-            <p className="mt-[20px] font-serif italic text-[18px] text-white/70">{closing}</p>
+            <p className="mt-[20px] font-serif italic text-[16px] md:text-[18px] text-white/70">{closing}</p>
           </div>
         </div>
       </div>
