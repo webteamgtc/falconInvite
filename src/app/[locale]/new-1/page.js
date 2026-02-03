@@ -28,15 +28,13 @@ export default function NewPage() {
   };
 
   return (
-    <div className="w-full min-h-screen relative">
-      
-
-      {/* Navigation Menu - Fixed at top */}
-      <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
+    <div className="w-full min-h-screen relative bg-black">
 
       {/* Content Sections */}
       <div className="relative">
         {/* Hero Section */}
+        <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
+
         <section id="hero" className="w-full">
           <GoldenFalconHeroMobile activeTab={activeTab} />
         </section>

@@ -34,10 +34,13 @@ export default function GalleryPage() {
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       />
       {/* Navigation Menu */}
-      <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
-      <GtcfxBanner/>
-      <AboutTour/>
-    
+      <div className="relative z-10">
+        <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
+        <GtcfxBanner />
+      </div>
+
+      <AboutTour />
+
       {/* Gallery Content */}
       <div className="relative bg-black py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">

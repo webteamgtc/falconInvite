@@ -3,12 +3,75 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+const IB_PERFORMANCE_EMAIL = "18699029939@163.com";
+const IB_PERFORMANCE_START = "2025-01";
+const IB_PERFORMANCE_END = "2025-10";
+
 export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange }) {
     const [isVisible, setIsVisible] = useState(false);
+    const [tokenResponse, setTokenResponse] = useState(null);
+    const [performanceData, setPerformanceData] = useState(null);
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    useEffect(() => {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 15000);
+
+        async function fetchToken() {
+            try {
+                const res = await fetch("/api/auth/token", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    signal: ctrl.signal,
+                });
+                const data = await res.json();
+                if (res.ok) setTokenResponse(data);
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    console.error("Token fetch failed:", err);
+                }
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+        fetchToken();
+        return () => {
+            clearTimeout(timeout);
+            ctrl.abort();
+        };
+    }, []);
+
+    useEffect(() => {
+        const token = tokenResponse?.access_token;
+        if (!token) return;
+
+        const ctrl = new AbortController();
+        const params = new URLSearchParams({
+            email: IB_PERFORMANCE_EMAIL,
+            access_token: token,
+            startMonth: IB_PERFORMANCE_START,
+            endMonth: IB_PERFORMANCE_END,
+        });
+
+        async function fetchPerformance() {
+            try {
+                const res = await fetch(`/api/ib-performance?${params}`, {
+                    signal: ctrl.signal,
+                });
+                const data = await res.json();
+                if (res.ok) setPerformanceData(data);
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    console.error("IB Performance fetch failed:", err);
+                }
+            }
+        }
+        fetchPerformance();
+        return () => ctrl.abort();
+    }, [tokenResponse?.access_token]);
 
     return (
         <section className="w-full overflow-x-hidden">

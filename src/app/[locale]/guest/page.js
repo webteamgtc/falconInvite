@@ -74,9 +74,7 @@ export default function GuestPage() {
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       />
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
-
       <main className="relative">
-    
         <div className="relative z-10">
           <EventSection data={preDinnerData} />
           <EventSectionLast data={annualMeetingData} />
