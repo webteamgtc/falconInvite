@@ -6,6 +6,7 @@ import MediaHeader from "./components/MediaHeader";
 import WhoCanApply from "./components/WhoCanApply";
 import MediaRegistrationForm from "./components/MediaRegistrationForm";
 import MediaFooter from "./components/MediaFooter";
+import MainFooter from "../components/MainFooter";
 
 export default function MediaPage() {
   const [activeNavTab, setActiveNavTab] = useState("media");
@@ -25,7 +26,7 @@ export default function MediaPage() {
         <MediaHeader />
         <WhoCanApply />
         <MediaRegistrationForm />
-        <MediaFooter />
+        <MainFooter />
       </main>
     </div>
   );

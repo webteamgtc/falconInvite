@@ -35,7 +35,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         }
       `}
     >
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+      <div className="relative container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
           {/* Logo with hover effect */}
           <div className="flex-shrink-0 group cursor-pointer">
@@ -124,14 +124,17 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
           </button>
         </div>
 
-        {/* Mobile Navigation Menu with slide animation */}
+        {/* Mobile Navigation Menu - positioned below nav with background */}
         <div
           className={`
-            md:hidden overflow-hidden transition-all duration-500 ease-in-out
-            ${isMobileMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"}
+            md:hidden absolute left-0 right-0 top-full
+            overflow-hidden transition-all duration-500 ease-in-out
+            rounded-b-xl -mx-4 md:mx-0
+            bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-xl
+            ${isMobileMenuOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"}
           `}
         >
-          <div className="pt-4 space-y-1">
+          <div className="pt-2 px-6 space-y-1">
             {navItems.map((item, index) => {
               const isActive = activeTab === item.id;
               return (
@@ -168,18 +171,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#956E42] via-[#B48755] to-[#E9DDCF] rounded-r-full" />
                   )}
 
-                  {/* Hover arrow */}
-                  {!isActive && (
-                    <svg
-                      className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M9 5l7 7-7 7" />
-                    </svg>
-                  )}
+                 
                 </button>
               );
             })}

@@ -9,6 +9,7 @@ import { GtcfxBanner } from "./components/Banner";
 import AboutTour from "./components/About";
 import FooterBanner from "./components/FooterBanner";
 import Meta from "../components/MetaData";
+import MainFooter from "../components/MainFooter";
 
 export default function GalleryPage() {
   const [activeNavTab, setActiveNavTab] = useState("gallery");
@@ -56,7 +57,7 @@ export default function GalleryPage() {
       </div>
 
       {/* Footer Banner */}
-      <FooterBanner />
+      <MainFooter />
     </div>
   );
 }

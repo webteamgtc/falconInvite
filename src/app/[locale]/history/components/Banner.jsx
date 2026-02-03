@@ -37,7 +37,7 @@ export function GtcfxBanner() {
         </div>
 
         {/* Tabs */}
-        <div className="mt-10 flex gap-4 max-w-3xl justify-end">
+        <div className="mt-10 grid grid-cols-2 md:flex gap-4 max-w-3xl justify-end">
           {[
             { title: "Events", desc: "Global conferences & forums", image: "/gallery-banner-img1.svg" },
             { title: "Milestones", desc: "Key moments in our journey", image: "/gallery-banner-img2.svg" },
