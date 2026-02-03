@@ -23,6 +23,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
     { id: "/guest", label: "Agenda" },
     { id: "/guest", label: "Guests" },
     { id: "/media", label: "Media" },
+    { id: "/ticket", label: "Ticket" },
     { id: "/policy", label: "Policy" },
   ];
 
@@ -32,8 +33,8 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         w-full sticky top-0 z-50
         transition-all duration-500 ease-in-out
         ${scrolled
-          ? "bg-gradient-to-b from-black/95 via-black/90 to-black/85 backdrop-blur-xl shadow-2xl border-b border-white/30"
-          : "bg-[#020306]"
+          ? " backdrop-blur-xl shadow-2xl"
+          : "bg-transparent"
         }
       `}
     >
