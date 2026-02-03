@@ -14,7 +14,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
         <section className="w-full overflow-x-hidden">
             {/* PHONE / POSTER FRAME */}
             <div
-                className="w-full mx-auto overflow-hidden bg-[url('/bg.png')] bg-[length:100%_100%] bg-center md:bg-[center_76%] bg-no-repeat md:rounded-none"
+                className="w-full mx-auto overflow-hidden bg-[url('/bg.png')] bg-[length:100%_100%] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
             >
                 <div className="relative flex flex-col w-full container mx-auto py-10 md:py-20">
 
@@ -23,7 +23,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                     <div className="left-0 right-0 z-10 px-4  pt-8 md:px-6 lg:px-8 text-center animate-fade-in-up">
 
 
-                        <div className="mt-[2px] font-serif text-[48px] md:text-[72px] lg:text-[96px] xl:text-[120px] leading-[0.95] text-transparent animate-fade-in-up"
+                        <div className="mt-[2px] font-serif text-[48px] md:text-[72px] lg:text-[96px] xl:text-[120px] leading-[0.95] text-transparent animate-fade-in-up max-w-4xl mx-auto"
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 WebkitBackgroundClip: "text",
@@ -35,7 +35,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                         >
                             Golden Falcon Awards
                         </div>
-                        <div className="mt-[2px] font-serif text-[32px] leading-[1.1] md:text-[50px] lg:text-[64px] xl:text-[80px] tracking-[0.4px] text-transparent animate-fade-in-up"
+                        <div className="my-[10px] italic font-serif text-[32px] leading-[1.1] md:text-[32px] lg:text-[44px] tracking-[0.4px] text-transparent animate-fade-in-up"
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 WebkitBackgroundClip: "text",
@@ -57,7 +57,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
 
                     {/* TROPHY */}
                     <div className="flex justify-center my-6 md:my-10 animate-fade-in-up" style={{ animationDelay: "0.7s", animationFillMode: "both" }}>
-                        <div className="relative h-[140px] w-[93px] md:h-[210px] md:w-[140px] lg:h-[280px] lg:w-[186px] xl:h-[350px] xl:w-[233px] group">
+                        <div className="relative h-[140px] w-[93px] md:h-[210px] md:w-[140px] lg:h-[280px] lg:w-[186px] xl:h-[1022px] xl:w-[300px] group">
                             {/* Glow effect behind trophy */}
                             <div className="absolute inset-0 bg-gradient-to-b from-[#956E42]/30 via-[#E9DDCF]/20 to-transparent blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 -z-10 scale-110" />
                             {/* Subtle floating animation */}

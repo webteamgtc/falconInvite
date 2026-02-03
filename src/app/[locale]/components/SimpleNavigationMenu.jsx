@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,9 +18,9 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
   }, []);
 
   const navItems = [
-    { id: "/new-1", label: "Home" },
-    { id: "/gallery", label: "Gallery" },
-    { id: "/agenda", label: "Agenda" },
+    { id: "", label: "Home" },
+    { id: "/history", label: "History" },
+    { id: "/guest", label: "Agenda" },
     { id: "/guest", label: "Guests" },
     { id: "/media", label: "Media" },
     { id: "/policy", label: "Policy" },
@@ -32,21 +33,25 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         transition-all duration-500 ease-in-out
         ${scrolled
           ? "bg-gradient-to-b from-black/95 via-black/90 to-black/85 backdrop-blur-xl shadow-2xl border-b border-white/30"
-          : "bg-gradient-to-b from-black/80 via-black/70 to-black/60 backdrop-blur-lg border-b border-white/20"
+          : "bg-[#020306]"
         }
       `}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between py-2">
           {/* Logo with hover effect */}
           <div className="flex-shrink-0 group cursor-pointer">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-[#956E42]/20 to-[#E9DDCF]/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <img
-                src="/logo.svg"
-                alt="GTCFX Logo"
-                className="relative h-8 md:h-10 lg:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
-              />
+             <div className="flex-1">
+                    <Image
+                        src="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/footer-logo.webp"
+                        width={200}
+                        height={72}
+                        alt="GTCFX"
+                        className="lg:w-[150px] mx-auto lg:h-[62px] md:w-[120px] md:h-[53px] w-[130px] h-[47px] cursor-pointer"
+                    />
+                </div>
             </div>
           </div>
 

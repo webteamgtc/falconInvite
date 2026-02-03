@@ -8,6 +8,7 @@ import VideoGalleryGrid from "../components/VideoGalleryGrid";
 import { GtcfxBanner } from "./components/Banner";
 import AboutTour from "./components/About";
 import FooterBanner from "./components/FooterBanner";
+import Meta from "../components/MetaData";
 
 export default function GalleryPage() {
   const [activeNavTab, setActiveNavTab] = useState("gallery");
@@ -28,6 +29,10 @@ export default function GalleryPage() {
 
   return (
     <div className="w-full min-h-screen bg-black">
+       <Meta
+        title="Golden Falcon Awards 2026 Invitation | GTC"
+        description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
+      />
       {/* Navigation Menu */}
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
       <GtcfxBanner/>

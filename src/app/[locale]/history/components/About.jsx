@@ -245,7 +245,7 @@ const items = [
 
 export default function AboutTourTimeline() {
   return (
-    <section className="relative w-full bg-black py-16">
+    <section className="relative w-full bg-black">
       {/* soft vignette */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04)_0%,rgba(0,0,0,0.72)_55%,rgba(0,0,0,0.92)_100%)]" />
 
@@ -263,7 +263,7 @@ export default function AboutTourTimeline() {
         <div className="grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-12 mt-10">
           {/* LEFT COLUMN - Descriptive Text */}
           <div className="pt-2">
-            <div className="space-y-4 md:space-y-6 text-sm md:text-base leading-relaxed text-white/80">
+            <div className="font-poppins space-y-4 md:space-y-6 text-sm md:text-base leading-relaxed text-white/80">
               <p>
                 Founded in 2012, GTCFX began with one clear goal: to build a trading environment
                 that combines institutional-grade infrastructure with accessibility for individual

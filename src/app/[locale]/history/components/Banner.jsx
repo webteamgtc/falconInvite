@@ -37,13 +37,13 @@ export function GtcfxBanner() {
         </div>
 
         {/* Tabs */}
-        <div className="mt-10 flex gap-4 max-w-2xl justify-between">
+        <div className="mt-10 flex gap-4 max-w-3xl justify-end">
           {[
-            { title: "Events", desc: "Explore our key events\n& unforgettable moments", image: "/gallery-banner-img1.svg" },
-            { title: "Milestones", desc: "Track our growth\n& key progress", image: "/gallery-banner-img2.svg" },
-            { title: "Community", desc: "Discover our\ncommunity initiatives", image: "/gallery-banner-img3.svg" },
-            { title: "Media Coverage", desc: "Press, interviews\n& featured stories", image: "/gallery-banner-img4.svg" },
-            { title: "Behind the Scenes", desc: "Teams & culture\nbehind the brand", image: "/gallery-banner-img5.svg" },
+            { title: "Events", desc: "Global conferences & forums", image: "/gallery-banner-img1.svg" },
+            { title: "Milestones", desc: "Key moments in our journey", image: "/gallery-banner-img2.svg" },
+            { title: "Community", desc: "Traders, partners & media", image: "/gallery-banner-img3.svg" },
+            { title: "Media Coverage", desc: "Press & official features", image: "/gallery-banner-img4.svg" },
+            { title: "Behind the Scenes", desc: "Team & culture", image: "/gallery-banner-img5.svg" },
           ].map((t) => (
             <button
               key={t.title}
@@ -57,7 +57,7 @@ export function GtcfxBanner() {
                 className="absolute inset-0 h-full w-full object-center rounded-lg object-cover"
               />
               {/* Overlay for text readability */}
-              <div className="absolute inset-0 rounded-lg bg-black/45 pointer-events-none" />
+              <div className="absolute inset-0 rounded-lg bg-black/25 pointer-events-none" />
               <p className="relative font-poppins z-10 text-[14px] font-semibold uppercase tracking-[0.8px] text-white">
                 {t.title}
               </p>

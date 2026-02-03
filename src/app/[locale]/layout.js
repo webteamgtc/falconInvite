@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ToastContainer } from "react-toastify";
 import "react-vertical-timeline-component/style.min.css";
+import Meta from "./components/MetaData";
 
 import Script from "next/script";
 
@@ -67,7 +68,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           `}
         </Script>
 
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+           <Meta
+        title="Golden Falcon Awards 2026 Invitation | GTC"
+        description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
+      />
+          {children}</NextIntlClientProvider>
         <ToastContainer autoClose={3000} />
       </body>
     </html>
