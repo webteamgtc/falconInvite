@@ -3,7 +3,6 @@
 import { useState } from "react";
 import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 import EventSection from "./components/EventSection";
-import GuestFooter from "./components/GuestFooter";
 import EventSectionLast from "./components/AnnualMeeting";
 import Meta from "../components/MetaData";
 import MainFooter from "../components/MainFooter";

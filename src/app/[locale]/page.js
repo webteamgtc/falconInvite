@@ -6,9 +6,6 @@ import SimpleNavigationMenu from "./components/SimpleNavigationMenu";
 import Meta from "./components/MetaData";
 
 
-
-
-
 export default function NewPage() {
   const [activeTab, setActiveTab] = useState("home");
 
@@ -37,22 +34,13 @@ export default function NewPage() {
     <Meta
         title="Golden Falcon Awards 2026 Invitation | GTC"
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
-      />
-    
+      /> 
     <div className="w-full min-h-screen relative bg-[#020307]">
-      
-
-      {/* Navigation Menu - Fixed at top */}
       <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
-
-      {/* Content Sections */}
       <div className="relative">
-        {/* Hero Section */}
         <section id="hero" className="w-full">
           <GoldenFalconHeroMobile activeTab={activeTab} />
         </section>
-
-     
       </div>
     </div>
     </>
