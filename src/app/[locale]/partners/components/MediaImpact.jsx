@@ -62,7 +62,7 @@ export default function MediaImpact() {
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-6">
         <h2
-          className="font-serif text-[42px] md:text-[48px] lg:text-[56px] font-semibold tracking-wide text-center mb-10 md:mb-14"
+          className="font-serif text-[24px] md:text-[48px] lg:text-[56px] font-semibold tracking-wide text-center mb-10 md:mb-14"
           style={{
             background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
             WebkitBackgroundClip: "text",

@@ -8,7 +8,7 @@ export default function PartnersHeader() {
       />
       <div className="relative mx-auto conmax-w-6xl px-4 md:px-6tainer text-center">
         <h1
-          className="font-serif text-[42px] md:text-[48px] lg:text-[56px] font-semibold tracking-wide"
+          className="font-serif text-[42px] md:text-[48px] lg:text-[56px] leading-[1.3] font-semibold tracking-wide"
           style={{
             background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
             WebkitBackgroundClip: "text",

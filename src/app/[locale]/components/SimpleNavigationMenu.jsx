@@ -38,7 +38,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         }
       `}
     >
-      <div className="relative container mx-auto px-4 md:px-6 lg:px-8">
+      <div className="relative container mx-auto px-4 md:px-6 lg:px-8 max-w-full min-w-0">
         <div className="flex items-center justify-between py-2">
           {/* Logo with hover effect */}
           <div className="flex-shrink-0 group cursor-pointer">
@@ -128,14 +128,13 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         </div>
 
         {/* Mobile Navigation Menu - positioned below nav with background */}
+        {isMobileMenuOpen && (
         <div
-          className={`
-            md:hidden absolute left-0 right-0 top-full
-            overflow-hidden transition-all duration-500 ease-in-out
-            rounded-b-xl -mx-4 md:mx-0
+          className="
+            md:hidden absolute left-0 right-0 top-full z-50 mt-1
+            rounded-b-xl py-4
             bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-xl
-            ${isMobileMenuOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"}
-          `}
+          "
         >
           <div className="pt-2 px-6 space-y-1">
             {navItems.map((item, index) => {
@@ -180,6 +179,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
             })}
           </div>
         </div>
+        )}
       </div>
     </nav>
   );
