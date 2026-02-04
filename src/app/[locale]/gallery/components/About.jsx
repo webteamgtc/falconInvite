@@ -57,7 +57,7 @@ export default function AboutTourTimeline() {
         <div className="grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-12 mt-10">
           {/* LEFT COLUMN - Descriptive Text */}
           <div className="pt-2">
-            <div className="font-poppins space-y-4 md:space-y-6 text-sm md:text-base leading-relaxed text-white/80">
+            <div className="font-poppins text-center md:text-left space-y-4 md:space-y-6 text-sm md:text-base leading-relaxed text-white">
               <p>
                 Founded in 2012, GTCFX began with one clear goal: to build a trading environment
                 that combines institutional-grade infrastructure with accessibility for individual

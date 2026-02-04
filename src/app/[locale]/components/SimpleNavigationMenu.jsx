@@ -131,7 +131,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         {isMobileMenuOpen && (
         <div
           className="
-            md:hidden absolute left-0 right-0 top-full z-50 mt-1
+            md:hidden absolute left-0 right-0 top-full z-50 mt-0
             rounded-b-xl py-4
             bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-xl
           "
