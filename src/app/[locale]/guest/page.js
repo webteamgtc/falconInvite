@@ -3,9 +3,9 @@
 import { useState } from "react";
 import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 import EventSection from "./components/EventSection";
-import GuestFooter from "./components/GuestFooter";
 import EventSectionLast from "./components/AnnualMeeting";
 import Meta from "../components/MetaData";
+import MainFooter from "../components/MainFooter";
 
 export default function GuestPage() {
   const [activeNavTab, setActiveNavTab] = useState("guest");
@@ -78,7 +78,7 @@ export default function GuestPage() {
         <div className="relative z-10">
           <EventSection data={preDinnerData} />
           <EventSectionLast data={annualMeetingData} />
-          <GuestFooter />
+          <MainFooter />
         </div>
       </main>
     </div>

@@ -7,7 +7,7 @@ export default function GalleryTabs({ activeTab, onTabChange }) {
     <div className="flex justify-center max-w-4xl mx-auto w-full mb-8 md:mb-12">
       {/* Single container bar - dark with thin light border */}
       <div
-        className="inline-flex items-center w-full gap-1 px-1.5 py-1.5"
+        className="inline-flex items-center w-full gap-1 px-1.5 py-1.5 overflow-auto"
         style={{borderRadius: "8px",
           border: "1px solid rgba(255, 255, 255, 0.50)",
           background: "rgba(255, 255, 255, 0.10)",

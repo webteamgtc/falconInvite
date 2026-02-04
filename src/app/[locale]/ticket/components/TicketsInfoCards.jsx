@@ -33,8 +33,8 @@ export default function TicketsInfoCards() {
   };
 
   return (
-    <section className="relative py-12 md:py-20 px-4">
-      <div className="max-w-3xl mx-auto space-y-10 md:space-y-14">
+    <section className="relative mt-10">
+      <div className="max-w-3xl space-y-4 md:space-y-4">
         <QualificationCard {...card1} />
         <QualificationCard {...card2} />
       </div>

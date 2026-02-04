@@ -71,10 +71,10 @@ const ICON_MAP = { plane: IconPlane, car: IconCar, building: IconBuilding, key: 
 export default function QualificationCard({ badge, title, description, subtitle, items = [], closing }) {
   return (
     <div className="relative  max-w-full rounded-[16px] border border-white/25 overflow-hidden text-white">
-      <div className="relative p-8">
+      <div className="relative px-8 py-4">
         <div className="flex flex-col gap-2">
           <div className="flex w-full items-center gap-2">
-            <div className="relative z-20 mt-[-20px] md:mt-[-30px]">
+            <div className="relative z-20 mt-[-20px] md:mt-[-20px]">
               {badge ? (
                 <Image src={badge} alt={title} className=" w-[80px] md:w-[120px] h-[80px] md:h-[120px]" width={100} height={100} />
               ) : (

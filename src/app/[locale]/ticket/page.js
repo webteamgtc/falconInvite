@@ -4,8 +4,8 @@ import { useState } from "react";
 import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 import TicketsHeader from "./components/TicketsHeader";
 import TicketsInfoCards from "./components/TicketsInfoCards";
-import TicketsFooter from "./components/TicketsFooter";
 import Image from "next/image";
+import MainFooter from "../components/MainFooter";
 
 export default function TicketPage() {
   const [activeNavTab, setActiveNavTab] = useState("/ticket");
@@ -32,8 +32,7 @@ export default function TicketPage() {
       </div>
       <main className="relative">
         <TicketsHeader />
-        <TicketsInfoCards />
-        <TicketsFooter />
+        <MainFooter />
       </main>
     </div>
   );
