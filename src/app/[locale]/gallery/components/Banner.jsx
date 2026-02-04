@@ -24,14 +24,14 @@ export function GtcfxBanner() {
       </div>
 
       {/* Content with proper z-index */}
-      <div className="relative mx-auto w-full container pt-36">
+      <div className="relative mx-auto w-full container md:pt-36 pt-16">
         {/* Big Logo */}
         <div className="relative">
-          <h1 className="font-poppins text-[78px] font-extrabold tracking-[2px] text-white sm:text-[92px] md:text-[110px]">
+          <h1 className="font-poppins text-center md:text-left text-[42px] font-extrabold tracking-[2px] text-white sm:text-[92px] md:text-[110px]">
             GTCFX
           </h1>
 
-          <p className="font-poppins mt-[-10px] max-w-2xl text-[18px] font-medium tracking-[0.2px] text-white">
+          <p className="font-poppins text-center md:text-left md:mt-[-10px] max-w-2xl md:text-[18px] text-[14px] font-medium tracking-[0.2px] text-white">
             A visual journey through our milestones, events, and global presence.
           </p>
         </div>
@@ -48,7 +48,7 @@ export function GtcfxBanner() {
             <button
               key={t.title}
               type="button"
-              className="group font-poppins flex-1 rounded-lg relative min-h-[210px] flex-shrink-0 overflow-hidden px-3 pb-2 pt-7 text-left shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:opacity-95"
+              className="group font-poppins flex-1 rounded-lg relative min-h-[210px] flex-shrink-0 overflow-hidden px-3 pb-2 pt-7 text-left shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:opacity-95 last:col-span-2"
             >
               {/* Background image - img tag so SVG works without Next config */}
               <img

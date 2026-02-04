@@ -5,7 +5,7 @@ export default function GalleryHeading() {
     <div className="flex items-center justify-left gap-4 mb-8 md:mb-12">
       
       <h1 
-        className="font-serif text-[24px] md:text-[42px]  font-semibold text-[#E9DDCF] tracking-wide"
+        className="font-serif w-full md:w-auto text-center md:text-left text-[24px] md:text-[42px]  font-semibold text-[#E9DDCF] tracking-wide"
         style={{
           background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
           WebkitBackgroundClip: "text",
