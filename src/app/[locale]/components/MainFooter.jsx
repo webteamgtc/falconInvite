@@ -29,7 +29,7 @@ export default function MainFooter() {
                     </h2>
 
                     {/* sub line */}
-                    <p className="mt-5 font-serif md:text-[20px] text-[18px] leading-[1.2] text-white">
+                    <p className="mt-5 font-serif md:text-[20px] text-[16px] leading-[1.2] text-white">
                         @GTCFX, Regulated Multi-Asset Trading Platformm
                     </p>
 

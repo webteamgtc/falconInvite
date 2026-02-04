@@ -58,11 +58,11 @@ export function GtcfxBanner() {
               />
               {/* Overlay for text readability */}
               <div className="absolute inset-0 rounded-lg bg-black/25 pointer-events-none" />
-              <p className="relative font-poppins z-10 text-[14px] font-semibold uppercase tracking-[0.8px] text-white">
+              <p className="relative text-center md:text-left font-poppins z-10 text-[14px] font-semibold uppercase tracking-[0.8px] text-white">
                 {t.title}
               </p>
 
-              <p className="relative font-poppins z-10 mt-2 whitespace-pre-line text-[12px] font-medium leading-[1.25] text-white">
+              <p className="relative text-center md:text-left font-poppins z-10 mt-2 whitespace-pre-line text-[12px] font-medium leading-[1.25] text-white">
                 {t.desc}
               </p>
 
