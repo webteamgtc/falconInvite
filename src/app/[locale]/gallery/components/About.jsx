@@ -41,8 +41,10 @@ export default function AboutTourTimeline() {
   return (
     <section className="relative w-full bg-black mt-10 md:mt-0">
       {/* soft vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04)_0%,rgba(0,0,0,0.72)_55%,rgba(0,0,0,0.92)_100%)]" />
-
+      <div
+                className="absolute inset-0 bg-[url('/gallay-2.png')] bg-cover bg-center bg-no-repeat z-0"
+            />
+ 
       <div className="relative mx-auto container">
         {/* Title */}
         <div className="flex items-center justify-center gap-6 mb-2 md:mb-16">

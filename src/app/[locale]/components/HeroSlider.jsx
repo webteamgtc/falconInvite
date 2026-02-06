@@ -183,8 +183,8 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                             <div className="animate-fade-in-up" style={{ animationDelay: "1.1s", animationFillMode: "both" }}>
                                 <MiniInfoCard
                                     icon="/star-icon.svg"
-                                    title="A private"
-                                    line1="awards night"
+                                    title="A Night "
+                                    line1="to Honour Success"
                                     line2="Celebrating leaders"
                                 />
                             </div>

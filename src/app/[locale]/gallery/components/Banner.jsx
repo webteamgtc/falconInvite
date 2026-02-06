@@ -5,7 +5,7 @@ import Image from "next/image";
 /**
  * Replace these with your real assets later.
  */
-const BG_IMAGE = "/banner-bg-2.png"; // replace
+const BG_IMAGE = "/bg-new-gallery.png"; // replace
 const TIMELINE_CARD_IMAGE = "/images/dummy-card.jpg"; // replace
 
 export function GtcfxBanner() {
