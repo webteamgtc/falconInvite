@@ -6,10 +6,10 @@ export default function EventSection({ data }) {
   const { title, subtitle, date, description, sectionHeading, items, closingText } = data;
 
   return (
-    <section className="py-14 md:py-20 relative px-4 md:px-6">
-            <div
+    <section className="pt-14 md:pt-20 relative px-4 md:px-6">
+            {/* <div
                     className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
-                />
+                /> */}
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Main title */}
         <h1
@@ -88,6 +88,7 @@ export default function EventSection({ data }) {
           {items.map((item, index) => (
             <div key={item.title} className="relative pl-6 md:pl-8 pb-10 md:pb-14 last:pb-0">
               {/* Star marker - touching the line, no gap */}
+              
               <div
                 className="absolute left-[-24px] top-1 w-12 h-12"
                 style={{ filter: "drop-shadow(0 0 6px rgba(233,221,207,0.6))" }}
@@ -99,7 +100,7 @@ export default function EventSection({ data }) {
               <div className="flex items-center gap-2 mb-4">
                 <span
                   className="text-sm md:text-xl italic font-medium"
-                  style={{ color: "#E9DDCF" }}
+                  style={{ color: "#fff" }}
                 >
                   {item.title}
                 </span>

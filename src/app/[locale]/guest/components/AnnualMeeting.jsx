@@ -6,10 +6,8 @@ export default function EventSectionLast({ data }) {
     const { title, subtitle, date, description, sectionHeading, items, closingText } = data;
 
     return (
-        <section className="py-14 md:py-20 relative px-4 md:px-6">
-            <div
-                className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
-            />
+        <section className="py-14 md:py-20 px-4 md:px-6">
+       
             <div className="max-w-5xl mx-auto relative z-10">
                 {/* Main title */}
                 <h1
@@ -99,7 +97,7 @@ export default function EventSectionLast({ data }) {
               <div className="flex items-center gap-2 mb-4">
                 <span
                   className="text-sm md:text-xl italic font-medium"
-                  style={{ color: "#E9DDCF" }}
+                  style={{ color: "#fff" }}
                 >
                   {item.title}
                 </span>

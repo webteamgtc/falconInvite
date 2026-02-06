@@ -68,11 +68,14 @@ export default function GuestPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#0A091A]">
+    <div className="w-full min-h-screen relative bg-[#0A091A]">
        <Meta
         title="Golden Falcon Awards 2026 Invitation | GTC"
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       />
+          <div
+                className="absolute inset-0 bg-[url('/guest-new-bg.png')] bg-cover h-[400vh] bg-center bg-no-repeat z-0"
+             />
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
       <main className="relative">
         <div className="relative z-10">
