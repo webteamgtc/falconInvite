@@ -91,7 +91,7 @@ export default function IbPerformanceForm() {
     };
 
     return (
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-lg mx-auto">
             <form
                 onSubmit={handleSubmit}
                 className="relative overflow-hidden rounded-2xl bg-white p-5 md:p-7 shadow-lg shadow-black/10 ring-1 ring-[#E9DDCF]/40"
@@ -232,6 +232,37 @@ export default function IbPerformanceForm() {
                                         <p className="mt-2 text-center text-sm font-semibold text-[#B48755]">
                                             {percentage.toFixed(1)}% of target
                                         </p>
+                                        {(() => {
+                                            let msg = "";
+                                            let icon = "";
+                                            if (percentage >= 100) {
+                                                msg = "Outstanding! You've hit the target. Keep soaring!";
+                                                icon = "🏆";
+                                            } else if (percentage >= 75) {
+                                                msg = "Almost there! You're in the final stretch.";
+                                                icon = "🔥";
+                                            } else if (percentage >= 50) {
+                                                msg = "Halfway there! Great momentum—keep pushing.";
+                                                icon = "⚡";
+                                            } else if (percentage >= 25) {
+                                                msg = "Solid start! Every step counts.";
+                                                icon = "✨";
+                                            } else if (percentage > 0) {
+                                                msg = "You've begun the journey. Consistency wins.";
+                                                icon = "🌱";
+                                            } else {
+                                                msg = "Ready to take off? Let's go!";
+                                                icon = "🚀";
+                                            }
+                                            return msg ? (
+                                                <div className="mt-4 flex items-center gap-3 rounded-lg border-l-4 border-[#B48755] bg-[#faf8f5] px-4 py-3 shadow-sm">
+                                                    <span className="text-2xl" aria-hidden>{icon}</span>
+                                                    <p className="text-sm font-semibold text-[#1a2256] leading-snug">
+                                                        {msg}
+                                                    </p>
+                                                </div>
+                                            ) : null;
+                                        })()}
                                     </div>
                                 </>
                             );
