@@ -1,15 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import NewFormDesign from "./NewForm";
 import TicketsInfoCards from "./TicketsInfoCards";
+import IbPerformanceForm from "./IbPerformanceForm";
 
 export default function TicketsHeader() {
   return (
     <header className=" min-h-[420px] md:min-h-[520px] overflow-hidden">
-
-      <div className="container mx-auto relative z-10 flex flex-col items-center justify-center h-full pt-10 md:pt-14">
-     <h1
+      <div className="relative container flex flex-col items-center justify-center mx-auto  py-14">
+<h1
             className="font-serif text-[42px] md:text-[48px] lg:text-[56px] font-semibold tracking-wide"
             style={{
               background: "linear-gradient(180deg, #F0E68C 0%, #E9DDCF 100%)",
@@ -25,15 +24,12 @@ export default function TicketsHeader() {
             Apply for press access and official media coverage opportunities with GTCFX.
           </p>
       </div>
-      {/* Blurred background - stage/microphone feel */}
-    
-
-      <div className="relative container mx-auto z-10  grid grid-cols-1 md:grid-cols-3 pt-10 text-center">
-        <div className="text-left md:col-span-2">
-     
+      <div className="relative container mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-10  pb-12 md:pb-16 text-center px-4">
+        <div className="text-left ">
+          
           <TicketsInfoCards/>
         </div>
-        <NewFormDesign />
+        <IbPerformanceForm />
       </div>
     </header>
   );
