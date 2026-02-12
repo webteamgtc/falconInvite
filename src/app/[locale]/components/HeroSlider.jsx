@@ -1,84 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-
-const IB_PERFORMANCE_EMAIL = "18699029939@163.com";
-const IB_PERFORMANCE_START = "2025-01";
-const IB_PERFORMANCE_END = "2025-10";
-
 export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange }) {
-    const [isVisible, setIsVisible] = useState(false);
-    const [tokenResponse, setTokenResponse] = useState(null);
-    const [performanceData, setPerformanceData] = useState(null);
-
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
-
-    useEffect(() => {
-        const ctrl = new AbortController();
-        const timeout = setTimeout(() => ctrl.abort(), 15000);
-
-        async function fetchToken() {
-            try {
-                const res = await fetch("/api/auth/token", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    signal: ctrl.signal,
-                });
-                const data = await res.json();
-                if (res.ok) setTokenResponse(data);
-            } catch (err) {
-                if (err.name !== "AbortError") {
-                    console.error("Token fetch failed:", err);
-                }
-            } finally {
-                clearTimeout(timeout);
-            }
-        }
-        fetchToken();
-        return () => {
-            clearTimeout(timeout);
-            ctrl.abort();
-        };
-    }, []);
-
-    useEffect(() => {
-        const token = tokenResponse?.access_token;
-        if (!token) return;
-
-        const ctrl = new AbortController();
-        const params = new URLSearchParams({
-            email: IB_PERFORMANCE_EMAIL,
-            access_token: token,
-            startMonth: IB_PERFORMANCE_START,
-            endMonth: IB_PERFORMANCE_END,
-        });
-
-        async function fetchPerformance() {
-            try {
-                const res = await fetch(`/api/ib-performance?${params}`, {
-                    signal: ctrl.signal,
-                });
-                const data = await res.json();
-                if (res.ok) setPerformanceData(data);
-            } catch (err) {
-                if (err.name !== "AbortError") {
-                    console.error("IB Performance fetch failed:", err);
-                }
-            }
-        }
-        fetchPerformance();
-        return () => ctrl.abort();
-    }, [tokenResponse?.access_token]);
 
     return (
         <section className="w-full overflow-x-hidden">
             {/* PHONE / POSTER FRAME */}
             <div
                 className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
-                style={{backgroundSize:"100% 100%"}}
+                style={{ backgroundSize: "100% 100%" }}
             >
                 <div className="relative flex flex-col w-full container mx-auto py-10 md:py-20">
 
@@ -157,7 +86,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                             }}
                             aria-label="Join the Golden Falcon Awards event"
                         >
-                              <span className="relative z-10">Join Us</span>
+                            <span className="relative z-10">Join Us</span>
                         </button>
                     </div>
 
@@ -202,7 +131,7 @@ function MiniInfoCard({ icon, title, line1, line2 }) {
             className="group relative overflow-hidden px-3 py-3 md:px-4 md:pb-4 md:pt-4 lg:px-6 lg:py-5 text-[#25282B] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_32px_rgba(105,138,193,0.4)] cursor-pointer focus-within:outline-none focus-within:ring-2 focus-within:ring-white/50 focus-within:ring-offset-2 focus-within:ring-offset-transparent"
             style={{
                 borderRadius: "9.488px",
-             }}
+            }}
             role="article"
             aria-label={`${title}: ${line1} - ${line2}`}
             tabIndex={0}

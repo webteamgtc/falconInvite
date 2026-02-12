@@ -1040,5 +1040,109 @@ body {
   background-color: transparent !important;
 }
 
+/* IB Performance form – datepicker (month/year) theme */
+.ib-datepicker-popper {
+  z-index: 50;
+  max-width: min(340px, calc(100vw - 24px));
+}
+.ib-datepicker-popper .react-datepicker {
+  font-family: inherit;
+  border: 1px solid #E9DDCF;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+.ib-datepicker-popper .react-datepicker__header {
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+  border-bottom: 1px solid #E9DDCF;
+  padding: 10px 44px 12px;
+  position: relative;
+  min-height: 44px;
+}
+.ib-datepicker-popper .react-datepicker__current-month {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #1a2256;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+.ib-datepicker-popper .react-datepicker__navigation {
+  top: 14%;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ib-datepicker-popper .react-datepicker__navigation--previous {
+  left: 8px;
+  right: auto;
+}
+.ib-datepicker-popper .react-datepicker__navigation--next {
+  right: 8px;
+  left: auto;
+}
+.ib-datepicker-popper .react-datepicker__navigation-icon {
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ib-datepicker-popper .react-datepicker__navigation-icon::before {
+  border-color: #956E42;
+  border-width: 2px 2px 0 0;
+  height: 7px;
+  width: 7px;
+  top: 14%;
+  margin-top: -4px;
+}
+.ib-datepicker-popper .react-datepicker__navigation-icon--previous::before {
+  right: -5px;
+  left: auto;
+}
+.ib-datepicker-popper .react-datepicker__navigation-icon--next::before {
+  left: -5px;
+  right: auto;
+}
+.ib-datepicker-popper .react-datepicker__month-container {
+  padding: 12px 16px 16px;
+}
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text {
+  width: 4.5rem;
+  margin: 2px;
+  padding: 4px 2px;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1a2256;
+  transition: background-color 0.15s, color 0.15s;
+}
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text:hover {
+  background-color: #f0ebe3;
+  color: #956E42;
+}
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text--selected,
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text--keyboard-selected {
+  background: linear-gradient(135deg, #956E42 0%, #B48755 100%);
+  color: #fff;
+}
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text--selected:hover,
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text--keyboard-selected:hover {
+  background: linear-gradient(135deg, #7a5a38 0%, #9a7048 100%);
+  color: #fff;
+}
+.ib-datepicker-popper .react-datepicker__month .react-datepicker__month-text--disabled {
+  color: #c4b8a8;
+}
+.ib-datepicker-popper .react-datepicker__triangle {
+  display: none;
+}
+
 
 
