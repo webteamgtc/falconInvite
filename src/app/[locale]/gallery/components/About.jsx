@@ -3,14 +3,26 @@
 import Image from "next/image";
 
 const items = [
-  {
-    year: "2022",
-    title: "",
-    desc: "GTCFX Partners Award Night 2022 celebrated success, partnership, and excellence. A memorable evening honoring those who powered our growth.",
+    {
+    year: "2026",
+    desc: "coming Soon",
     img: "left",
-    image: "/timeline-img1.svg"
+    image: "/timeline-img4.svg"
   },
+   {
+    year: "2025",
+    desc: "Golden Falcon Awards 2025 delivered elegance and brilliance through powerful panels, honored winners, and unforgettable lucky draw moments.",
+    img: "right",
+    image: "/timeline-img4.svg"
+  },
+
   {
+    year: "2024",
+    desc: "Golden Falcon Awards 2024 was an evening of elegance, prestige, and global distinction. A red-carpet celebration honoring excellence at the highest level.",
+    img: "left",
+    image: "/timeline-img3.svg"
+  },
+    {
     year: "2023",
     title: "",
     desc: "From insightful panels to award ceremonies, GTCFX Partners Conference 2023 had it all. An inspiring event that strengthened partnerships and future vision.",
@@ -18,17 +30,14 @@ const items = [
     image: "/timeline-img2.svg"
   },
   {
-    year: "2024",
-    desc: "Golden Falcon Awards 2024 was an evening of elegance, prestige, and global distinction. A red-carpet celebration honoring excellence at the highest level.",
+    year: "2022",
+    title: "",
+    desc: "GTCFX Partners Award Night 2022 celebrated success, partnership, and excellence. A memorable evening honoring those who powered our growth.",
     img: "left",
-    image: "/timeline-img3.svg"
+    image: "/timeline-img1.svg"
   },
-  {
-    year: "2025",
-    desc: "Golden Falcon Awards 2025 delivered elegance and brilliance through powerful panels, honored winners, and unforgettable lucky draw moments.",
-    img: "right",
-    image: "/timeline-img4.svg"
-  },
+
+ 
 
 ];
 
@@ -95,7 +104,7 @@ export default function AboutTourTimeline() {
             <div className="absolute left-[9px] md:left-1/2 top-0 h-full w-[1px] md:-translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.22)_0px,rgba(255,255,255,0.22)_2px,rgba(255,255,255,0)_6px,rgba(255,255,255,0)_12px)]" />
 
             <div className="space-y-8 md:space-y-12">
-              {items?.reverse()?.map((it, idx) => (
+              {items?.map((it, idx) => (
                 <div
                   key={idx}
                   onClick={scrollToGalleryContent}
@@ -169,210 +178,3 @@ export default function AboutTourTimeline() {
   );
 }
 
-
-// "use client";
-
-// import Image from "next/image";
-// import { GenIcon } from "react-icons";
-// import {
-//     VerticalTimeline,
-//     VerticalTimelineElement,
-// } from "react-vertical-timeline-component";
-
-// const IMG_PLACEHOLDER = "/images/dummy.jpg"; // replace
-
-// function GreyCard({ className = "" }) {
-//     return (
-//         <div
-//             className={[
-//                 "absolute bg-[#D9D9D9] shadow-[0_16px_40px_rgba(0,0,0,0.45)]",
-//                 "overflow-hidden",
-//                 className,
-//             ].join(" ")}
-//         >
-//             <Image
-//                 src={IMG_PLACEHOLDER}
-//                 alt="placeholder"
-//                 fill
-//                 className="object-cover opacity-0" // keep grey block look
-//             />
-//         </div>
-//     );
-// }
-
-// function GlowDot() {
-//     return (
-//         <span className="relative block h-[10px] w-[10px]">
-//             <span className="absolute inset-0 rounded-full bg-white shadow-[0_0_0_5px_rgba(255,255,255,0.10)]" />
-//             <span className="absolute -left-[7px] -top-[7px] h-[24px] w-[24px] rounded-full bg-white/10 blur-[1px]" />
-//         </span>
-//     );
-// }
-
-// export default function AboutTourTimeline() {
-//     return (
-//         <section className="relative w-full bg-black py-14">
-//             {/* vignette */}
-//             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04)_0%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.90)_100%)]" />
-
-//             <div className="relative max-w-6xl mx-auto px-6">
-//                 {/* Title */}
-//                 <div className="flex items-center justify-center gap-6">
-//                     <span className="h-[1px] w-[220px] bg-white/15" />
-//                     <h2 className="font-serif text-[40px] tracking-[2px] text-[#B08A57]">
-//                         ABOUT THE TOUR
-//                     </h2>
-//                     <span className="h-[1px] w-[220px] bg-white/15" />
-//                 </div>
-
-//                 <div className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[1.05fr_0.95fr]">
-//                     {/* LEFT TEXT */}
-//                     <div className="pt-2">
-//                         <div className="space-y-6 text-[12px] leading-[1.85] text-white/65">
-//                             <p>
-//                                 Founded in 2012, GTCFX was established by a team of experienced
-//                                 professionals from the global financial and trading industry,
-//                                 driven by a shared vision to create a secure, transparent, and
-//                                 technology-driven trading environment for investors worldwide.
-//                             </p>
-//                             <p>
-//                                 From its inception, GTCFX set out to bridge the gap between
-//                                 institutional-grade trading infrastructure and individual
-//                                 traders. By combining deep market expertise, advanced trading
-//                                 technology, and a strong commitment to regulatory compliance, the
-//                                 company has continuously expanded its presence across
-//                                 international markets.
-//                             </p>
-//                             <p>
-//                                 Over the years, GTCFX has grown into a global multi-asset trading
-//                                 brand, serving hundreds of thousands of clients across more than
-//                                 100 countries. The company provides access to a diverse range of
-//                                 trading instruments, including Forex, CFDs, commodities, indices,
-//                                 stocks, and precious metals, supported by robust platforms such
-//                                 as MT4, MT5, and proprietary trading solutions.
-//                             </p>
-//                             <p>
-//                                 GTCFX’s journey has been defined by continuous innovation, strong
-//                                 risk management practices, and a client-centric approach.
-//                             </p>
-//                             <p>
-//                                 Today, GTCFX continues to evolve as a trusted global trading
-//                                 partner, guided by its core values of integrity, innovation, and
-//                                 long-term sustainability.
-//                             </p>
-//                         </div>
-//                     </div>
-
-//                     <div className="relative">
-
-//                         <div className="relative">
-//                             {/* This CSS makes line thin + dotted + centered similar to screenshot */}
-//                             <div
-//                                 className="timeline-skin"
-//                                 style={{
-//                                     // reserve height close to screenshot
-//                                     minHeight: 560,
-//                                 }}
-//                             >
-//                                 <VerticalTimeline>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--work"
-//                                         contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-//                                         contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-//                                         date="2011 - present"
-//                                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Creative Director</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-//                                         <p>
-//                                             Creative Direction, User Experience, Visual Design, Project Management, Team Leading
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--work"
-//                                         date="2010 - 2011"
-//                                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Art Director</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-//                                         <p>
-//                                             Creative Direction, User Experience, Visual Design, SEO, Online Marketing
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--work"
-//                                         date="2008 - 2010"
-//                                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Web Designer</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-//                                         <p>
-//                                             User Experience, Visual Design
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--work"
-//                                         date="2006 - 2008"
-//                                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Web Designer</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-//                                         <p>
-//                                             User Experience, Visual Design
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--education"
-//                                         date="April 2013"
-//                                         iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-//                                         <p>
-//                                             Strategy, Social Media
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--education"
-//                                         date="November 2012"
-//                                         iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-//                                         <p>
-//                                             Creative Direction, User Experience, Visual Design
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         className="vertical-timeline-element--education"
-//                                         date="2002 - 2006"
-//                                         iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-//                                         icon={<GenIcon icon="school" />}
-//                                     >
-//                                         <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
-//                                         <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-//                                         <p>
-//                                             Creative Direction, Visual Design
-//                                         </p>
-//                                     </VerticalTimelineElement>
-//                                     <VerticalTimelineElement
-//                                         iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-//                                         icon={<GenIcon icon="star" />}
-//                                     />
-//                                 </VerticalTimeline>
-//                             </div>
-
-
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// }

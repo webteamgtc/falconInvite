@@ -91,7 +91,7 @@ export default function IbPerformanceForm() {
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto">
+        <div className="w-full">
             <form
                 onSubmit={handleSubmit}
                 className="relative overflow-hidden rounded-2xl bg-white p-5 md:p-7 shadow-lg shadow-black/10 ring-1 ring-[#E9DDCF]/40"

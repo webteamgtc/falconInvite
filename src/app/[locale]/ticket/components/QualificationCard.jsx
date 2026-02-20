@@ -74,9 +74,9 @@ export default function QualificationCard({ badge, title, description, subtitle,
       <div className="relative px-8 py-4">
         <div className="flex flex-col gap-2">
           <div className="flex w-full items-center gap-2">
-            <div className="relative z-20 mt-[-20px] md:mt-[-20px]">
+            <div className="relative z-20">
               {badge ? (
-                <Image src={badge} alt={title} className=" w-[80px] md:w-[120px] h-[80px] md:h-[120px]" width={100} height={100} />
+                <Image src={badge} alt={title} className=" w-[40px] md:w-[60px] h-[40px] md:h-[60px]" width={60} height={60} />
               ) : (
                 <div className="flex h-[50px] md:h-[70px] w-[50px] md:w-[70px] items-center justify-center rounded-full bg-gradient-to-br from-[#F3D8AA] to-[#C49959] text-[#3c2911] text-2xl font-bold">
                   1

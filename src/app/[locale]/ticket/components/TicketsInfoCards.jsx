@@ -33,7 +33,7 @@ export default function TicketsInfoCards() {
   };
 
   return (
-    <section className="relative mt-10">
+    <section className="relative">
       <div className="max-w-3xl space-y-4 md:space-y-4">
         <QualificationCard {...card1} />
         <QualificationCard {...card2} />
