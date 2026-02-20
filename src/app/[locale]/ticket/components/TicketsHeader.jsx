@@ -25,7 +25,7 @@ export default function TicketsHeader() {
           Apply for press access and official media coverage opportunities with GTCFX.
         </p>
       </div>
-      <div className="relative text-left  container mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-10  pb-12 md:pb-16 text-center px-4">
+      <div className="relative text-left  container mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-10  pb-12 md:pb-16 px-4">
         <div className="text-left ">
 
           <TicketsInfoCards />
