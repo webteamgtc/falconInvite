@@ -35,11 +35,10 @@ export default function NewPage() {
         title="Golden Falcon Awards 2026 Invitation | GTC"
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       /> 
-    <div className="w-full min-h-screen relative bg-[#020307]">
-      <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
+    <div className="w-full min-h-screen relative ">
       <div className="relative">
         <section id="hero" className="w-full">
-          <GoldenFalconHeroMobile activeTab={activeTab} />
+          <GoldenFalconHeroMobile activeTab={activeTab} handleTabChange={handleTabChange} />
         </section>
       </div>
     </div>

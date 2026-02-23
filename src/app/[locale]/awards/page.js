@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import SimpleNavigationMenu from "../components/SimpleNavigationMenu";
 import AwardsHero from "./components/AwardsHero";
 import AwardsGrid from "./components/AwardsGrid";
@@ -15,16 +16,23 @@ export default function AwardsPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#02040d]">
-      <SimpleNavigationMenu
-        activeTab={activeNavTab}
-        onTabChange={handleNavTabChange}
-      />
+    <div className="w-full min-h-screen ">
+
 
       <main className="relative">
-        <AwardsHero />
+        <div className="pointer-events-none absolute inset-0">
+          <Image
+            src="/long-banner-bg.png"
+            alt=""
+            fill
+            className="object-fill object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        <AwardsHero activeNavTab={activeNavTab} handleNavTabChange={handleNavTabChange} />
         <AwardsGrid />
-        <MainFooter />
+        <MainFooter showBg={false} />
       </main>
     </div>
   );

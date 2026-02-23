@@ -22,7 +22,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
     { id: "/gallery", label: "Gallery" },
     // { id: "/guest", label: "Agenda" },
     { id: "/ticket", label: "Ticket" },
-    { id: "/partners", label: "Media & Partners" },
+    // { id: "/partners", label: "Media & Partners" },
     { id: "/awards", label: "Awards" },
 
   ];
