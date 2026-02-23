@@ -48,7 +48,7 @@ export function GtcfxBanner() {
             <button
               key={t.title}
               type="button"
-              className="group font-poppins flex-1 rounded-lg relative min-h-[210px] flex-shrink-0 overflow-hidden px-3 pb-2 pt-7 text-left shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:opacity-95 last:col-span-2"
+              className="group flex flex-col justify-end items-start font-poppins flex-1 rounded-lg relative min-h-[210px] flex-shrink-0 overflow-hidden px-3 pb-2 pt-7 text-left shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:opacity-95 last:col-span-2"
             >
               {/* Background image - img tag so SVG works without Next config */}
               <img

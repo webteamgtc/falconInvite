@@ -2,13 +2,15 @@
 
 import Image from "next/image";
 
-export default function MainFooter() {
+export default function MainFooter({ showBg = true }) {
     return (
-        <section className="w-full md:pt-10 relative bg-[#050816]">
+        <section className={`w-full md:pt-10 relative ${showBg ? 'bg-[#050816]' : 'bg-transparent'}`}>
             {/* strip height like screenshot */}
-            <div
-                className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
-            />
+            {showBg && (
+                <div
+                    className="absolute inset-0 bg-[url('/bg-new.png')] bg-cover bg-center bg-no-repeat z-0"
+                />
+            )}
             <div className="mx-auto w-full max-w-full md:max-w-6xl relative px-4 md:px-6 lg:px-8 xl:px-10  py-8 md:py-14  z-10">
                 <div className="text-center">
                     {/* logo */}
@@ -24,18 +26,18 @@ export default function MainFooter() {
                     </div>
 
                     {/* headline */}
-                    <h2 className="font-serif md:text-[34px] text-[22px] font-semibold leading-[1.05] text-white">
+                    <h2 className="font-serif md:text-[34px] text-[18px] font-semibold leading-[1.05] text-white">
                         Trade with Confidence. Anywhere.
                     </h2>
 
                     {/* sub line */}
                     <p className="mt-5 font-serif md:text-[20px] text-[16px] leading-[1.2] text-white">
-                        @GTCFX, Regulated Multi-Asset Trading Platformm
+                    © COPYRIGHT 2026 GTCFX
                     </p>
 
                     {/* rights */}
                     <p className="mt-3 font-serif md:text-[18px] text-sm leading-[1.2] text-white">
-                        All rights reserved.
+                    ALL RIGHTS RESERVED
                     </p>
                 </div>
             </div>

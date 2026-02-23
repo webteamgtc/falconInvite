@@ -15,27 +15,12 @@ export default async function LocaleLayout({ children, params }) {
   const isArabicOrKurdish = locale === "ar" || locale === "ku";
 
   return (
-    <html
-      lang={locale}
-      dir={isArabicOrKurdish ? "rtl" : "ltr"}
-      style={{
-        fontFamily:
-          '"Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", sans-serif',
-      }}
-    >
+    <html lang={locale} dir={isArabicOrKurdish ? "rtl" : "ltr"}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
 
@@ -46,9 +31,7 @@ export default async function LocaleLayout({ children, params }) {
 
         <style>{`
           html, body, *, *::before, *::after {
-            font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", '${
-              isArabicOrKurdish ? "Noto Kufi Arabic" : "Poppins"
-            }', sans-serif !important;
+            font-family: "Poppins", sans-serif !important;
           }
         `}</style>
       </head>

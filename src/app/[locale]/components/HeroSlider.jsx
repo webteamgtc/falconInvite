@@ -1,22 +1,25 @@
 "use client";
 
-export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange }) {
+import SimpleNavigationMenu from "./SimpleNavigationMenu";
+
+export default function GoldenFalconHeroMobile({ activeTab = "home", handleTabChange }) {
 
     return (
         <section className="w-full overflow-x-hidden">
-            {/* PHONE / POSTER FRAME */}
+ 
+
             <div
                 className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
                 style={{ backgroundSize: "100% 100%" }}
             >
+                           {/* PHONE / POSTER FRAME */}
+                           <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
                 <div className="relative flex flex-col w-full container mx-auto py-10 md:py-20">
 
 
                     {/* TITLES */}
-                    <div className="left-0 right-0 z-10 px-4  pt-8 md:px-6 lg:px-8 text-center animate-fade-in-up">
-
-
-                        <div className="mt-[2px] font-serif text-[48px] md:text-[72px] lg:text-[96px] xl:text-[120px] leading-[0.95] text-transparent animate-fade-in-up max-w-4xl mx-auto"
+                    <div className="left-0 right-0 z-10 px-0  pt-0 md:px-6 lg:px-8 text-center animate-fade-in-up">
+                        <div className="mt-[2px] font-serif text-[42px] font-black md:text-[58px] lg:text-[70px] xl:text-[100px] md:leading-[0.95] leading-[1.15] text-transparent animate-fade-in-up max-w-4xl mx-auto"
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 WebkitBackgroundClip: "text",
@@ -28,7 +31,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                         >
                             Golden Falcon Awards
                         </div>
-                        <div className="my-[10px] italic font-serif text-[32px] leading-[1.1] md:text-[32px] lg:text-[44px] tracking-[0.4px] text-transparent animate-fade-in-up"
+                        <div className="my-5 italic font-serif text-[32px] leading-[1.1] md:text-[40px] lg:text-[50px] tracking-[0.4px] text-transparent animate-fade-in-up"
                             style={{
                                 background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
                                 WebkitBackgroundClip: "text",
@@ -40,12 +43,6 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                         >
                             2026 Invitation
                         </div>
-
-
-
-                        <p className="mx-auto mt-4 md:mt-5 max-w-full md:max-w-4xl lg:max-w-4xl text-sm md:text-[28px]  italic font-normal leading-[1.3] text-white/80 animate-fade-in-up" style={{ animationDelay: "0.6s", animationFillMode: "both" }}>
-                            An Evening of Excellence <br />A private awards night. Celebrating leaders. Honoring success. Building the future.
-                        </p>
                     </div>
 
                     {/* TROPHY */}
@@ -97,7 +94,7 @@ export default function GoldenFalconHeroMobile({ activeTab = "home", onTabChange
                                 <MiniInfoCard
                                     icon="/location.svg"
                                     title="Dubai"
-                                    line1="12 December 2026"
+                                    line1="December, 2026"
                                     line2="Hosted by GTCFX"
                                 />
                             </div>
