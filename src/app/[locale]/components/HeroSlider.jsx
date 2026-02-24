@@ -23,36 +23,10 @@ export default function GoldenFalconHeroMobile({
 
   return (
     <section
-      className="w-full min-w-full min-h-screen mx-auto overflow-hidden md:bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
+      className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/new-bg-without-traphy.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
       style={{ backgroundSize: "100% 100%" }}
     >
-      {/* Hero wrapper — min-h-screen so background layer has height on mobile */}
       <div className="relative w-full min-h-screen overflow-hidden">
-        {/* ✅ Mobile background — real img for reliable load on real devices */}
-        <div className="absolute inset-0 z-0 md:hidden min-h-full min-w-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/mobile-traphy.png"
-            alt=""
-            className="h-full w-full object-cover object-center"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </div>
-
-        {/* ✅ Desktop background — full image visible (no crop) on md+ */}
-        {/* <div className="absolute inset-0 z-0 hidden md:block">
-          <Image
-            src="/1920-bg.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-        </div> */}
-
-        {/* ✅ Dark overlay (to match image contrast) */}
         <div
           className="absolute inset-0 z-[1]"
           style={{
@@ -70,9 +44,7 @@ export default function GoldenFalconHeroMobile({
           />
         </div>
 
-        {/* Content — centered in the middle of the hero */}
-        <div className="relative z-10 mx-auto flex min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[150vh] max-w-6xl flex-col justify-center px-4 py-10 md:py-16">
-          {/* Titles */}
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col justify-center px-4 py-10 md:py-16">
           <div className="text-center">
             <h1 className="mx-auto max-w-[22rem] sm:max-w-[30rem] md:max-w-4xl font-serif font-black leading-[1.03] text-transparent gtc-gold-text text-[clamp(42px,6.8vw,92px)]">
               Golden Falcon Awards
@@ -83,24 +55,9 @@ export default function GoldenFalconHeroMobile({
             </div>
           </div>
 
-          {/* Trophy — visible only on mobile; use img so SVG loads on Vercel */}
-          <div className="mt-7 sm:mt-9 md:mt-10 flex justify-center md:hidden">
-            <div className="relative w-[clamp(180px,60vw,340px)] -ml-[30px] aspect-[3/5]">
-              <div className="absolute -inset-10 bg-gradient-to-b from-[#956E42]/35 via-[#E9DDCF]/15 to-transparent blur-2xl opacity-80" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/goldren-traphy.svg"
-                alt="Golden Falcon Trophy"
-                className="h-full w-full object-contain drop-shadow-[0_12px_46px_rgba(149,110,66,0.45)]"
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
+          <div className="flex-1" >
+            <img src="/only-traphy.webp" alt="Golden Falcon Awards" className="w-full md:h-[700px] h-[400px] object-contain" />
           </div>
-
-
-          {/* Push cards to bottom */}
-          <div className="flex-1" />
 
           {/* Button */}
           <div className="mt-6 sm:mt-7 flex justify-center">
