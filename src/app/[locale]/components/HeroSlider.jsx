@@ -26,13 +26,19 @@ export default function GoldenFalconHeroMobile({
       className="w-full min-w-full min-h-screen mx-auto overflow-hidden md:bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
       style={{ backgroundSize: "100% 100%" }}
     >
-      {/* Hero wrapper — taller on desktop so image fits without stretching */}
-      <div className="relative w-full overflow-hidden">
-        {/* ✅ Mobile background */}
-        <div
-          className="absolute inset-0 z-0 md:hidden bg-[url('/mobile-bg.png')] bg-cover bg-center bg-no-repeat"
-          aria-hidden="true"
-        />
+      {/* Hero wrapper — min-h-screen so background layer has height on mobile */}
+      <div className="relative w-full min-h-screen overflow-hidden">
+        {/* ✅ Mobile background — real img for reliable load on real devices */}
+        <div className="absolute inset-0 z-0 md:hidden min-h-full min-w-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/mobile-bg.png"
+            alt=""
+            className="h-full w-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </div>
 
         {/* ✅ Desktop background — full image visible (no crop) on md+ */}
         {/* <div className="absolute inset-0 z-0 hidden md:block">
