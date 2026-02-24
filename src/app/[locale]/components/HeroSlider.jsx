@@ -32,7 +32,7 @@ export default function GoldenFalconHeroMobile({
         <div className="absolute inset-0 z-0 md:hidden min-h-full min-w-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/mobile-bg.png"
+            src="/mobile-traphy.png"
             alt=""
             className="h-full w-full object-cover object-center"
             fetchPriority="high"
