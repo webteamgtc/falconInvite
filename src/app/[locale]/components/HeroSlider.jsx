@@ -1,157 +1,197 @@
 "use client";
 
+import React from "react";
+import Image from "next/image";
 import SimpleNavigationMenu from "./SimpleNavigationMenu";
 
-export default function GoldenFalconHeroMobile({ activeTab = "home", handleTabChange }) {
+export default function GoldenFalconHeroMobile({
+  activeTab = "home",
+  handleTabChange,
+}) {
+  return (
+    <section className="relative w-full overflow-x-hidden bg-black">
+      {/* Hero wrapper — taller on desktop so image fits without stretching */}
+      <div className="relative w-full min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[160vh] overflow-hidden">
+        {/* ✅ Mobile background */}
+        <div
+          className="absolute inset-0 z-0 md:hidden bg-[url('/mobile-bg.png')] bg-cover bg-center bg-no-repeat"
+          aria-hidden="true"
+        />
 
-    return (
-        <section className="w-full overflow-x-hidden">
- 
+        {/* ✅ Desktop background — full image visible (no crop) on md+ */}
+        <div className="absolute inset-0 z-0 hidden md:block">
+          <Image
+            src="/1920-bg.png"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
 
-            <div
-                className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
-                style={{ backgroundSize: "100% 100%" }}
-            >
-                           {/* PHONE / POSTER FRAME */}
-                           <SimpleNavigationMenu activeTab={activeTab} onTabChange={handleTabChange} />
-                <div className="relative flex flex-col w-full container mx-auto py-10 md:py-20">
+        {/* ✅ Dark overlay (to match image contrast) */}
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0.70) 100%)",
+          }}
+          aria-hidden="true"
+        />
 
+        {/* Navigation */}
+        <div className="relative z-20">
+          <SimpleNavigationMenu
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+          />
+        </div>
 
-                    {/* TITLES */}
-                    <div className="left-0 right-0 z-10 px-0  pt-0 md:px-6 lg:px-8 text-center animate-fade-in-up">
-                        <div className="mt-[2px] font-serif text-[42px] font-black md:text-[58px] lg:text-[70px] xl:text-[100px] md:leading-[0.95] leading-[1.15] text-transparent animate-fade-in-up max-w-4xl mx-auto"
-                            style={{
-                                background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                                animationDelay: "0.2s",
-                                animationFillMode: "both",
-                            }}
-                        >
-                            Golden Falcon Awards
-                        </div>
-                        <div className="my-5 italic font-serif text-[32px] leading-[1.1] md:text-[40px] lg:text-[50px] tracking-[0.4px] text-transparent animate-fade-in-up"
-                            style={{
-                                background: "var(--Linear, linear-gradient(180deg, #956E42 0%, #E9DDCF 100%))",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                                animationDelay: "0.3s",
-                                animationFillMode: "both",
-                            }}
-                        >
-                            2026 Invitation
-                        </div>
-                    </div>
+        {/* Content — centered in the middle of the hero */}
+        <div className="relative z-10 mx-auto flex min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[160vh] max-w-6xl flex-col justify-center px-4 py-10 md:py-16">
+          {/* Titles */}
+          <div className="text-center">
+            <h1 className="mx-auto max-w-[22rem] sm:max-w-[30rem] md:max-w-4xl font-serif font-black leading-[1.03] text-transparent gtc-gold-text text-[clamp(42px,6.8vw,92px)]">
+              Golden Falcon Awards
+            </h1>
 
-                    {/* TROPHY */}
-                    <div className="flex justify-center my-6 md:my-10 animate-fade-in-up" style={{ animationDelay: "0.7s", animationFillMode: "both" }}>
-                        <div className="relative h-[140px] w-[93px] md:h-[210px] md:w-[140px] lg:h-[280px] lg:w-[186px] xl:h-[1022px] xl:w-[300px] group">
-                            {/* <div className="absolute inset-0 bg-gradient-to-b from-[#956E42]/30 via-[#E9DDCF]/20 to-transparent blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 -z-10 scale-110" />
-                            <div className="relative h-full w-full animate-float">
-                                <Image
-                                    src="/goldren-traphy.svg"
-                                    alt="trophy"
-                                    fill
-                                    className="object-contain drop-shadow-[0_8px_32px_rgba(149,110,66,0.4)] transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_12px_48px_rgba(149,110,66,0.6)]"
-                                />
-                            </div> */}
-                        </div>
-                    </div>
-
-                    <p className="mx-auto my-4 max-w-full md:max-w-4xl lg:max-w-4xl text-sm md:text-[28px]  italic font-normal leading-[1.3] text-white/80 animate-fade-in-up" style={{ animationDelay: "0.6s", animationFillMode: "both" }}>
-                        Honoring success.Building the future.
-                    </p>
-
-                    {/* JOIN US BUTTON */}
-                    <div className="mb-6 md:mb-10 lg:mb-16 flex justify-center animate-fade-in-up" style={{ animationDelay: "0.8s", animationFillMode: "both" }}>
-                        <button
-                            type="button"
-                            className="group relative px-6 py-2 md:px-8 md:py-3 lg:px-12 lg:py-3 min-w-[160px] md:min-w-[250px] lg:min-w-[300px] text-sm md:text-[18px] lg:text-2xl xl:text-3xl font-medium text-white overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#956E42] focus:ring-offset-2 focus:ring-offset-transparent"
-                            style={{
-                                borderRadius: "9.753px",
-                                border: "1px solid #8D8780",
-                                background: "var(--Linear, linear-gradient(270deg, #434343 37.16%, #434343 40%, #333 48.82%, #2A2A2A 57.31%, #222 65.8%, #1A1A1A 73.99%, #111 82.79%, #000 99.77%))",
-                                boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.boxShadow = "0 8px 32px rgba(149, 110, 66, 0.5), 0 0 0 4px rgba(149, 110, 66, 0.2)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.boxShadow = "0 4px 16px rgba(149, 110, 66, 0.3), 0 0 0 0 rgba(149, 110, 66, 0.4)";
-                            }}
-                            aria-label="Join the Golden Falcon Awards event"
-                        >
-                            <span className="relative z-10">Join Us</span>
-                        </button>
-                    </div>
-
-                    {/* BOTTOM CARDS */}
-                    <div className="mb-4 md:mb-8 lg:mb-12 px-2 md:px-[14px] md:max-w-5xl md:mx-auto lg:px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-[8px] lg:gap-4">
-                            <div className="animate-fade-in-up" style={{ animationDelay: "0.9s", animationFillMode: "both" }}>
-                                <MiniInfoCard
-                                    icon="/location.svg"
-                                    title="Dubai"
-                                    line1="December, 2026"
-                                    line2="Hosted by GTCFX"
-                                />
-                            </div>
-                            <div className="animate-fade-in-up" style={{ animationDelay: "1s", animationFillMode: "both" }}>
-                                <MiniInfoCard
-                                    icon="/traphy-icon.svg"
-                                    title="Golden Falcon"
-                                    line1="Awards 2026"
-                                    line2="An Evening of Excellence"
-                                />
-                            </div>
-                            <div className="animate-fade-in-up" style={{ animationDelay: "1.1s", animationFillMode: "both" }}>
-                                <MiniInfoCard
-                                    icon="/star-icon.svg"
-                                    title="A Night "
-                                    line1="to Honour Success"
-                                    line2="Celebrating leaders"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="mt-2 sm:mt-3 italic font-serif leading-[1.12] text-transparent gtc-gold-text text-[clamp(26px,4.6vw,52px)]">
+              2026 Invitation
             </div>
-        </section>
-    );
+          </div>
+
+          {/* Trophy — visible only on mobile */}
+          <div className="mt-7 sm:mt-9 md:mt-10 flex justify-center md:hidden">
+            <div className="relative w-[clamp(180px,60vw,340px)] -ml-[30px] aspect-[3/6]">
+              <div className="absolute -inset-10 bg-gradient-to-b from-[#956E42]/35 via-[#E9DDCF]/15 to-transparent blur-2xl opacity-80" />
+              <Image
+                src="/goldren-traphy.svg"
+                alt="Golden Falcon Trophy"
+                fill
+                priority
+                sizes="(max-width: 480px) 60vw, (max-width: 768px) 50vw, (max-width: 1024px) 320px, 340px"
+                className="relative object-contain drop-shadow-[0_12px_46px_rgba(149,110,66,0.45)]"
+              />
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <p className="mt-4 sm:mt-5 text-center italic text-white/80 text-[clamp(13px,2.2vw,20px)] leading-[1.35]">
+            Honoring success. Building the future.
+          </p>
+
+          {/* Button */}
+          <div className="mt-6 sm:mt-7 flex justify-center">
+            <button
+              type="button"
+              className="min-w-[170px] sm:min-w-[210px] md:min-w-[260px]
+                         rounded-[10px] px-8 py-[10px] sm:px-10 sm:py-3
+                         text-white font-medium text-[clamp(14px,2.2vw,18px)]
+                         border border-[#8D8780]
+                         transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
+              style={{
+                background:
+                  "linear-gradient(270deg, #434343 37.16%, #434343 40%, #333 48.82%, #2A2A2A 57.31%, #222 65.8%, #1A1A1A 73.99%, #111 82.79%, #000 99.77%)",
+                boxShadow: "0 6px 22px rgba(0,0,0,0.35)",
+              }}
+            >
+              Join Us
+            </button>
+          </div>
+
+          {/* Push cards to bottom */}
+          <div className="flex-1" />
+
+          {/* Bottom cards */}
+          <div className="pt-8 sm:pb-0 md:pb-0 md:pt-8">
+            {/* Mobile: horizontal scroll */}
+            <div className="md:hidden">
+              <div className="no-scrollbar flex gap-3 overflow-x-auto px-1">
+                <div className="min-w-[240px]">
+                  <MiniInfoCard
+                    icon="/location.svg"
+                    title="Dubai"
+                    line1="12 December 2026"
+                    line2="Hosted by GTCFX"
+                  />
+                </div>
+                <div className="min-w-[240px]">
+                  <MiniInfoCard
+                    icon="/traphy-icon.svg"
+                    title="Golden Falcon"
+                    line1="Awards 2026"
+                    line2="An Evening of Excellence"
+                  />
+                </div>
+                <div className="min-w-[240px]">
+                  <MiniInfoCard
+                    icon="/star-icon.svg"
+                    title="A private"
+                    line1="awards night"
+                    line2="Celebrating leaders"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: 3 columns */}
+            <div className="hidden md:block">
+              <div className="mx-auto grid max-w-5xl grid-cols-3 gap-3 lg:gap-4">
+                <MiniInfoCard
+                  icon="/location.svg"
+                  title="Dubai"
+                  line1="12 December 2026"
+                  line2="Hosted by GTCFX"
+                />
+                <MiniInfoCard
+                  icon="/traphy-icon.svg"
+                  title="Golden Falcon"
+                  line1="Awards 2026"
+                  line2="An Evening of Excellence"
+                />
+                <MiniInfoCard
+                  icon="/star-icon.svg"
+                  title="A private"
+                  line1="awards night"
+                  line2="Celebrating leaders"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function MiniInfoCard({ icon, title, line1, line2 }) {
-    return (
-        <div
-            className="group relative overflow-hidden px-3 py-3 md:px-4 md:pb-4 md:pt-4 lg:px-6 lg:py-5 text-[#25282B] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_32px_rgba(105,138,193,0.4)] cursor-pointer focus-within:outline-none focus-within:ring-2 focus-within:ring-white/50 focus-within:ring-offset-2 focus-within:ring-offset-transparent"
-            style={{
-                borderRadius: "9.488px",
-            }}
-            role="article"
-            aria-label={`${title}: ${line1} - ${line2}`}
-            tabIndex={0}
-        >
-            <div
-                className="absolute inset-0 bg-[url('/card-bg.png')] bg-cover bg-center bg-no-repeat z-0"
-            />
+  return (
+    <div className="group relative overflow-hidden rounded-[10px] px-4 py-4 sm:px-5 sm:py-5 shadow-[0_8px_26px_rgba(0,0,0,0.28)] ring-1 ring-black/10">
+      <div className="absolute inset-0 bg-[url('/card-bg.png')] bg-cover bg-center bg-no-repeat" />
+      <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/22" />
 
-
-
-            <div className="flex items-start gap-2 md:gap-3 lg:gap-4 relative z-10">
-                <div className="flex-shrink-0 pt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-focus-within:scale-110">
-                    <img className="w-8 h-8 md:w-12 md:h-12 object-contain" src={icon} alt="" />
-                </div>
-
-                <div className="flex-1">
-                    <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-[#25282B] transition-colors duration-300 group-hover:text-white/95">{title}</div>
-                    <div className="mt-1 text-xs md:text-sm lg:text-base xl:text-lg text-[#25282B] transition-colors duration-300 group-hover:text-white">{line1}</div>
-                </div>
-            </div>
-
-            <div className="my-2 md:my-3 lg:my-4 h-px w-full bg-[#25282B] relative z-10 group-hover:bg-gray-400/50 transition-colors duration-300" />
-            <div className="text-center text-xs md:text-sm lg:text-base xl:text-lg text-[#25282B] relative z-10 transition-colors duration-300 group-hover:text-white">{line2}</div>
+      <div className="relative z-10 flex items-start gap-3">
+        <div className="mt-[2px] h-10 w-10 sm:h-11 sm:w-11 flex-shrink-0">
+          {/* using img is fine for icons */}
+          <img className="h-full w-full object-contain" src={icon} alt="" />
         </div>
-    );
+
+        <div className="flex-1">
+          <div className="font-extrabold leading-[1.1] text-[#25282B] transition-colors duration-300 group-hover:text-white text-[clamp(15px,2vw,20px)]">
+            {title}
+          </div>
+          <div className="mt-1 leading-[1.2] text-[#25282B] transition-colors duration-300 group-hover:text-white/90 text-[clamp(12px,1.7vw,16px)]">
+            {line1}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 my-3 h-px w-full bg-[#25282B]/70 transition-colors duration-300 group-hover:bg-white/35" />
+
+      <div className="relative z-10 text-center font-semibold text-[#25282B] transition-colors duration-300 group-hover:text-white/95 text-[clamp(12px,1.7vw,16px)]">
+        {line2}
+      </div>
+    </div>
+  );
 }
