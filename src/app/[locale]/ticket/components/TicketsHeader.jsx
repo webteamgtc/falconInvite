@@ -30,7 +30,7 @@ export default function TicketsHeader() {
 
           <TicketsInfoCards />
         </div>
-        <IbPerformanceForm2 />
+        <NewFormDesign />
       </div>
     </header>
   );
