@@ -83,17 +83,17 @@ export default function GoldenFalconHeroMobile({
             </div>
           </div>
 
-          {/* Trophy — visible only on mobile */}
+          {/* Trophy — visible only on mobile; use img so SVG loads on Vercel */}
           <div className="mt-7 sm:mt-9 md:mt-10 flex justify-center md:hidden">
             <div className="relative w-[clamp(180px,60vw,340px)] -ml-[30px] aspect-[3/5]">
               <div className="absolute -inset-10 bg-gradient-to-b from-[#956E42]/35 via-[#E9DDCF]/15 to-transparent blur-2xl opacity-80" />
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/goldren-traphy.svg"
                 alt="Golden Falcon Trophy"
-                fill
-                priority
-                sizes="(max-width: 480px) 60vw, (max-width: 768px) 50vw, (max-width: 1024px) 320px, 340px"
-                className="relative object-contain drop-shadow-[0_12px_46px_rgba(149,110,66,0.45)]"
+                className="h-full w-full object-contain drop-shadow-[0_12px_46px_rgba(149,110,66,0.45)]"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
