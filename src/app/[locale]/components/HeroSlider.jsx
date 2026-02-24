@@ -1,13 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import SimpleNavigationMenu from "./SimpleNavigationMenu";
+
+const CARD_STEP = 252; // min-w-[240px] + gap-3 (12px)
 
 export default function GoldenFalconHeroMobile({
   activeTab = "home",
   handleTabChange,
 }) {
+  const cardsScrollRef = useRef(null);
+
+  const scrollCards = (direction) => {
+    const el = cardsScrollRef.current;
+    if (!el) return;
+    const amount = direction === "left" ? -CARD_STEP : CARD_STEP;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
     <section className="relative w-full overflow-x-hidden bg-black">
       {/* Hero wrapper — taller on desktop so image fits without stretching */}
@@ -63,7 +74,7 @@ export default function GoldenFalconHeroMobile({
 
           {/* Trophy — visible only on mobile */}
           <div className="mt-7 sm:mt-9 md:mt-10 flex justify-center md:hidden">
-            <div className="relative w-[clamp(180px,60vw,340px)] -ml-[30px] aspect-[3/6]">
+            <div className="relative w-[clamp(180px,60vw,340px)] -ml-[30px] aspect-[3/5]">
               <div className="absolute -inset-10 bg-gradient-to-b from-[#956E42]/35 via-[#E9DDCF]/15 to-transparent blur-2xl opacity-80" />
               <Image
                 src="/goldren-traphy.svg"
@@ -76,10 +87,9 @@ export default function GoldenFalconHeroMobile({
             </div>
           </div>
 
-          {/* Tagline */}
-          <p className="mt-4 sm:mt-5 text-center italic text-white/80 text-[clamp(13px,2.2vw,20px)] leading-[1.35]">
-            Honoring success. Building the future.
-          </p>
+
+          {/* Push cards to bottom */}
+          <div className="flex-1" />
 
           {/* Button */}
           <div className="mt-6 sm:mt-7 flex justify-center">
@@ -100,14 +110,37 @@ export default function GoldenFalconHeroMobile({
             </button>
           </div>
 
-          {/* Push cards to bottom */}
-          <div className="flex-1" />
 
           {/* Bottom cards */}
-          <div className="pt-8 sm:pb-0 md:pb-0 md:pt-8">
-            {/* Mobile: horizontal scroll */}
-            <div className="md:hidden">
-              <div className="no-scrollbar flex gap-3 overflow-x-auto px-1">
+          <div className="pt-3 sm:pb-0 md:pb-0 md:pt-8">
+            <div className="md:hidden relative">
+              {/* Arrow nav — top right */}
+              <div className="absolute -top-1 right-0 z-10 flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => scrollCards("left")}
+                  aria-label="Previous card"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#8D8780] bg-black/60 text-white/90 transition hover:bg-[#B48755] hover:text-white hover:border-[#B48755]"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCards("right")}
+                  aria-label="Next card"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#8D8780] bg-black/60 text-white/90 transition hover:bg-[#B48755] hover:text-white hover:border-[#B48755]"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+              <div
+                ref={cardsScrollRef}
+                className="no-scrollbar flex gap-3 overflow-x-auto px-1 pt-10"
+              >
                 <div className="min-w-[240px]">
                   <MiniInfoCard
                     icon="/location.svg"
