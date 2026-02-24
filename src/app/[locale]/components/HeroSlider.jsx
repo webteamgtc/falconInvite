@@ -171,7 +171,7 @@ export default function GoldenFalconHeroMobile({
                 <div className="min-w-full">
                   <MiniInfoCard
                     icon="/star-icon.svg"
-                    title="A private"
+                    title="A Private"
                     line1="awards night"
                     line2="Celebrating leaders"
                   />
@@ -196,7 +196,7 @@ export default function GoldenFalconHeroMobile({
                 />
                 <MiniInfoCard
                   icon="/star-icon.svg"
-                  title="A private"
+                  title="A Private"
                   line1="awards night"
                   line2="Celebrating leaders"
                 />
