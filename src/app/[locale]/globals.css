@@ -1144,5 +1144,19 @@ body {
   display: none;
 }
 
+/* Hero slider utilities (no-scrollbar, gtc-gold-text) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gtc-gold-text {
+  background: linear-gradient(180deg, #956e42 0%, #e9ddcf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 
