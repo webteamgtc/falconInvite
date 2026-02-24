@@ -132,11 +132,11 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         <div
           className="
             md:hidden absolute left-0 right-0 top-full z-50 mt-0
-            rounded-b-xl py-4
+            rounded-b-xl
             bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-xl
           "
         >
-          <div className="pt-2 px-6 space-y-1">
+          <div className="flex px-1 space-y-1">
             {navItems.map((item, index) => {
               const isActive = activeTab === item.id;
               return (
@@ -168,12 +168,9 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
                     {item.label}
                   </span>
 
-                  {/* Active indicator line */}
-                  {isActive && (
+                  {/* {isActive && (
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#956E42] via-[#B48755] to-[#E9DDCF] rounded-r-full" />
-                  )}
-
-                 
+                  )} */}                 
                 </button>
               );
             })}

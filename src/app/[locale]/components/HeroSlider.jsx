@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import SimpleNavigationMenu from "./SimpleNavigationMenu";
 
-const CARD_STEP = 252; // min-w-[240px] + gap-3 (12px)
+const CARD_GAP = 12; // gap-3
 
 export default function GoldenFalconHeroMobile({
   activeTab = "home",
@@ -14,15 +14,20 @@ export default function GoldenFalconHeroMobile({
 
   const scrollCards = (direction) => {
     const el = cardsScrollRef.current;
-    if (!el) return;
-    const amount = direction === "left" ? -CARD_STEP : CARD_STEP;
+    if (!el?.firstElementChild) return;
+    const cardWidth = el.firstElementChild.offsetWidth;
+    const step = cardWidth + CARD_GAP;
+    const amount = direction === "left" ? -step : step;
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
 
   return (
-    <section className="relative w-full overflow-x-hidden bg-black">
+    <section
+      className="w-full min-w-full min-h-screen mx-auto overflow-hidden md:bg-[url('/1920-bg.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
+      style={{ backgroundSize: "100% 100%" }}
+    >
       {/* Hero wrapper — taller on desktop so image fits without stretching */}
-      <div className="relative w-full min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[160vh] overflow-hidden">
+      <div className="relative w-full overflow-hidden">
         {/* ✅ Mobile background */}
         <div
           className="absolute inset-0 z-0 md:hidden bg-[url('/mobile-bg.png')] bg-cover bg-center bg-no-repeat"
@@ -30,7 +35,7 @@ export default function GoldenFalconHeroMobile({
         />
 
         {/* ✅ Desktop background — full image visible (no crop) on md+ */}
-        <div className="absolute inset-0 z-0 hidden md:block">
+        {/* <div className="absolute inset-0 z-0 hidden md:block">
           <Image
             src="/1920-bg.png"
             alt=""
@@ -39,7 +44,7 @@ export default function GoldenFalconHeroMobile({
             priority
             sizes="100vw"
           />
-        </div>
+        </div> */}
 
         {/* ✅ Dark overlay (to match image contrast) */}
         <div
@@ -60,7 +65,7 @@ export default function GoldenFalconHeroMobile({
         </div>
 
         {/* Content — centered in the middle of the hero */}
-        <div className="relative z-10 mx-auto flex min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[160vh] max-w-6xl flex-col justify-center px-4 py-10 md:py-16">
+        <div className="relative z-10 mx-auto flex min-h-[100vh] md:min-h-[120vh] lg:min-h-[140vh] xl:min-h-[150vh] max-w-6xl flex-col justify-center px-4 py-10 md:py-16">
           {/* Titles */}
           <div className="text-center">
             <h1 className="mx-auto max-w-[22rem] sm:max-w-[30rem] md:max-w-4xl font-serif font-black leading-[1.03] text-transparent gtc-gold-text text-[clamp(42px,6.8vw,92px)]">
@@ -141,7 +146,7 @@ export default function GoldenFalconHeroMobile({
                 ref={cardsScrollRef}
                 className="no-scrollbar flex gap-3 overflow-x-auto px-1 pt-10"
               >
-                <div className="min-w-[240px]">
+                <div className="min-w-full">
                   <MiniInfoCard
                     icon="/location.svg"
                     title="Dubai"
@@ -149,7 +154,7 @@ export default function GoldenFalconHeroMobile({
                     line2="Hosted by GTCFX"
                   />
                 </div>
-                <div className="min-w-[240px]">
+                <div className="min-w-full">
                   <MiniInfoCard
                     icon="/traphy-icon.svg"
                     title="Golden Falcon"
@@ -157,7 +162,7 @@ export default function GoldenFalconHeroMobile({
                     line2="An Evening of Excellence"
                   />
                 </div>
-                <div className="min-w-[240px]">
+                <div className="min-w-full">
                   <MiniInfoCard
                     icon="/star-icon.svg"
                     title="A private"
