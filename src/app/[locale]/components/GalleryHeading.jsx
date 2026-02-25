@@ -2,7 +2,7 @@
 
 export default function GalleryHeading() {
   return (
-    <div className="flex items-center justify-left gap-4 mb-8 md:mb-12">
+    <div className="flex items-center justify-left gap-4">
       
       <h1 
         className="font-serif w-full md:w-auto text-center md:text-left text-[24px] md:text-[42px]  font-semibold text-[#E9DDCF] tracking-wide"
