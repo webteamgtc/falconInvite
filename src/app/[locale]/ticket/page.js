@@ -6,6 +6,8 @@ import TicketsHeader from "./components/TicketsHeader";
 import TicketsInfoCards from "./components/TicketsInfoCards";
 import Image from "next/image";
 import MainFooter from "../components/MainFooter";
+import IBQualificationAccess from "./components/NewIbSection";
+import IbSection from "./components/IbSection";
 
 export default function TicketPage() {
   const [activeNavTab, setActiveNavTab] = useState("/ticket");
@@ -22,17 +24,19 @@ export default function TicketPage() {
       <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
       <div className="absolute inset-0">
         <Image
-          src="/bg-ticket.svg"
+          src="/ticket-new.webp"
           alt=""
           fill
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/70 via-[#0a0a12]/50 to-[#0a0a12]" />
       </div>
       <main className="relative">
         <TicketsHeader />
-        <MainFooter />
+        <IBQualificationAccess/>
+        <IbSection/>
+        
+        <MainFooter bgColor="#0a0a12"/>
       </main>
     </div>
   );
