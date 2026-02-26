@@ -179,7 +179,7 @@ export default function IbPerformanceForm2() {
                 />
 
                 {/* Stepper */}
-                <div className="mb-6 flex items-center justify-between gap-3">
+                <div className="mb-6 flex items-center flex-wrap justify-between gap-3">
                     <div className="flex items-center gap-3">
                         <div
                             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${step === 1 ? activeDot : inactiveDot}`}
