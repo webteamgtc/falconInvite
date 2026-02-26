@@ -7,6 +7,21 @@ const TARGET = 500000;
 const inputClass =
     "h-[48px] w-full rounded-xl border border-[#E5E7EB] bg-white px-4 text-sm font-medium text-[#1a2256] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#B48755] focus:ring-2 focus:ring-[#B48755]/20 disabled:opacity-60";
 
+// Dummy API response for demo (no API): qualified progress so all steps can be shown
+const DUMMY_RESULT = {
+    ok: true,
+    data: {
+        result: [
+            { label: "2025-01", month: "2025-01", NET: 95000 },
+            { label: "2025-02", month: "2025-02", NET: 88000 },
+            { label: "2025-03", month: "2025-03", NET: 102000 },
+            { label: "2025-04", month: "2025-04", NET: 78000 },
+            { label: "2025-05", month: "2025-05", NET: 115000 },
+            { label: "2025-06", month: "2025-06", NET: 120000 },
+        ],
+    },
+};
+
 function dateToYYYYMM(dateStr) {
     if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return "";
     return dateStr.slice(0, 7);
@@ -119,7 +134,7 @@ export default function IbPerformanceForm2() {
             return;
         }
         setSubmitted(true);
-        toast.success("Invitation details submitted (demo)");
+        toast.success("Invitation details submitted");
     };
 
     const prefillExample = () => {
@@ -130,11 +145,33 @@ export default function IbPerformanceForm2() {
         setErrorStep1("");
     };
 
+    const handleDemoNextFromStep1 = () => {
+        prefillExample();
+        setResult(DUMMY_RESULT);
+        setErrorStep1("");
+        setStep(2);
+        toast.info("Demo mode: using dummy data, no API call.");
+    };
+
+    const handleDemoNextFromStep2 = () => {
+        setStep(3);
+        toast.info("Demo mode: proceeding to invitation step.");
+    };
+
+    const handleDemoPrefillAndSubmitStep3 = () => {
+        setPassportName("Demo Manager");
+        setPassportNo("A12345678");
+        setPhone("+971501234567");
+        setErrorStep3("");
+        setSubmitted(true);
+        toast.success("Invitation details submitted");
+    };
+
     const activeDot = "bg-[#B48755] text-white";
     const inactiveDot = "bg-[#E5E7EB] text-[#1a2256]";
 
     return (
-        <div className="w-full max-w-2xl mx-auto">
+        <div className="w-full mx-auto">
             <div className="relative overflow-hidden rounded-2xl bg-white p-5 md:p-7 shadow-lg shadow-black/10 ring-1 ring-[#E9DDCF]/40">
                 <div
                     className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#956E42] via-[#B48755] to-[#E9DDCF]"
@@ -265,6 +302,14 @@ export default function IbPerformanceForm2() {
                                 >
                                     Prefill Example
                                 </button>
+                                <button
+                                    type="button"
+                                    onClick={handleDemoNextFromStep1}
+                                    disabled={loading}
+                                    className="inline-flex items-center justify-center rounded-xl border-2 border-dashed border-amber-400 bg-amber-50 px-5 py-3 text-sm font-semibold text-amber-800 hover:bg-amber-100 disabled:opacity-60"
+                                >
+                                    Next
+                                </button>
                             </div>
                             {errorStep1 && <p className="text-sm text-red-600">{errorStep1}</p>}
                         </form>
@@ -386,15 +431,27 @@ export default function IbPerformanceForm2() {
                                 <p className="mt-1 text-sm text-emerald-900">
                                     Complete the next step to process your annual event invitation.
                                 </p>
-                                <div className="mt-4">
+                                <div className="mt-4 flex flex-wrap gap-3">
                                     <button
                                         type="button"
                                         onClick={handleNextToInvitation}
-                                        className="inline-flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
+                                        className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
                                     >
                                         Continue to Invitation Details
                                     </button>
                                 </div>
+                            </div>
+                        )}
+
+                        {!qualified && (
+                            <div className="mt-5 flex flex-wrap gap-3">
+                                <button
+                                    type="button"
+                                    onClick={handleDemoNextFromStep2}
+                                    className="inline-flex items-center justify-center rounded-xl border-2 border-dashed border-amber-400 bg-amber-50 px-5 py-3 text-sm font-semibold text-amber-800 hover:bg-amber-100"
+                                >
+                                    Next Go to Invitation
+                                </button>
                             </div>
                         )}
 
@@ -485,11 +542,18 @@ export default function IbPerformanceForm2() {
                                 >
                                     Submit Invitation Details
                                 </button>
+                                <button
+                                    type="button"
+                                    onClick={handleDemoPrefillAndSubmitStep3}
+                                    className="mt-3 w-full rounded-xl border-2 border-dashed border-amber-400 bg-amber-50 px-5 py-3 text-sm font-semibold text-amber-800 hover:bg-amber-100"
+                                >
+                                    Prefill & Submit
+                                </button>
                                 {errorStep3 && <p className="mt-3 text-sm text-red-600">{errorStep3}</p>}
                             </form>
                         ) : (
                             <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-5">
-                                <p className="text-sm font-semibold text-emerald-900">Submitted successfully (Demo)</p>
+                                <p className="text-sm font-semibold text-emerald-900">Submitted successfully</p>
                                 <p className="mt-1 text-sm text-emerald-900">
                                     In production, this would be sent to CRM/Marketing for invitation processing.
                                 </p>

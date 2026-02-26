@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 
-export default function MainFooter({ showBg = true }) {
+export default function MainFooter({ showBg = true, bgColor = '#050816' }) {
     return (
-        <section className={`w-full md:pt-10 relative ${showBg ? 'bg-[#050816]' : 'bg-transparent'}`}>
+        <section className={`w-full md:pt-10 relative ${showBg ? `bg-[${bgColor}]` : 'bg-transparent'}`}>
             {/* strip height like screenshot */}
             {showBg && (
                 <div
