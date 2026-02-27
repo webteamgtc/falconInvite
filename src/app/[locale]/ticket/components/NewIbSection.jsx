@@ -27,7 +27,7 @@ const CARDS = [
 
 export default function IBQualificationAccess() {
     return (
-        <section className="w-full bg-[#0a0a12] md:py-14 py-4">
+        <section className="w-full bg-[#0a0a12]">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
                 {/* Title */}
                 <div className="text-center">
