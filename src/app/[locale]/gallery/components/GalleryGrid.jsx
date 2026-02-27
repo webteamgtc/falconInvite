@@ -48,22 +48,35 @@ function imageEntry(id, title, thumbs) {
 const GALLERY_BY_YEAR = {
     2025: [
         videoEntry("2025-1", "Video 1", "4iFBw0wg82w"),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-1.webp", "/events/2025-2.webp"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-2.webp", "/events/2025-2.webp"]),
         videoEntry("2025-2", "Video 2", "fdGXBhPZd7c"),
-        imageEntry("2025-3", "Panel Discussion", ["/gallery-banner-img1.svg", "/gallery-banner-img2.svg"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-3.webp", "/events/2025-3.webp"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-4.webp", "/events/2025-4.webp"]),
         videoEntry("2025-4", "Video 3", "kGvHQmUq5vI"),
-        imageEntry("2025-3", "Panel Discussion", ["/gallery-banner-img1.svg"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-5.webp", "/events/2025-5.webp"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-6.webp", "/events/2025-6.webp"]),
+
 
     ],
     2024: [
-        imageEntry("2024-1", "Event Opening", ["/gallery-banner-img1.svg", "/gallery-banner-img2.svg", "/gallery-banner-img3.svg"]),
+        imageEntry("2024-1", "Panel Discussion", ["/events/2024-1.webp", "/events/2024-1.webp"]),
+        imageEntry("2024-2", "Panel Discussion", ["/events/2024-2.webp", "/events/2024-2.webp"]),
         videoEntry("2024-2", "Video 1", "ZSgsF3cOTi4"),
+        imageEntry("2024-3", "Panel Discussion", ["/events/2024-3.webp", "/events/2024-3.webp"]),
+        imageEntry("2024-4", "Panel Discussion", ["/events/2024-4.webp", "/events/2024-4.webp"]),
         videoEntry("2024-3", "Video 2", "Tah49-OSrx0"),
+        imageEntry("2024-5", "Panel Discussion", ["/events/2024-5.webp", "/events/2024-5.webp"]),
+        imageEntry("2024-6", "Panel Discussion", ["/events/2024-6.webp", "/events/2024-6.webp"]),
     ],
     2023: [
+        imageEntry("2023-1", "Panel Discussion", ["/events/2023-1.webp", "/events/2023-1.webp"]),
         videoEntry("2023-1", "Video 1", "zQmY-j1EV7Q"),
-        imageEntry("2023-2", "Awards Night", ["/gallery-banner-img2.svg", "/gallery-banner-img3.svg", "/gallery-banner-img4.svg"]),
+        imageEntry("2023-2", "Panel Discussion", ["/events/2023-2.webp", "/events/2023-2.webp"]),
         videoEntry("2023-3", "Video 2", "ZbD_x5pvTQE"),
+        imageEntry("2023-3", "Panel Discussion", ["/events/2023-3.webp", "/events/2023-3.webp"]),
         videoEntry("2023-4", "Video 3", "3ocvGAsyV6s"),
+        imageEntry("2023-4", "Panel Discussion", ["/events/2023-4.webp", "/events/2023-4.webp"]),
     ],
     2022: [
         videoEntry("2022-1", "GTCFX Partner Awards Ceremony", "XIylpVRmLeM"), // TODO: replace with actual 2022 YouTube URL
@@ -120,38 +133,38 @@ export default function GalleryGrid() {
                                         {gallery.length === 0 ? (
                                             <p className="text-white/70 text-sm py-4">No items for this year.</p>
                                         ) : (
-                                        gallery.map((entry, idx) => {
-                                            const thumb = entry.thumbs?.[0] ?? (entry.type === "video" ? "/video-thumbnil.svg" : "/gallery-banner-img1.svg");
-                                            const isSelected = idx === selectedIndex;
-                                            return (
-                                                <button
-                                                    key={entry.id}
-                                                    type="button"
-                                                    onClick={() => handleThumbClick(year, idx)}
-                                                    className={cn(
-                                                        "relative h-24 w-36 shrink-0 overflow-hidden rounded-xl ring-1 transition md:h-28 md:w-40 lg:h-[120px] lg:w-[220px]",
-                                                        isSelected
-                                                            ? "ring-2 ring-[#D48755] ring-offset-2 ring-offset-[#0b153a]"
-                                                            : "ring-white/20 hover:ring-white/40"
-                                                    )}
-                                                >
-                                                    <Image
-                                                        src={thumb}
-                                                        alt=""
-                                                        fill
-                                                        className="object-cover"
-                                                        sizes="(max-width: 1024px) 160px, 220px"
-                                                    />
-                                                    {entry.type === "video" && (
-                                                        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                                                            <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                                                <path d="M8 5v14l11-7z" />
-                                                            </svg>
-                                                        </div>
-                                                    )}
-                                                </button>
-                                            );
-                                        })
+                                            gallery.map((entry, idx) => {
+                                                const thumb = entry.thumbs?.[0] ?? (entry.type === "video" ? "/video-thumbnil.svg" : "/gallery-banner-img1.svg");
+                                                const isSelected = idx === selectedIndex;
+                                                return (
+                                                    <button
+                                                        key={entry.id}
+                                                        type="button"
+                                                        onClick={() => handleThumbClick(year, idx)}
+                                                        className={cn(
+                                                            "relative h-24 w-36 shrink-0 overflow-hidden rounded-xl ring-1 transition md:h-28 md:w-40 lg:h-[120px] lg:w-[220px]",
+                                                            isSelected
+                                                                ? "ring-2 ring-[#D48755] ring-offset-2 ring-offset-[#0b153a]"
+                                                                : "ring-white/20 hover:ring-white/40"
+                                                        )}
+                                                    >
+                                                        <Image
+                                                            src={thumb}
+                                                            alt=""
+                                                            fill
+                                                            className="object-cover"
+                                                            sizes="(max-width: 1024px) 160px, 220px"
+                                                        />
+                                                        {entry.type === "video" && (
+                                                            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                                                                <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M8 5v14l11-7z" />
+                                                                </svg>
+                                                            </div>
+                                                        )}
+                                                    </button>
+                                                );
+                                            })
                                         )}
                                     </div>
 
@@ -190,7 +203,7 @@ export default function GalleryGrid() {
                                                 />
                                             )}
                                         </div>
-{/* 
+                                        {/* 
                                         {item?.type === "image" && item.thumbs && item.thumbs.length > 1 && (
                                             <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                                                 {item.thumbs.map((t, i) => (
@@ -219,7 +232,7 @@ export default function GalleryGrid() {
                                                 ))}
                                             </div>
                                         )} */}
-{/* 
+                                        {/* 
                                         {item?.title && (
                                             <h3 className="text-lg font-semibold text-white md:text-xl">{item.title}</h3>
                                         )} */}
