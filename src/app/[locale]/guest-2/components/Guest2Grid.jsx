@@ -3,15 +3,15 @@
 import Guest2Card from "./Guest2Card";
 
 const GUESTS = [
-  { name: "Oliver Schun Ph.D.", title: "Director, Management, Training & Development", image: "/guest-person.png" },
-  { name: "Sarah Chen Ph.D.", title: "Director, Management, Research & Development", image: "/guest-person.png" },
-  { name: "James Wilson", title: "Chief Strategy Officer", image: "/guest-person.png" },
-  { name: "Emma Rodriguez", title: "Director, Operations", image: "/guest-person.png" },
-  { name: "Michael Zhang", title: "Head of Innovation", image: "/guest-person.png" },
-  { name: "Lisa Park", title: "Director, Client Relations", image: "/guest-person.png" },
-  { name: "David Kim", title: "Senior Advisor", image: "/guest-person.png" },
-  { name: "Anna Schmidt", title: "Director, Communications", image: "/guest-person.png" },
-  { name: "Robert Brown", title: "Chief Financial Officer", image: "/guest-person.png" },
+  { name: "Oliver Schun Ph.D.", title: "Chief Analyst", image: "/jameel.webp" },
+  { name: "Sarah Chen Ph.D.", title: "Director, Management, Research & Development", image: "/daher.webp" },
+  { name: "James Wilson", title: "Chief Commercial Officer", image: "/mik.webp" },
+  // { name: "Emma Rodriguez", title: "Director, Operations", image: "/guest-person.png" },
+  // { name: "Michael Zhang", title: "Head of Innovation", image: "/guest-person.png" },
+  // { name: "Lisa Park", title: "Director, Client Relations", image: "/guest-person.png" },
+  // { name: "David Kim", title: "Senior Advisor", image: "/guest-person.png" },
+  // { name: "Anna Schmidt", title: "Director, Communications", image: "/guest-person.png" },
+  // { name: "Robert Brown", title: "Chief Financial Officer", image: "/guest-person.png" },
 ];
 
 export default function Guest2Grid() {
@@ -23,7 +23,7 @@ export default function Guest2Grid() {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-          {GUESTS.slice(0, mid).map((guest, i) => (
+          {GUESTS.map((guest, i) => (
             <Guest2Card key={i} index={i} name={guest.name} title={guest.title} image={guest.image} />
           ))}
         </div>

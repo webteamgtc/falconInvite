@@ -3,31 +3,31 @@
 import Image from "next/image";
 
 const awardsBig = [
-  { img: "/awards/img-1.svg" },
-  { img: "/awards/img-2.svg" },
+  { img: "/awards/img-1.webp" },
+  { img: "/awards/img-2.webp" },
 ];
 
 const awards = [
-  { img: "/awards/img-3.svg" },
-  { img: "/awards/img-4.svg" },
-  { img: "/awards/img-5.svg" },
-  { img: "/awards/img-6.svg" },
-  { img: "/awards/img-7.svg" },
-  { img: "/awards/img-8.svg" },
-  { img: "/awards/img-9.svg" },
-  { img: "/awards/img-10.svg" },
-  { img: "/awards/img-11.svg" },
-  { img: "/awards/img-12.svg" },
-  { img: "/awards/img-13.svg" },
-  { img: "/awards/img-14.svg" },
-  { img: "/awards/img-15.svg" },
-  { img: "/awards/img-16.svg" },
-  { img: "/awards/img-17.svg" },
-  { img: "/awards/img-18.svg" },
-  { img: "/awards/img-19.svg" },
-  { img: "/awards/img-20.svg" },
-  { img: "/awards/img-21.svg" },
-  { img: "/awards/img-22.svg" },
+  { img: "/awards/img-3.webp" },
+  { img: "/awards/img-4.webp" },
+  { img: "/awards/img-5.webp" },
+  { img: "/awards/img-6.webp" },
+  { img: "/awards/img-7.webp" },
+  { img: "/awards/img-8.webp" },
+  { img: "/awards/img-9.webp" },
+  { img: "/awards/img-10.webp" },
+  { img: "/awards/img-11.webp" },
+  // { img: "/awards/img-12.webp" },
+  // { img: "/awards/img-13.webp" },
+  { img: "/awards/img-14.webp" },
+  { img: "/awards/img-15.webp" },
+  { img: "/awards/img-16.webp" },
+  { img: "/awards/img-17.webp" },
+  { img: "/awards/img-18.webp" },
+  { img: "/awards/img-19.webp" },
+  { img: "/awards/img-20.webp" },
+  { img: "/awards/img-21.webp" },
+  { img: "/awards/img-22.webp" },
 ];
 
 
