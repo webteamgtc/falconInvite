@@ -19,7 +19,7 @@ export default function TicketsHeader() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/70 via-[#0a0a12]/50 to-[#0a0a12]" />
       </div>
-      <div className="relative container flex flex-col items-center justify-center mx-auto  py-14">
+      <div className="relative container flex flex-col items-center justify-center mx-auto  pt-14">
         <img src="/gtcfx-logo.webp" alt="" className=" inset-0 object-cover object-center" />
         <div className="text-center">
           <h1

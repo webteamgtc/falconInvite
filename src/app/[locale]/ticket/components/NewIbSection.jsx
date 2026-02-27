@@ -5,22 +5,22 @@ import React from "react";
 const CARDS = [
     {
         title: "First",
-        sub: "Luxury airline\ntickets",
+        sub: "Visa and Ticket Supply",
         img: "ib-img1.svg", // replace with your image
     },
     {
         title: "Second",
-        sub: "Airport pick-up\n& drop-off",
+        sub: "Condro Hotel",
         img: "/ib-img2.svg",
     },
     {
         title: "Third",
-        sub: "Premium hotel\nsuite",
+        sub: "Pre dinner with GTC",
         img: "/ib-img3.svg",
     },
     {
         title: "Fourth",
-        sub: "Full access to all event\nactivities",
+        sub: "Golden Falcon Awards",
         img: "/ib-img4.svg",
     },
 ];
@@ -61,7 +61,7 @@ export default function IBQualificationAccess() {
                             />
 
                             {/* content */}
-                            <div className="relative flex h-full flex-col items-center justify-end pb-5 text-center">
+                            <div className="relative flex h-full flex-col items-center justify-end md:p-5 p-3 text-center">
                                 <div className="text-[20px] md:text-[24px] font-bold leading-none text-white drop-shadow">
                                     {c.title}
                                 </div>

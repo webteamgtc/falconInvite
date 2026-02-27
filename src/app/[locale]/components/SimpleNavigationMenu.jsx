@@ -111,7 +111,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
                 <button
                   key={item.id}
                   onClick={() => router.push(item.id)}
-                  className="group cursor-pointer relative px-3 py-2 transition-all duration-300"
+                  className="group cursor-pointer relative px-1.5 py-2 transition-all duration-300"
                 >
                   <span
                     className={`

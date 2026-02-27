@@ -12,7 +12,7 @@ export default function Guest2Card({ name, title, image = "/guest.svg", index = 
           className="w-full h-full object-contain"
         />
       </div>
-      <h3 className="mt-6 text-white font-semibold text-base md:text-lg lg:text-xl font-sans"
+      {/* <h3 className="mt-6 text-white font-semibold text-base md:text-lg lg:text-xl font-sans"
 
       style={{
         background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
@@ -23,8 +23,8 @@ export default function Guest2Card({ name, title, image = "/guest.svg", index = 
       >
       
         {name}
-      </h3>
-      <p className="text-white text-xs md:text-sm lg:text-base font-sans mt-1 max-w-sm">
+      </h3> */}
+      <p className="text-white mt-5 text-xs md:text-sm lg:text-base font-sans mt-1 max-w-sm">
         {title}
       </p>
     </div>
