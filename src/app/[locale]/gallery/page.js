@@ -33,7 +33,6 @@ export default function GalleryPage() {
         title="Golden Falcon Awards 2026 Invitation | GTC"
         description="An Evening of Excellence A private awards night. Celebrating leaders. Honoring success. Building the future."
       />
-      {/* Navigation Menu */}
       <div className="relative z-10">
         <SimpleNavigationMenu activeTab={activeNavTab} onTabChange={handleNavTabChange} />
         <GtcfxBanner />
@@ -41,15 +40,13 @@ export default function GalleryPage() {
 
       <AboutTour />
 
-      {/* Gallery Content */}
-      <div id="gallery-content" className="relative bg-black py-12 md:py-16 scroll-mt-24">
+      <div  className="relative bg-black py-12 md:py-16 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <GalleryHeading />
           <EventScheduleSection/>
         </div>
       </div>
 
-      {/* Footer Banner */}
       <MainFooter />
     </div>
   );

@@ -41,7 +41,9 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
         {/* Mobile: stacked layout — logo centered, menu always visible */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between py-2">
           {/* Logo — center on mobile, left on desktop */}
-          <div className="flex-shrink-0 group cursor-pointer flex justify-center md:justify-start order-1 md:order-1">
+          <div className="flex-shrink-0 group cursor-pointer flex justify-center md:justify-start order-1 md:order-1"
+          onClick={() => router.push("/")}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-[#956E42]/20 to-[#E9DDCF]/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="flex-1">
