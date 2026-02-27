@@ -13,28 +13,28 @@ const items = [
     year: "2025",
     desc: "Golden Falcon Awards 2025 delivered elegance and brilliance through powerful panels, honored winners, and unforgettable lucky draw moments.",
     img: "right",
-    image: "/timeline-img4.svg"
+    image: "/events/2025-2.webp"
   },
 
   {
     year: "2024",
     desc: "Golden Falcon Awards 2024 was an evening of elegance, prestige, and global distinction. A red-carpet celebration honoring excellence at the highest level.",
     img: "left",
-    image: "/timeline-img3.svg"
+    image: "/events/2024-2.webp"
   },
     {
     year: "2023",
     title: "",
     desc: "From insightful panels to award ceremonies, GTCFX Partners Conference 2023 had it all. An inspiring event that strengthened partnerships and future vision.",
     img: "right",
-    image: "/timeline-img2.svg"
+    image: "/events/2023-2.webp"
   },
   {
     year: "2022",
     title: "",
     desc: "GTCFX Partners Award Night 2022 celebrated success, partnership, and excellence. A memorable evening honoring those who powered our growth.",
     img: "left",
-    image: "/timeline-img1.svg"
+    image: "/events/2022-2.webp"
   },
 
  
@@ -42,8 +42,8 @@ const items = [
 ];
 
 export default function AboutTourTimeline() {
-  const scrollToGalleryContent = () => {
-    const el = document.getElementById("gallery-content");
+  const scrollToGalleryContent = (it) => {
+    const el = document.getElementById(`year-${it?.year}`);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -107,7 +107,7 @@ export default function AboutTourTimeline() {
               {items?.map((it, idx) => (
                 <div
                   key={idx}
-                  onClick={scrollToGalleryContent}
+                  onClick={() => scrollToGalleryContent(it)}
                   className="relative flex flex-col md:grid md:grid-cols-[1fr_40px_1fr] md:items-center gap-4 md:gap-0 pl-8 md:pl-0 cursor-pointer"
                 >
                   {/* MOBILE: single column - dot left, content stacked */}

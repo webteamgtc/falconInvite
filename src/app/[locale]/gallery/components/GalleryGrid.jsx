@@ -79,9 +79,12 @@ const GALLERY_BY_YEAR = {
         imageEntry("2023-4", "Panel Discussion", ["/events/2023-4.webp", "/events/2023-4.webp"]),
     ],
     2022: [
-        videoEntry("2022-1", "GTCFX Partner Awards Ceremony", "XIylpVRmLeM"), // TODO: replace with actual 2022 YouTube URL
-        imageEntry("2022-2", "Panel Discussion", ["/gallery-banner-img1.svg", "/gallery-banner-img2.svg"]),
-        videoEntry("2022-3", "GTCFX Superstar Performer Sales 2022 - Mr. Leon", "XIylpVRmLeM"), // TODO: replace with actual 2022 YouTube URL
+        imageEntry("2022-1", "Panel Discussion", ["/events/2022-1.webp", "/events/2022-1.webp"]),
+        videoEntry("2022-1", "GTCFX Partner Awards Ceremony", "XIylpVRmLeM"),
+        imageEntry("2022-2", "Panel Discussion", ["/events/2022-2.webp", "/events/2022-2.webp"]),
+        imageEntry("2022-3", "Panel Discussion", ["/events/2022-3.webp", "/events/2022-3.webp"]),
+        videoEntry("2022-3", "GTCFX Superstar Performer Sales 2022 - Mr. Leon", "XIylpVRmLeM"), 
+        imageEntry("2022-4", "Panel Discussion", ["/events/2022-4.webp", "/events/2022-4.webp"]),
     ],
 };
 
@@ -126,7 +129,7 @@ export default function GalleryGrid() {
                         const youtubeEmbedUrl = isVideo && item?.videoUrl ? getYoutubeEmbedUrl(item.videoUrl) : null;
 
                         return (
-                            <div key={year} className="mb-16 last:mb-0">
+                            <div key={year} id={`year-${year}`} className="mb-16 last:mb-0">
                                 <h2 className="text-2xl font-bold text-white mt-2">{year} Highlights</h2>
                                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 pt-10">
                                     <div className="flex flex-row flex-nowrap gap-3 overflow-x-auto pb-2 px-1.5 py-1 lg:flex-col lg:flex-nowrap lg:overflow-x-visible lg:overflow-y-auto lg:max-h-[480px] lg:gap-4 lg:max-w-[240px] lg:py-1.5 no-scrollbar">
