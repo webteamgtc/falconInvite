@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function TicketsHeader() {
   return (
-    <header className=" min-h-[420px] flex relative md:min-h-[650px] overflow-hidden">
+    <header className=" min-h-[350px] flex relative md:min-h-[650px] overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/ticket-new.webp"

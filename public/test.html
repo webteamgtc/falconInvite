@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IB Qualification Portal Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-slate-50">
+    <div class="mx-auto max-w-3xl px-4 py-10">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-slate-900">IB Annual Event Qualification Portal (Demo)</h1>
+        <p class="mt-2 text-sm text-slate-600">
+          Dummy / testing version for CEO demo — real system will fetch verified client deposits & exclude IB’s own deposits.
+        </p>
+      </div>
+
+      <!-- Stepper -->
+      <div class="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div id="stepDot1" class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">1</div>
+            <div>
+              <p class="text-sm font-semibold text-slate-900">IB Details</p>
+              <p class="text-xs text-slate-500">Enter details to check progress</p>
+            </div>
+          </div>
+
+          <div class="hidden h-px flex-1 bg-slate-200 sm:block"></div>
+
+          <div class="flex items-center gap-3">
+            <div id="stepDot2" class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">2</div>
+            <div>
+              <p class="text-sm font-semibold text-slate-900">Progress</p>
+              <p class="text-xs text-slate-500">View target completion</p>
+            </div>
+          </div>
+
+          <div class="hidden h-px flex-1 bg-slate-200 sm:block"></div>
+
+          <div class="flex items-center gap-3">
+            <div id="stepDot3" class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">3</div>
+            <div>
+              <p class="text-sm font-semibold text-slate-900">Invitation</p>
+              <p class="text-xs text-slate-500">Shown only at 100%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <!-- STEP 1 -->
+        <div id="step1">
+          <div class="mb-4">
+            <h2 class="text-lg font-bold text-slate-900">Step 1 — Enter IB Details</h2>
+            <p class="mt-1 text-sm text-slate-600">
+              Demo form: IB enters required fields, system then calculates performance using dummy data.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label class="text-sm font-medium text-slate-700">IB Account Number</label>
+              <input id="ibAccount" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500"
+                placeholder="e.g., 123456" />
+              <p class="mt-1 text-xs text-slate-500">Required (demo accepts any number)</p>
+            </div>
+
+            <div>
+              <label class="text-sm font-medium text-slate-700">Email</label>
+              <input id="email" type="email" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500"
+                placeholder="name@company.com" />
+              <p class="mt-1 text-xs text-slate-500">Required (demo accepts any email)</p>
+            </div>
+
+            <div>
+              <label class="text-sm font-medium text-slate-700">Join Date</label>
+              <input id="joinDate" type="date" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500" />
+            </div>
+
+            <div>
+              <label class="text-sm font-medium text-slate-700">Check Date</label>
+              <input id="checkDate" type="date" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500" />
+              <p class="mt-1 text-xs text-slate-500">Default: today (you can change)</p>
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4">
+            <p class="text-sm text-amber-900">
+              <span class="font-semibold">Rule:</span> Only deposits from referred clients will be counted. IB’s own deposits are excluded.
+            </p>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button id="btnCheck"
+              class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700">
+              Check My Progress (Dummy Data)
+            </button>
+
+            <button id="btnPrefill"
+              class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50">
+              Prefill Example
+            </button>
+          </div>
+
+          <p id="error1" class="mt-3 hidden text-sm text-red-600"></p>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step2" class="">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">Step 2 — Your Progress</h2>
+              <p class="mt-1 text-sm text-slate-600">
+                This demo uses dummy transactions. Real version will fetch verified client deposits from CRM/MT5 and exclude IB deposits.
+              </p>
+            </div>
+
+            <button id="btnBack1"
+              class="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50">
+              Back
+            </button>
+          </div>
+
+          <!-- Progress Summary -->
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-sm text-slate-600">Annual Target (Client Deposits)</p>
+                <p class="mt-1 text-2xl font-bold text-slate-900">$<span id="targetAmt">50,000</span></p>
+              </div>
+
+              <div class="text-left sm:text-right">
+                <p class="text-sm text-slate-600">Client Deposits Achieved</p>
+                <p class="mt-1 text-2xl font-bold text-slate-900">$<span id="achievedAmt">0</span></p>
+              </div>
+            </div>
+
+            <!-- Bar -->
+            <div class="mt-4">
+              <div class="flex items-center justify-between text-xs text-slate-600">
+                <p>Progress</p>
+                <p><span id="progressPct">0</span>%</p>
+              </div>
+              <div class="mt-2 h-3 w-full rounded-full bg-slate-100">
+                <div id="progressBar" class="h-3 rounded-full bg-indigo-600" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-600">Remaining</p>
+                <p class="mt-1 text-sm font-semibold text-slate-900">$<span id="remainingAmt">0</span></p>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-600">Check Date</p>
+                <p class="mt-1 text-sm font-semibold text-slate-900" id="checkDateOut">—</p>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-600">Included Deposits</p>
+                <p class="mt-1 text-sm font-semibold text-slate-900" id="includedCount">0 tx</p>
+              </div>
+            </div>
+
+            <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+              <p class="text-sm text-slate-700">
+                <span class="font-semibold text-slate-900">Important:</span>
+                IB-owned deposits are <span class="font-semibold text-red-600">excluded</span>. Only referred client deposits are counted.
+              </p>
+            </div>
+          </div>
+
+          <!-- Dummy Transactions Preview -->
+          <div class="mt-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900">Dummy Transactions (for demo)</h3>
+              <button id="btnRecalc"
+                class="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50">
+                Recalculate (New Dummy Data)
+              </button>
+            </div>
+
+            <div class="mt-3 overflow-hidden rounded-2xl border border-slate-200">
+              <table class="w-full text-left text-sm">
+                <thead class="bg-slate-50 text-xs text-slate-600">
+                  <tr>
+                    <th class="px-4 py-3">Type</th>
+                    <th class="px-4 py-3">Owner</th>
+                    <th class="px-4 py-3">Amount</th>
+                    <th class="px-4 py-3">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="txBody" class="divide-y divide-slate-200 bg-white"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Callouts -->
+          <div id="notYet" class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+            <p class="text-sm font-semibold text-amber-900">You’re not qualified yet.</p>
+            <p class="mt-1 text-sm text-amber-900">
+              Keep growing client deposits to reach 100%. Once you reach the target, the invitation details fields will appear automatically.
+            </p>
+          </div>
+
+          <div id="qualified" class="mt-5 hidden rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+            <p class="text-sm font-semibold text-emerald-900">🎉 Congratulations — You are qualified!</p>
+            <p class="mt-1 text-sm text-emerald-900">
+              Please complete the next step to process your annual event invitation.
+            </p>
+
+            <div class="mt-4">
+              <button id="btnNext"
+                class="inline-flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700">
+                Continue to Invitation Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step3" class="">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">Step 3 — Invitation Details</h2>
+              <p class="mt-1 text-sm text-slate-600">
+                This section appears only when progress is 100%.
+              </p>
+            </div>
+
+            <button id="btnBack2"
+              class="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50">
+              Back
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="sm:col-span-2">
+                <label class="text-sm font-medium text-slate-700">Full Name (as per Passport)</label>
+                <input id="passportName" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500"
+                  placeholder="Enter full name exactly as passport" />
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-700">Passport Number</label>
+                <input id="passportNo" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500"
+                  placeholder="e.g., A1234567" />
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-700">Phone Number</label>
+                <input id="phone" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500"
+                  placeholder="e.g., +9715xxxxxxx" />
+              </div>
+            </div>
+
+            <button id="btnSubmit"
+              class="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700">
+              Submit Invitation Details (Demo)
+            </button>
+
+            <p id="error3" class="mt-3 hidden text-sm text-red-600"></p>
+
+            <div id="success3" class="mt-4 hidden rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+              <p class="text-sm font-semibold text-emerald-900">✅ Submitted successfully (Demo)</p>
+              <p class="mt-1 text-sm text-emerald-900">
+                In production, this will be pushed to CRM/Marketing for invitation processing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="mt-6 text-center text-xs text-slate-500">
+        Demo only — no data is saved. Replace dummy data with CRM/MT5 API in production.
+      </p>
+    </div>
+
+   <script>
+      // -------- Demo Config --------
+      const TARGET = 50000;
+
+      // 4 scenarios with preset IB + dummy transactions.
+      // "Counted?" uses the same rule: Owner=CLIENT AND Status=Completed.
+      const SCENARIOS = {
+        u1: {
+          label: "User 1 — New IB (10% progress)",
+          ib: { account: "IB-100001", email: "new.ib@example.com", joinDate: "2026-02-01" },
+          tx: [
+            { type: "Deposit", owner: "CLIENT", amount: 2000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 1500, status: "Completed" },
+            { type: "Deposit", owner: "IB", amount: 12000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 1800, status: "Reversed" },
+          ],
+        },
+        u2: {
+          label: "User 2 — Growing IB (65% progress)",
+          ib: { account: "IB-200045", email: "growing.ib@example.com", joinDate: "2025-06-12" },
+          tx: [
+            { type: "Deposit", owner: "CLIENT", amount: 12000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 8000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 12500, status: "Completed" },
+            { type: "Deposit", owner: "IB", amount: 20000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 3500, status: "Reversed" },
+          ],
+        },
+        u3: {
+          label: "User 3 — Almost there (92% progress)",
+          ib: { account: "IB-300312", email: "almost.ib@example.com", joinDate: "2024-01-20" },
+          tx: [
+            { type: "Deposit", owner: "CLIENT", amount: 18000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 14000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 14000, status: "Completed" },
+            { type: "Deposit", owner: "IB", amount: 25000, status: "Completed" },
+          ],
+        },
+        u4: {
+          label: "User 4 — Qualified (100% progress)",
+          ib: { account: "IB-400999", email: "qualified.ib@example.com", joinDate: "2023-09-05" },
+          tx: [
+            { type: "Deposit", owner: "CLIENT", amount: 22000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 18000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 12000, status: "Completed" },
+            { type: "Deposit", owner: "IB", amount: 40000, status: "Completed" },
+            { type: "Deposit", owner: "CLIENT", amount: 5000, status: "Reversed" },
+          ],
+        },
+      };
+
+      // -------- Utils --------
+      function formatMoney(n) {
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function isCounted(t) {
+        return t.owner === "CLIENT" && t.status === "Completed";
+      }
+
+      function calc(tx) {
+        const included = tx.filter(isCounted);
+        const achieved = included.reduce((s, t) => s + t.amount, 0);
+        const pct = Math.min(Math.floor((achieved / TARGET) * 100), 100);
+        const remaining = Math.max(TARGET - achieved, 0);
+        return { included, achieved, pct, remaining };
+      }
+
+      // -------- Stepper --------
+      const step1 = document.getElementById("step1");
+      const step2 = document.getElementById("step2");
+      const step3 = document.getElementById("step3");
+
+      const dot1 = document.getElementById("stepDot1");
+      const dot2 = document.getElementById("stepDot2");
+      const dot3 = document.getElementById("stepDot3");
+
+      function setStep(active) {
+        step1.classList.toggle("hidden", active !== 1);
+        step2.classList.toggle("hidden", active !== 2);
+        step3.classList.toggle("hidden", active !== 3);
+
+        const activeClass = ["bg-indigo-600", "text-white"];
+        const inactiveClass = ["bg-slate-200", "text-slate-700"];
+
+        [dot1, dot2, dot3].forEach((d) => {
+          d.classList.remove(...activeClass, ...inactiveClass);
+          d.classList.add("flex","h-9","w-9","items-center","justify-center","rounded-full","text-sm","font-semibold");
+        });
+
+        dot1.classList.add(...(active === 1 ? activeClass : inactiveClass));
+        dot2.classList.add(...(active === 2 ? activeClass : inactiveClass));
+        dot3.classList.add(...(active === 3 ? activeClass : inactiveClass));
+      }
+
+      // Defaults
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById("checkDate").value = today;
+
+      // -------- Elements --------
+      const scenarioSelect = document.getElementById("scenarioSelect");
+      const btnLoadScenario = document.getElementById("btnLoadScenario");
+
+      const ibAccount = document.getElementById("ibAccount");
+      const email = document.getElementById("email");
+      const joinDate = document.getElementById("joinDate");
+      const checkDate = document.getElementById("checkDate");
+
+      const btnCheck = document.getElementById("btnCheck");
+      const btnReset = document.getElementById("btnReset");
+      const btnBack1 = document.getElementById("btnBack1");
+      const btnBack2 = document.getElementById("btnBack2");
+      const btnNext = document.getElementById("btnNext");
+      const btnShowLogic = document.getElementById("btnShowLogic");
+
+      const error1 = document.getElementById("error1");
+
+      const targetAmt = document.getElementById("targetAmt");
+      const achievedAmt = document.getElementById("achievedAmt");
+      const remainingAmt = document.getElementById("remainingAmt");
+      const progressPct = document.getElementById("progressPct");
+      const progressBar = document.getElementById("progressBar");
+      const includedCount = document.getElementById("includedCount");
+      const checkDateOut = document.getElementById("checkDateOut");
+      const txBody = document.getElementById("txBody");
+
+      const notYetBox = document.getElementById("notYet");
+      const qualifiedBox = document.getElementById("qualified");
+      const logicBox = document.getElementById("logicBox");
+
+      // Step 3
+      const btnSubmit = document.getElementById("btnSubmit");
+      const error3 = document.getElementById("error3");
+      const success3 = document.getElementById("success3");
+
+      // State
+      let currentScenarioKey = "u1";
+      let currentTx = SCENARIOS[currentScenarioKey].tx;
+      let lastCalc = null;
+
+      // -------- Functions --------
+      function loadScenario(key) {
+        currentScenarioKey = key;
+        const s = SCENARIOS[key];
+
+        ibAccount.value = s.ib.account;
+        email.value = s.ib.email;
+        joinDate.value = s.ib.joinDate;
+        checkDate.value = today;
+
+        currentTx = s.tx;
+      }
+
+      function validateStep1() {
+        if (!ibAccount.value.trim() || !email.value.trim() || !joinDate.value || !checkDate.value) {
+          error1.textContent = "Please fill all required fields (IB Account, Email, Join Date, Check Date).";
+          error1.classList.remove("hidden");
+          return false;
+        }
+        error1.classList.add("hidden");
+        return true;
+      }
+
+      function renderTransactions(tx) {
+        txBody.innerHTML = "";
+        tx.forEach((t) => {
+          const counted = isCounted(t);
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td class="px-4 py-3">${t.type}</td>
+            <td class="px-4 py-3">
+              <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold ${
+                t.owner === "CLIENT" ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"
+              }">
+                ${t.owner}
+              </span>
+            </td>
+            <td class="px-4 py-3">$${formatMoney(t.amount)}</td>
+            <td class="px-4 py-3">
+              <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold ${
+                t.status === "Completed" ? "bg-slate-100 text-slate-700" : "bg-amber-50 text-amber-700"
+              }">
+                ${t.status}
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold ${
+                counted ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"
+              }">
+                ${counted ? "Yes" : "No"}
+              </span>
+            </td>
+          `;
+          txBody.appendChild(row);
+        });
+      }
+
+      function showProgress() {
+        const c = calc(currentTx);
+        lastCalc = c;
+
+        targetAmt.textContent = formatMoney(TARGET);
+        achievedAmt.textContent = formatMoney(c.achieved);
+        remainingAmt.textContent = formatMoney(c.remaining);
+        progressPct.textContent = c.pct;
+        progressBar.style.width = c.pct + "%";
+        includedCount.textContent = `${c.included.length} tx`;
+        checkDateOut.textContent = checkDate.value || "—";
+
+        renderTransactions(currentTx);
+
+        if (c.pct >= 100) {
+          qualifiedBox.classList.remove("hidden");
+          notYetBox.classList.add("hidden");
+        } else {
+          qualifiedBox.classList.add("hidden");
+          notYetBox.classList.remove("hidden");
+        }
+      }
+
+      function resetAll() {
+        ibAccount.value = "";
+        email.value = "";
+        joinDate.value = "";
+        checkDate.value = today;
+        error1.classList.add("hidden");
+
+        // reset step 3 messages
+        error3.classList.add("hidden");
+        success3.classList.add("hidden");
+        document.getElementById("passportName").value = "";
+        document.getElementById("passportNo").value = "";
+        document.getElementById("phone").value = "";
+
+        setStep(1);
+      }
+
+      // -------- Events --------
+      btnLoadScenario.addEventListener("click", () => {
+        loadScenario(scenarioSelect.value);
+      });
+
+      btnCheck.addEventListener("click", () => {
+        if (!validateStep1()) return;
+        setStep(2);
+        showProgress();
+      });
+
+      btnReset.addEventListener("click", resetAll);
+      btnBack1.addEventListener("click", () => setStep(1));
+      btnBack2.addEventListener("click", () => setStep(2));
+
+      btnNext.addEventListener("click", () => {
+        if (!lastCalc || lastCalc.pct < 100) return;
+        setStep(3);
+      });
+
+      btnShowLogic.addEventListener("click", () => {
+        logicBox.classList.toggle("hidden");
+      });
+
+      btnSubmit.addEventListener("click", () => {
+        const name = document.getElementById("passportName").value.trim();
+        const pass = document.getElementById("passportNo").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        if (!name || !pass || !phone) {
+          error3.textContent = "Please fill Full Name (passport), Passport Number, and Phone Number.";
+          error3.classList.remove("hidden");
+          success3.classList.add("hidden");
+          return;
+        }
+
+        error3.classList.add("hidden");
+        success3.classList.remove("hidden");
+      });
+
+      // Init
+      loadScenario("u1");
+      setStep(1);
+    </script>
+  </body>
+</html>
