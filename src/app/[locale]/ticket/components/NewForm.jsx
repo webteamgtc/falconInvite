@@ -99,6 +99,17 @@ export default function NewFormDesign({ isIb = false }) {
     const [loading, setLoading] = useState(false);
     const [otpPhoneNumber, setOtpPhoneNumber] = useState("");
     const [isOtpVerified, setIsOtpVerified] = useState(false);
+
+    // Existing IB (email OTP) flow
+    const [existingIb, setExistingIb] = useState(""); // "" | "yes" | "no"
+    const [existingIbEmail, setExistingIbEmail] = useState("");
+    const [emailOtpFromApi, setEmailOtpFromApi] = useState(""); // OTP received from /otp-smtp
+    const [emailOtpLoading, setEmailOtpLoading] = useState(false);
+    const [emailOtpInput, setEmailOtpInput] = useState(""); // user-entered OTP
+    const [showEmailOtpSection, setShowEmailOtpSection] = useState(false);
+    const [emailOtpVerified, setEmailOtpVerified] = useState(false);
+    const [emailOtpError, setEmailOtpError] = useState("");
+
     const params = useSearchParams();
     const campaign = params.get("utm_source");
     const fbclid = params.get("fbclid");
@@ -322,6 +333,66 @@ export default function NewFormDesign({ isIb = false }) {
     const isPhoneValid =
         formik.values.phone && isValidPhoneNumber(formik.values.phone);
 
+    // --- Existing IB: get OTP via email (/otp-smtp) ---
+    const getEmailOtp = async () => {
+        const email = existingIbEmail.trim();
+         // Validate email first
+         const validationResponse = await axios.post(`/api/validate-email`, {
+            email: email,
+        });
+
+        if (!validationResponse.data.valid) {
+            toast.error("Invalid email address. Please use a valid email.");
+            return;
+        }
+        if (!email) {
+            toast.error("Email is required");
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            toast.error("Please enter a valid email address");
+            return;
+        }
+        setEmailOtpError("");
+        setEmailOtpLoading(true);
+        try {
+            const res = await axios.post("/api/otp-smtp", {
+                email,
+                first_name: "Partner",
+            });
+            const otp = res?.data?.message;
+            if (otp) {
+                setEmailOtpFromApi(String(otp).trim());
+                setShowEmailOtpSection(true);
+                setEmailOtpInput("");
+                setEmailOtpVerified(false);
+                toast.success("OTP sent to your email");
+            } else {
+                toast.error("Failed to receive OTP");
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error(err?.response?.data?.message || err?.message || "Failed to send OTP");
+        } finally {
+            setEmailOtpLoading(false);
+        }
+    };
+
+    const verifyEmailOtp = () => {
+        setEmailOtpError("");
+        const entered = String(emailOtpInput).trim();
+        if (!entered) {
+            setEmailOtpError("Please enter the OTP");
+            return;
+        }
+        if (entered !== emailOtpFromApi) {
+            setEmailOtpError("Invalid OTP. Please try again.");
+            return;
+        }
+        setEmailOtpVerified(true);
+        toast.success("Email verified successfully");
+    };
+
     // verify OTP server-side
     const verifyOtpCode = async (otp) => {
         if (!otp || otp.length !== 6) {
@@ -468,6 +539,121 @@ export default function NewFormDesign({ isIb = false }) {
                         </div>
                     )}
 
+                    {/* Are you an existing IB? - only when isIb */}
+                    {isIb && (
+                        <div className="mt-5 min-w-0">
+                            <div className="mb-1 text-[14px] font-normal text-[#868686]">Existing GTC IB?</div>
+                            <select
+                                value={existingIb}
+                                onChange={(e) => {
+                                    setExistingIb(e.target.value);
+                                    setEmailOtpError("");
+                                    setShowEmailOtpSection(false);
+                                    setEmailOtpVerified(false);
+                                    setEmailOtpFromApi("");
+                                    setEmailOtpInput("");
+                                }}
+                                className="h-[46px] w-full min-w-0 rounded-[8px] border border-[#E5E7EB] px-3 text-[14px] font-medium text-[#000] outline-none focus:border-[#2E59D9] bg-white"
+                            >
+                                <option value="">Select</option>
+                                <option value="yes">YES</option>
+                                <option value="no">NO</option>
+                            </select>
+                        </div>
+                    )}
+
+                    {/* Existing IB (YES): email + Get OTP → Verify → success message */}
+                    {isIb && existingIb === "yes" && (
+                        <div className="mt-5 space-y-4">
+                            <div className="flex items-end gap-2">
+                            <div className="min-w-0 w-full">
+                                <div className="mb-1 text-[14px] font-normal text-[#868686]">Email*</div>
+                                <input
+                                    type="email"
+                                    value={existingIbEmail}
+                                    onChange={(e) => setExistingIbEmail(e.target.value)}
+                                    placeholder="Email"
+                                    disabled={emailOtpVerified}
+                                    className="h-[46px] w-full min-w-0 rounded-[8px] border border-[#E5E7EB] px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] disabled:opacity-70"
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                onClick={getEmailOtp}
+                                disabled={emailOtpLoading || emailOtpVerified || !existingIbEmail.trim()}
+                                className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93] disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {emailOtpLoading ? "Sending..." : "Get OTP"}
+                            </button>
+                            </div>
+
+                            {showEmailOtpSection && !emailOtpVerified && (
+                                <>
+                                <div className="flex items-end gap-2">
+                                    <div className="min-w-0">
+                                        <div className="mb-1 text-[14px] font-normal text-[#868686]">Enter OTP</div>
+                                        <OtpInput
+                                            value={emailOtpInput}
+                                            onChange={setEmailOtpInput}
+                                            numInputs={6}
+                                            containerStyle={{
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                                gap: "8px",
+                                                width: "100%",
+                                                maxWidth: "100%",
+                                            }}
+                                            isInputNum
+                                            renderInput={(props) => (
+                                                <input
+                                                    {...props}
+                                                    type="tel"
+                                                    inputMode="numeric"
+                                                    pattern="[0-9]*"
+                                                />
+                                            )}
+                                            inputStyle={{
+                                                fontSize: "16px",
+                                                borderRadius: "6px",
+                                                paddingBottom: "10px",
+                                                paddingTop: "10px",
+                                                width: "100%",
+                                                maxWidth: "100%",
+                                                minWidth: "44px",
+                                                textAlign: "center",
+                                                backgroundColor: "#fff",
+                                                color: "#000",
+                                                fontWeight: "700",
+                                                outlineColor: "#2E59D9",
+                                                border: "1px solid #E5E7EB",
+                                            }}
+                                        />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={verifyEmailOtp}
+                                        className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93]"
+                                    >
+                                        Verify
+                                    </button>
+                                    </div>
+                                    {emailOtpError && (
+                                        <p className="text-xs text-red-500">{emailOtpError}</p>
+                                    )}
+                                </>
+                            )}
+
+                            {emailOtpVerified && (
+                                <p className="text-[14px] font-medium text-green-600">
+                                    Your email has been verified successfully.
+                                </p>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Full form: when NO or when not IB form */}
+                    {((isIb && existingIb === "no") || !isIb) && (
+                    <>
                     {/* Fields row 1 */}
                     <div className="mt-5 grid md:grid-cols-2 grid-cols-1 gap-4">
                         {/* First Name */}
@@ -676,6 +862,8 @@ export default function NewFormDesign({ isIb = false }) {
                     >
                         {loading ? "Submitting..." : "Become A Partner"}
                     </button>
+                    </>
+                    )}
                 </div>
             </div>
         </form>
