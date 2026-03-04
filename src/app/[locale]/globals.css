@@ -11,6 +11,24 @@
 
 html {
   font-family: "Playfair Display", "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", var(--font-poppins), sans-serif !important;
+  scroll-behavior: smooth;
+}
+
+/* Subtle scrollbar (WebKit) */
+@media (min-width: 1024px) {
+  html::-webkit-scrollbar {
+    width: 10px;
+  }
+  html::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  html::-webkit-scrollbar-thumb {
+    background: rgba(180, 135, 85, 0.35);
+    border-radius: 5px;
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: rgba(180, 135, 85, 0.55);
+  }
 }
 
 body {
@@ -1013,6 +1031,26 @@ body {
   background: linear-gradient(180deg, #B88A5A 0%, #F5E8D5 100%);
 }
 
+/* Policy / TOC left sidebar scrollbar - gold theme */
+.policy-toc-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.policy-toc-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  margin: 8px 0;
+}
+.policy-toc-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #956E42 0%, #B48755 50%, #E9DDCF 100%);
+  border-radius: 3px;
+}
+.policy-toc-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B48755 0%, #D3C0A0 50%, #E9DDCF 100%);
+}
+.policy-toc-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180, 135, 85, 0.6) rgba(255, 255, 255, 0.04);
+}
 
 /* React-pageflip styles - Remove white backgrounds */
 .stf__parent {
