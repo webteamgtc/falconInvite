@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import SimpleNavigationMenu from "./SimpleNavigationMenu";
+import { useRouter } from "next/navigation";
 
 const CARD_GAP = 12; // gap-3
+const CARD_COUNT = 3;
 
 export default function GoldenFalconHeroMobile({
   activeTab = "home",
   handleTabChange,
 }) {
+  const router = useRouter();
   const cardsScrollRef = useRef(null);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   const scrollCards = (direction) => {
     const el = cardsScrollRef.current;
@@ -20,6 +24,34 @@ export default function GoldenFalconHeroMobile({
     const amount = direction === "left" ? -step : step;
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
+
+  const scrollToCard = (index) => {
+    const el = cardsScrollRef.current;
+    if (!el?.firstElementChild) return;
+    const cardWidth = el.firstElementChild.offsetWidth;
+    const step = cardWidth + CARD_GAP;
+    el.scrollTo({ left: index * step, behavior: "smooth" });
+    setActiveCardIndex(index);
+  };
+
+  useEffect(() => {
+    const el = cardsScrollRef.current;
+    if (!el) return;
+
+    const updateActiveIndex = () => {
+      if (!el.firstElementChild) return;
+      const cardWidth = el.firstElementChild.offsetWidth;
+      const step = cardWidth + CARD_GAP;
+      const scrollLeft = el.scrollLeft;
+      const index = Math.round(scrollLeft / step);
+      const clamped = Math.max(0, Math.min(index, CARD_COUNT - 1));
+      setActiveCardIndex(clamped);
+    };
+
+    el.addEventListener("scroll", updateActiveIndex);
+    updateActiveIndex();
+    return () => el.removeEventListener("scroll", updateActiveIndex);
+  }, []);
 
   return (
     <section
@@ -73,6 +105,7 @@ export default function GoldenFalconHeroMobile({
                   "linear-gradient(270deg, #434343 37.16%, #434343 40%, #333 48.82%, #2A2A2A 57.31%, #222 65.8%, #1A1A1A 73.99%, #111 82.79%, #000 99.77%)",
                 boxShadow: "0 6px 22px rgba(0,0,0,0.35)",
               }}
+              onClick={() => router.push("/ticket")}
             >
               Join Us
             </button>
@@ -83,7 +116,7 @@ export default function GoldenFalconHeroMobile({
           <div className="pt-3 sm:pb-0 md:pb-0 md:pt-8">
             <div className="md:hidden relative">
               {/* Arrow nav — top right */}
-              <div className="absolute -top-1 right-0 z-10 flex items-center gap-1">
+              {/* <div className="absolute -top-1 right-0 z-10 flex items-center gap-1">
                 <button
                   type="button"
                   onClick={() => scrollCards("left")}
@@ -104,20 +137,20 @@ export default function GoldenFalconHeroMobile({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-              </div>
+              </div> */}
               <div
                 ref={cardsScrollRef}
-                className="no-scrollbar flex gap-3 overflow-x-auto px-1 pt-10"
+                className="no-scrollbar flex gap-3 overflow-x-auto px-1 pt-10 snap-x snap-mandatory"
               >
-                <div className="min-w-full">
+                <div className="min-w-full snap-center">
                   <MiniInfoCard
                     icon="/location.svg"
                     title="Dubai"
-                    line1="12 December 2026"
+                    line1="December 2026"
                     line2="Hosted by GTCFX"
                   />
                 </div>
-                <div className="min-w-full">
+                <div className="min-w-full snap-center">
                   <MiniInfoCard
                     icon="/traphy-icon.svg"
                     title="Golden Falcon"
@@ -125,7 +158,7 @@ export default function GoldenFalconHeroMobile({
                     line2="An Evening of Excellence"
                   />
                 </div>
-                <div className="min-w-full">
+                <div className="min-w-full snap-center">
                   <MiniInfoCard
                     icon="/star-icon.svg"
                     title="A Private"
@@ -133,6 +166,22 @@ export default function GoldenFalconHeroMobile({
                     line2="Celebrating leaders"
                   />
                 </div>
+              </div>
+              {/* Pagination dots - mobile only */}
+              <div className="flex justify-center items-center gap-2 pt-4 pb-2">
+                {Array.from({ length: CARD_COUNT }).map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => scrollToCard(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === activeCardIndex
+                        ? "w-6 h-2 bg-[#B48755]"
+                        : "w-2 h-2 bg-white/50 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
 
