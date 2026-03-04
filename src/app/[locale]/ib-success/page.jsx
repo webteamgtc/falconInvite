@@ -9,11 +9,11 @@ export default function VipQualificationProgressPage() {
         <main className="relative min-h-screen w-full overflow-hidden bg-[#010101] text-white">
 
             <HeroSection />
-            <div className="mt-16 md:mt-20">
+            <div className="mt-10 md:mt-20">
                 <IBQualificationAccess />
             </div>
             {/* CTA STRIP */}
-            <section className="mt-14 container mx-auto">
+            <section className="md:mt-14 mt-8 container mx-auto">
                 <div className="flex flex-col items-center justify-between gap-4 rounded-full bg-black/35 px-6 py-4 ring-1 ring-white/10 backdrop-blur-[8px] md:flex-row">
                     <p className="text-center text-[14px] md:text-[16px] leading-[1.6] text-white md:text-left">
                         Increase your deposit to accelerate qualification · Higher trading activity moves you closer to VIP status
@@ -25,7 +25,7 @@ export default function VipQualificationProgressPage() {
                 </div>
 
                 {/* small chips below */}
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+                <div className="md:mt-6 mt-4 flex flex-wrap items-center justify-center gap-6">
                     <Chip label="You are 50% to qualification" />
                     <Chip label="80% - You are almost there" />
                 </div>
@@ -33,7 +33,7 @@ export default function VipQualificationProgressPage() {
 
             {/* ACCOUNT MANAGER BAR */}
             <section className="my-8 container mx-auto">
-                <div className="relative overflow-hidden rounded-full border border-white/12 bg-white/12 px-6 py-4 backdrop-blur-[10px]">
+                <div className="relative overflow-hidden md:rounded-full rounded-2xl border border-white/12 bg-white/12 md:px-6 px-4 md:py-4 py-2 backdrop-blur-[10px]">
                     {/* subtle inner shine */}
                     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.10)_0%,transparent_35%,transparent_70%,rgba(255,255,255,0.06)_100%)]" />
 

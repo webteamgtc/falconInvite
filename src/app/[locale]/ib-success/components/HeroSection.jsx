@@ -20,12 +20,12 @@ export default function HeroSection() {
             </div>
             <div className="mx-auto container relative z-10">
                 <section
-                    className="relative overflow-hidden md:mt-20 mt-8 rounded-[30px] border border-[#FFA6A6] px-10 py-10"
+                    className="relative overflow-hidden md:mt-20 mt-6 md:rounded-[30px] rounded-2xl border border-[#FFA6A6] md:px-10 px-4 md:py-10 py-4"
                     style={{
                         backgroundColor: "#C0C0C096",
                     }}
                 >
-                    <div className="flex items-start justify-between gap-6">
+                    <div className="flex items-start flex-col md:flex-row justify-between gap-6">
                         <div>
                             <h1 className="text-[28px] md:text-[40px] font-semibold tracking-[-0.01em]"
                                 style={{
@@ -38,13 +38,13 @@ export default function HeroSection() {
                                 Welcome
                             </h1>
 
-                            <div className="mt-6 flex flex-wrap items-center gap-3 text-[14px] md:text-[16px] text-white">
+                            <div className="md:mt-6 mt-3 flex flex-wrap items-center gap-3 text-[14px] md:text-[16px] text-white">
                                 <span className="font-semibold text-white/75">VIP Annual Invitation 2026</span>
                                 <span className="h-[2px] w-[2px] rounded-full bg-white/40" />
                                 <span className="text-white/70">Your passage to the exclusive circle</span>
                             </div>
 
-                            <p className="mt-6 text-[14px] md:text-[16px] leading-[1.9] text-white">
+                            <p className="md:mt-6 mt-3 text-[14px] md:text-[16px] leading-[1.9] text-white">
                                 You are on your way to qualifying for our exclusive annual VIP invitation.
                             </p>
                         </div>
@@ -58,8 +58,8 @@ export default function HeroSection() {
                 </section>
 
                 {/* STATUS ROW */}
-                <section className="mt-7">
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-3 border border-[#FFF1B9] text-white rounded-full  px-6 py-4">
+                <section className="mt-4 md:mt-7">
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-3 border border-[#FFF1B9] text-white md:rounded-full rounded-2xl  md:px-6 px-4 md:py-4 py-2">
                         <StatusPill label="Silver Status – Registered" active />
                         <StatusPill label="Gold Status – Active Trader" />
                         <StatusPill label="Platinum Status – Qualified" />
@@ -67,7 +67,7 @@ export default function HeroSection() {
                 </section>
 
                 {/* TWO BIG PROGRESS CARDS */}
-                <section className="mt-7 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <section className="mt-4 md:mt-7 grid grid-cols-1 gap-6 md:grid-cols-2">
                     <ProgressCard
                         title="Net Deposit"
                         value="$310,000"
@@ -85,7 +85,7 @@ export default function HeroSection() {
                 </section>
 
                 {/* 3 SMALL CARDS */}
-                <section className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3">
+                <section className="mt-4 md:mt-7 grid grid-cols-1 gap-4 md:grid-cols-3">
                     <MiniStat
                         title="CAMPAIGN ENDS IN"
                         big="67"
@@ -114,7 +114,7 @@ export default function HeroSection() {
 function StatusPill({ label, active = false }) {
     return (
         <div className="">
-            <div className="flex items-center text-white justify-center gap-3 text-[14px] md:text-[16px] font-semibold">
+            <div className="flex items-center text-white md:justify-center justify-start gap-3 text-[14px] md:text-[16px] font-semibold">
                 <span
                     className={[
                         "h-[20px] w-[20px] md:h-[24px] md:w-[24px] rounded-full",
@@ -130,7 +130,7 @@ function StatusPill({ label, active = false }) {
 function ProgressCard({ title, value, target, percent, note }) {
     return (
         <div
-            className="rounded-[18px] border border-white/10 bg-[#88888896] p-6 text-white backdrop-blur-[10px]"
+            className="rounded-[18px] border border-white/10 bg-[#88888896] md:p-6 p-4 text-white backdrop-blur-[10px]"
             style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.30)" }}
         >
             <div className="flex items-start justify-between gap-4">
@@ -171,7 +171,7 @@ function ProgressCard({ title, value, target, percent, note }) {
 function MiniStat({ title, big, sub, accent = "text-white" }) {
     return (
         <div
-            className="rounded-[24px] border border-white bg-[#72727296] px-6 py-6"
+            className="rounded-[24px] border border-white bg-[#72727296] md:px-6 px-4 md:py-6 py-4"
         >
             <div className="flex items-start gap-4">
                 <div className="mt-[2px] h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full bg-white" />
