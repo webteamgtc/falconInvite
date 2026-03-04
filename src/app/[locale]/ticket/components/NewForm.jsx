@@ -391,6 +391,7 @@ export default function NewFormDesign({ isIb = false }) {
         }
         setEmailOtpVerified(true);
         toast.success("Email verified successfully");
+        router.push("/ib-success");
     };
 
     // verify OTP server-side
@@ -838,11 +839,9 @@ export default function NewFormDesign({ isIb = false }) {
                             By Becoming A Partner, You Agree To Our Partnership{" "}
                             <a
                                 className="text-[#293B93] underline"
-                                href="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/Website+Client+Document/GTC+Global+LTD/TERMS+AND+CONDITIONS+-+GTC+Global+Ltd.pdf"
-                                target="_blank"
-                                rel="noreferrer"
+                                href="/privacy-policy"
                             >
-                                Terms And Conditions
+                                Privacy Policy
                             </a>
                         </span>
                     </label>

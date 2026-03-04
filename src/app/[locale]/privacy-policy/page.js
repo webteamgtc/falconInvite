@@ -94,10 +94,10 @@ export default function PrivacyPolicyPage() {
           <div className="relative rounded-xl border border-white/10 bg-[#0A0A0A]/95 shadow-xl">
             <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/5 pointer-events-none" aria-hidden />
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-0 lg:items-start">
-              <aside className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto px-4 md:px-4 py-8 lg:py-8 lg:bg-[#0A0A0A] lg:z-10 lg:rounded-l-xl policy-toc-scroll">
+              <aside className="hidden lg:block lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto px-4 md:px-4 py-8 lg:py-8 lg:bg-[#0A0A0A] lg:z-10 lg:rounded-l-xl policy-toc-scroll">
                 <PolicyToc items={TOC_ITEMS} activeSectionId={activeSectionId} />
               </aside>
-              <div className="lg:col-span-7 xl:col-span-8 px-4 md:px-4 py-8 lg:py-8 lg:rounded-r-xl">
+              <div className="lg:col-span-7 xl:col-span-8 px-4 md:px-4 py-8 lg:py-8 lg:rounded-r-xl lg:border-l border-white/10">
                 <PolicyContent />
               </div>
             </div>
