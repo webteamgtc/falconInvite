@@ -590,7 +590,7 @@ export default function NewFormDesign({ isIb = false }) {
 
                             {showEmailOtpSection && !emailOtpVerified && (
                                 <>
-                                <div className="flex items-end gap-2">
+                                <div className="flex items-end flex-col md:flex-row gap-2">
                                     <div className="min-w-0">
                                         <div className="mb-1 text-[14px] font-normal text-[#868686]">Enter OTP</div>
                                         <OtpInput
@@ -633,7 +633,7 @@ export default function NewFormDesign({ isIb = false }) {
                                     <button
                                         type="button"
                                         onClick={verifyEmailOtp}
-                                        className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93]"
+                                        className="h-[46px] w-full md:w-auto whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93]"
                                     >
                                         Verify
                                     </button>
