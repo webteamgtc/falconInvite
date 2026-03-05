@@ -55,13 +55,13 @@ export default function AwardsGrid() {
         className="absolute inset-0 bg-[url('/new-layer.png')] bg-cover bg-center bg-no-repeat z-0"
       /> */}
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8 pt-10 md:pt-12">
+      <div className="relative mx-auto w-full max-w-6xl px-4">
         {/* <div className="grid max-w-5xl mx-auto grid-cols-2 gap-4 md:grid-cols-2 md:gap-6">
           {awardsBig.map((a, idx) => (
             <AwardTile key={idx} img={a.img} imgBig={true} />
           ))}
         </div> */}
-        <div className="grid mt-10 grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {awards.map((a, idx) => (
             <AwardTile key={idx} img={a.img} />
           ))}

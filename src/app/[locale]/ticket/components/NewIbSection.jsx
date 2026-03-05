@@ -10,12 +10,12 @@ const CARDS = [
     },
     {
         title: "Second",
-        sub: "Condro Hotel",
+        sub: "Conrad Hotel, Dubai",
         img: "/ib-img2.svg",
     },
     {
         title: "Third",
-        sub: "Pre dinner with GTC",
+        sub: "Pre Dinner with GTCFX",
         img: "/ib-img3.svg",
     },
     {
@@ -63,7 +63,7 @@ export default function IBQualificationAccess({ isIbPage = false }) {
                             {/* content */}
                             <div className="relative flex h-full flex-col items-center justify-end md:p-5 p-3 text-center">
                                 {isIbPage ?
-                                    <div className="text-[20px] md:text-[24px] font-normal leading-[1.2] text-white drop-shadow">
+                                    <div className="text-[20px] md:text-[24px] font-bold leading-[1.2] text-white drop-shadow">
                                         {c.sub}
                                     </div>
                                     :
