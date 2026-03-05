@@ -10,7 +10,7 @@ export default function VipQualificationProgressPage() {
 
             <HeroSection />
             <div className="mt-10 md:mt-20">
-                <IBQualificationAccess />
+                <IBQualificationAccess isIbPage={true}/>
             </div>
             {/* CTA STRIP */}
             <section className="md:mt-14 mt-8 container mx-auto">

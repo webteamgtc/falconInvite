@@ -92,7 +92,7 @@ export default function GoldenFalconHeroMobile({
           </div>
 
           {/* Button */}
-          <div className="mt-6 sm:mt-7 flex justify-center">
+          <div className="mt-6 sm:mt-7 text-center">
             <button
               type="button"
               className="min-w-[170px] sm:min-w-[210px] md:min-w-[260px]
@@ -109,6 +109,9 @@ export default function GoldenFalconHeroMobile({
             >
               Join Us
             </button>
+            <p className="text-[12px] mt-3  cursor-pointer underline md:text-[14px] text-white"
+            onClick={() => router.push("/privacy-policy")}
+            > T & C Apply</p>
           </div>
 
 
@@ -191,7 +194,7 @@ export default function GoldenFalconHeroMobile({
                 <MiniInfoCard
                   icon="/location.svg"
                   title="Dubai"
-                  line1="12 December 2026"
+                  line1="December 2026"
                   line2="Hosted by GTCFX"
                 />
                 <MiniInfoCard

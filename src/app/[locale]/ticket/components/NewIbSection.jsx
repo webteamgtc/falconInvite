@@ -25,7 +25,7 @@ const CARDS = [
     },
 ];
 
-export default function IBQualificationAccess() {
+export default function IBQualificationAccess({ isIbPage = false }) {
     return (
         <section className="w-full bg-[#0a0a12]">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -62,12 +62,20 @@ export default function IBQualificationAccess() {
 
                             {/* content */}
                             <div className="relative flex h-full flex-col items-center justify-end md:p-5 p-3 text-center">
-                                <div className="text-[20px] md:text-[24px] font-bold leading-none text-white drop-shadow">
-                                    {c.title}
-                                </div>
-                                <div className="mt-3 whitespace-pre-line text-[16px]  font-medium leading-[1.45] text-white">
-                                    {c.sub}
-                                </div>
+                                {isIbPage ?
+                                    <div className="text-[20px] md:text-[24px] font-normal leading-[1.2] text-white drop-shadow">
+                                        {c.sub}
+                                    </div>
+                                    :
+                                    <div className="text-[20px] md:text-[24px] font-bold leading-none text-white drop-shadow">
+                                        {c.title}
+                                    </div>
+                                }
+                                {!isIbPage && (
+                                    <div className="mt-3 whitespace-pre-line text-[16px]  font-medium leading-[1.45] text-white">
+                                        {c.sub}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}

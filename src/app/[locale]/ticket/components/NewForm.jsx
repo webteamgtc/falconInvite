@@ -336,8 +336,8 @@ export default function NewFormDesign({ isIb = false }) {
     // --- Existing IB: get OTP via email (/otp-smtp) ---
     const getEmailOtp = async () => {
         const email = existingIbEmail.trim();
-         // Validate email first
-         const validationResponse = await axios.post(`/api/validate-email`, {
+        // Validate email first
+        const validationResponse = await axios.post(`/api/validate-email`, {
             email: email,
         });
 
@@ -567,76 +567,70 @@ export default function NewFormDesign({ isIb = false }) {
                     {isIb && existingIb === "yes" && (
                         <div className="mt-5 space-y-4">
                             <div className="flex items-end gap-2">
-                            <div className="min-w-0 w-full">
-                                <div className="mb-1 text-[14px] font-normal text-[#868686]">Email*</div>
-                                <input
-                                    type="email"
-                                    value={existingIbEmail}
-                                    onChange={(e) => setExistingIbEmail(e.target.value)}
-                                    placeholder="Email"
-                                    disabled={emailOtpVerified}
-                                    className="h-[46px] w-full min-w-0 rounded-[8px] border border-[#E5E7EB] px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] disabled:opacity-70"
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                onClick={getEmailOtp}
-                                disabled={emailOtpLoading || emailOtpVerified || !existingIbEmail.trim()}
-                                className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93] disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                {emailOtpLoading ? "Sending..." : "Get OTP"}
-                            </button>
+                                <div className="min-w-0 w-full">
+                                    <div className="mb-1 text-[14px] font-normal text-[#868686]">Email*</div>
+                                    <input
+                                        type="email"
+                                        value={existingIbEmail}
+                                        onChange={(e) => setExistingIbEmail(e.target.value)}
+                                        placeholder="Email"
+                                        disabled={emailOtpVerified}
+                                        className="h-[46px] w-full min-w-0 rounded-[8px] border border-[#E5E7EB] px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] disabled:opacity-70"
+                                    />
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={getEmailOtp}
+                                    disabled={emailOtpLoading || emailOtpVerified || !existingIbEmail.trim()}
+                                    className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {emailOtpLoading ? "Sending..." : "Get OTP"}
+                                </button>
                             </div>
 
                             {showEmailOtpSection && !emailOtpVerified && (
                                 <>
-                                <div className="flex items-end gap-2">
-                                    <div className="min-w-0">
-                                        <div className="mb-1 text-[14px] font-normal text-[#868686]">Enter OTP</div>
-                                        <OtpInput
-                                            value={emailOtpInput}
-                                            onChange={setEmailOtpInput}
-                                            numInputs={6}
-                                            containerStyle={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                                gap: "8px",
-                                                width: "100%",
-                                                maxWidth: "100%",
-                                            }}
-                                            isInputNum
-                                            renderInput={(props) => (
-                                                <input
-                                                    {...props}
-                                                    type="tel"
-                                                    inputMode="numeric"
-                                                    pattern="[0-9]*"
-                                                />
-                                            )}
-                                            inputStyle={{
-                                                fontSize: "16px",
-                                                borderRadius: "6px",
-                                                paddingBottom: "10px",
-                                                paddingTop: "10px",
-                                                width: "100%",
-                                                maxWidth: "100%",
-                                                minWidth: "44px",
-                                                textAlign: "center",
-                                                backgroundColor: "#fff",
-                                                color: "#000",
-                                                fontWeight: "700",
-                                                outlineColor: "#2E59D9",
-                                                border: "1px solid #E5E7EB",
-                                            }}
-                                        />
-                                    </div>
-                                    <button
-                                        type="button"
-                                        onClick={verifyEmailOtp}
-                                        className="h-[46px] whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93]"
-                                    >
-                                        Verify
-                                    </button>
+                                    <div className="flex items-end flex-col md:flex-row gap-2">
+                                        <div className="min-w-0">
+                                            <div className="mb-1 text-[14px] font-normal text-[#868686]">Enter OTP</div>
+                                            <OtpInput
+                                                value={emailOtpInput}
+                                                onChange={setEmailOtpInput}
+                                                numInputs={6}
+                                                containerStyle={{
+                                                    display: "flex",
+                                                    justifyContent: "space-between",
+                                                    gap: "8px",
+                                                    width: "100%",
+                                                    maxWidth: "100%",
+                                                }}
+                                                isInputNum
+                                                renderInput={(props) => (
+                                                    <input
+                                                        {...props}
+                                                        type="tel"
+                                                        inputMode="numeric"
+                                                        pattern="[0-9]*"
+                                                    />
+                                                )}
+                                                inputStyle={{
+                                                    fontSize: "16px",
+                                                    borderRadius: "6px",
+                                                    paddingBottom: "10px",
+                                                    paddingTop: "10px",
+                                                    width: "100%",
+                                                    maxWidth: "100%",
+                                                    minWidth: "44px",
+                                                    textAlign: "center",
+                                                    backgroundColor: "#fff",
+                                                    color: "#000",
+                                                    fontWeight: "700",
+                                                    outlineColor: "#2E59D9",
+                                                    border: "1px solid #E5E7EB",
+                                                }}
+                                            />
+                                        </div>
+                                     
                                     </div>
                                     {emailOtpError && (
                                         <p className="text-xs text-red-500">{emailOtpError}</p>
@@ -649,219 +643,276 @@ export default function NewFormDesign({ isIb = false }) {
                                     Your email has been verified successfully.
                                 </p>
                             )}
+
+                            {/* Disclaimer */}
+                            <p className="mt-6 text-[14px] font-normal leading-[1.5] text-[#7A7A7A] break-words">
+                                <span className="font-medium text-[#293B93]">Disclaimer:</span> By submitting this form,
+                                I acknowledge that I have read, understood, and agree to the{" "}
+                                <a
+                                    className="text-[#293B93] underline break-words"
+                                    href="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/Website+Client+Document/GTC+Global+LTD/Mauritius+TOB+-+Proposed+Clauses+to+add.pdf"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Client Agreement
+                                </a>
+                                . I give my consent for GTCFX to contact me for marketing purposes.
+                            </p>
+
+                            {/* Terms */}
+                            <label className="mt-4 flex items-start gap-3 text-xs md:text-[14px] font-medium text-[#7A7A7A]">
+                                <input
+                                    type="checkbox"
+                                    {...formik.getFieldProps("terms")}
+                                    className="mt-0.5 h-5 w-5 rounded border-[#D1D5DB]"
+                                />
+                                <span className="break-words">
+                                    By Becoming A Partner, You Agree To Our Partnership{" "}
+                                    <a
+                                        className="text-[#293B93] underline"
+                                        href="/privacy-policy"
+                                    >
+                                        Privacy Policy
+                                    </a>
+                                </span>
+                            </label>
+
+                            {formik.touched.terms && formik.errors.terms && (
+                                <p className="text-xs text-red-500 mt-1">{formik.errors.terms}</p>
+                            )}
+
+                            {/* Submit - requires terms + email verified; on click runs verifyEmailOtp */}
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    if (!formik.values.terms) {
+                                        formik.setFieldTouched("terms", true);
+                                        toast.error("You must accept the terms to continue.");
+                                        return;
+                                    }
+                                    verifyEmailOtp();
+                                }}
+                                disabled={loading || !formik.values.terms || !showEmailOtpSection}
+                                className={`mt-8 py-4 w-full rounded-full text-[16px] font-medium ${loading || !formik.values.terms || !showEmailOtpSection
+                                    ? "bg-[#DCDCDC] text-[#868686] cursor-not-allowed"
+                                    : "bg-gradient-to-r from-[#293B93] to-[#0D122D] text-white hover:brightness-110"
+                                    }`}
+                            >
+                                {loading ? "Submitting..." : "Submit"}
+                            </button>
                         </div>
                     )}
 
                     {/* Full form: when NO or when not IB form */}
                     {((isIb && existingIb === "no") || !isIb) && (
-                    <>
-                    {/* Fields row 1 */}
-                    <div className="mt-5 grid md:grid-cols-2 grid-cols-1 gap-4">
-                        {/* First Name */}
-                        <div className="min-w-0">
-                            <div className="mb-1 text-[14px] font-normal text-[#868686]">First Name*</div>
-                            <input
-                                type="text"
-                                {...formik.getFieldProps("firstName")}
-                                className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.firstName && formik.errors.firstName
-                                    ? "border-red-500"
-                                    : "border-[#E5E7EB]"
-                                    }`}
-                                placeholder="First Name"
-                            />
-                            {formik.touched.firstName && formik.errors.firstName && (
-                                <p className="text-xs text-red-500 mt-1">{formik.errors.firstName}</p>
-                            )}
-                        </div>
-
-                        {/* Last Name */}
-                        <div className="min-w-0">
-                            <div className="mb-1 text-[14px] font-normal text-[#868686]">Last Name*</div>
-                            <input
-                                type="text"
-                                {...formik.getFieldProps("lastName")}
-                                className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.lastName && formik.errors.lastName
-                                    ? "border-red-500"
-                                    : "border-[#E5E7EB]"
-                                    }`}
-                                placeholder="Last Name"
-                            />
-                            {formik.touched.lastName && formik.errors.lastName && (
-                                <p className="text-xs text-red-500 mt-1">{formik.errors.lastName}</p>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Email */}
-                    <div className="mt-4 min-w-0">
-                        <div className="mb-1 text-[14px] font-normal text-[#868686]">Email*</div>
-                        <input
-                            type="email"
-                            {...formik.getFieldProps("email")}
-                            className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.email && formik.errors.email
-                                ? "border-red-500"
-                                : "border-[#E5E7EB]"
-                                }`}
-                            placeholder="Email"
-                        />
-                        {formik.touched.email && formik.errors.email && (
-                            <p className="text-xs text-red-500 mt-1">{formik.errors.email}</p>
-                        )}
-                    </div>
-
-                    {/* Country */}
-                    <div className="mt-4 min-w-0">
-                        <div className="mb-1 text-[14px] font-normal text-[#868686]">Country Of Residence*</div>
-                        <div className="min-w-0">
-                            <Select
-                                name="country"
-                                options={options}
-                                styles={selectStyles}
-                                onChange={(opt) => formik.setFieldValue("country", opt?.value)}
-                                onBlur={() => formik.setFieldTouched("country", true)}
-                                value={options?.find((opt) => opt.value === formik.values.country)}
-                                placeholder="Please select or type your country name"
-                            />
-                        </div>
-                        {formik.touched.country && formik.errors.country && (
-                            <p className="text-xs text-red-500 mt-1">{formik.errors.country}</p>
-                        )}
-                    </div>
-
-                    {/* Phone */}
-                    <div className="mt-4 min-w-0">
-                        <div className="mb-1 text-[14px] font-normal text-[#868686]">Phone Number*</div>
-
-                        <div
-                            className={`phone-input-wrapper flex items-center rounded-[8px] border px-3 bg-white min-w-0 w-full ${formik.touched.phone && formik.errors.phone ? "border-red-500" : "border-[#E5E7EB]"
-                                } focus-within:border-[#2E59D9]`}
-                            style={{ height: "46px" }}
-                        >
-                            <PhoneInput
-                                international
-                                defaultCountry={countryData?.country_code || countryData?.country || "AE"}
-                                value={formik.values.phone}
-                                onChange={(phone) => formik.setFieldValue("phone", phone)}
-                                className="w-full min-w-0"
-                            />
-                        </div>
-
-                        {formik.touched.phone && formik.errors.phone && (
-                            <p className="text-xs text-red-500 mt-1">{formik.errors.phone}</p>
-                        )}
-                    </div>
-
-                    {/* OTP */}
-                    <div className="mt-4 flex flex-col md:flex-row items-stretch md:items-center gap-4 min-w-0">
-                        <button
-                            type="button"
-                            onClick={sendPhoneVerificationCode}
-                            disabled={phoneOtpLoading || !isPhoneValid}
-                            className="h-[46px] w-full md:w-auto whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93] disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {phoneOtpLoading ? "Sending..." : "Send OTP"}
-                        </button>
-
-                        <div className="w-full min-w-0">
-                            <OtpInput
-                                value={formik.values.otp}
-                                onChange={(otp) => {
-                                    formik.setFieldValue("otp", otp);
-                                    if (otp?.length === 6) verifyOtpCode(otp);
-                                }}
-                                numInputs={6}
-                                containerStyle={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    gap: "8px",
-                                    width: "100%",
-                                    maxWidth: "100%",
-                                }}
-                                isInputNum
-                                renderInput={(props) => (
+                        <>
+                            {/* Fields row 1 */}
+                            <div className="mt-5 grid md:grid-cols-2 grid-cols-1 gap-4">
+                                {/* First Name */}
+                                <div className="min-w-0">
+                                    <div className="mb-1 text-[14px] font-normal text-[#868686]">First Name*</div>
                                     <input
-                                        {...props}
-                                        type="tel"
-                                        inputMode="numeric"
-                                        pattern="[0-9]*"
+                                        type="text"
+                                        {...formik.getFieldProps("firstName")}
+                                        className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.firstName && formik.errors.firstName
+                                            ? "border-red-500"
+                                            : "border-[#E5E7EB]"
+                                            }`}
+                                        placeholder="First Name"
                                     />
+                                    {formik.touched.firstName && formik.errors.firstName && (
+                                        <p className="text-xs text-red-500 mt-1">{formik.errors.firstName}</p>
+                                    )}
+                                </div>
+
+                                {/* Last Name */}
+                                <div className="min-w-0">
+                                    <div className="mb-1 text-[14px] font-normal text-[#868686]">Last Name*</div>
+                                    <input
+                                        type="text"
+                                        {...formik.getFieldProps("lastName")}
+                                        className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.lastName && formik.errors.lastName
+                                            ? "border-red-500"
+                                            : "border-[#E5E7EB]"
+                                            }`}
+                                        placeholder="Last Name"
+                                    />
+                                    {formik.touched.lastName && formik.errors.lastName && (
+                                        <p className="text-xs text-red-500 mt-1">{formik.errors.lastName}</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Email */}
+                            <div className="mt-4 min-w-0">
+                                <div className="mb-1 text-[14px] font-normal text-[#868686]">Email*</div>
+                                <input
+                                    type="email"
+                                    {...formik.getFieldProps("email")}
+                                    className={`h-[46px] w-full min-w-0 rounded-[8px] border px-3 text-[14px] font-medium text-[#000] outline-none placeholder:text-[#9CA3AF] focus:border-[#2E59D9] ${formik.touched.email && formik.errors.email
+                                        ? "border-red-500"
+                                        : "border-[#E5E7EB]"
+                                        }`}
+                                    placeholder="Email"
+                                />
+                                {formik.touched.email && formik.errors.email && (
+                                    <p className="text-xs text-red-500 mt-1">{formik.errors.email}</p>
                                 )}
-                                inputStyle={{
-                                    fontSize: "16px",
-                                    borderRadius: "6px",
-                                    paddingBottom: "10px",
-                                    paddingTop: "10px",
-                                    width: "100%",
-                                    maxWidth: "100%",
-                                    minWidth: "44px",
-                                    textAlign: "center",
-                                    backgroundColor: "#fff",
-                                    color: "#000",
-                                    fontWeight: "700",
-                                    outlineColor: "#2E59D9",
-                                    border:
-                                        formik.touched.otp && formik.errors.otp
-                                            ? "1px solid red"
-                                            : "1px solid #E5E7EB",
-                                }}
-                            />
-                        </div>
+                            </div>
 
-                    </div>
+                            {/* Country */}
+                            <div className="mt-4 min-w-0">
+                                <div className="mb-1 text-[14px] font-normal text-[#868686]">Country Of Residence*</div>
+                                <div className="min-w-0">
+                                    <Select
+                                        name="country"
+                                        options={options}
+                                        styles={selectStyles}
+                                        onChange={(opt) => formik.setFieldValue("country", opt?.value)}
+                                        onBlur={() => formik.setFieldTouched("country", true)}
+                                        value={options?.find((opt) => opt.value === formik.values.country)}
+                                        placeholder="Please select or type your country name"
+                                    />
+                                </div>
+                                {formik.touched.country && formik.errors.country && (
+                                    <p className="text-xs text-red-500 mt-1">{formik.errors.country}</p>
+                                )}
+                            </div>
 
-                    {formik.touched.otp && formik.errors.otp && (
-                        <p className="text-xs text-red-500 mt-1">{formik.errors.otp}</p>
-                    )}
+                            {/* Phone */}
+                            <div className="mt-4 min-w-0">
+                                <div className="mb-1 text-[14px] font-normal text-[#868686]">Phone Number*</div>
 
-                    {/* Disclaimer */}
-                    <p className="mt-6 text-[14px] font-normal leading-[1.5] text-[#7A7A7A] break-words">
-                        <span className="font-medium text-[#293B93]">Disclaimer:</span> By submitting this form,
-                        I acknowledge that I have read, understood, and agree to the{" "}
-                        <a
-                            className="text-[#293B93] underline break-words"
-                            href="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/Website+Client+Document/GTC+Global+LTD/Mauritius+TOB+-+Proposed+Clauses+to+add.pdf"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            Client Agreement
-                        </a>
-                        . I give my consent for GTCFX to contact me for marketing purposes.
-                    </p>
+                                <div
+                                    className={`phone-input-wrapper flex items-center rounded-[8px] border px-3 bg-white min-w-0 w-full ${formik.touched.phone && formik.errors.phone ? "border-red-500" : "border-[#E5E7EB]"
+                                        } focus-within:border-[#2E59D9]`}
+                                    style={{ height: "46px" }}
+                                >
+                                    <PhoneInput
+                                        international
+                                        defaultCountry={countryData?.country_code || countryData?.country || "AE"}
+                                        value={formik.values.phone}
+                                        onChange={(phone) => formik.setFieldValue("phone", phone)}
+                                        className="w-full min-w-0"
+                                    />
+                                </div>
 
-                    {/* Terms */}
-                    <label className="mt-4 flex items-start gap-3 text-xs md:text-[14px] font-medium text-[#7A7A7A]">
-                        <input
-                            type="checkbox"
-                            {...formik.getFieldProps("terms")}
-                            className="mt-0.5 h-5 w-5 rounded border-[#D1D5DB]"
-                        />
-                        <span className="break-words">
-                            By Becoming A Partner, You Agree To Our Partnership{" "}
-                            <a
-                                className="text-[#293B93] underline"
-                                href="/privacy-policy"
+                                {formik.touched.phone && formik.errors.phone && (
+                                    <p className="text-xs text-red-500 mt-1">{formik.errors.phone}</p>
+                                )}
+                            </div>
+
+                            {/* OTP */}
+                            <div className="mt-4 flex flex-col md:flex-row items-stretch md:items-center gap-4 min-w-0">
+                                <button
+                                    type="button"
+                                    onClick={sendPhoneVerificationCode}
+                                    disabled={phoneOtpLoading || !isPhoneValid}
+                                    className="h-[46px] w-full md:w-auto whitespace-nowrap rounded-[8px] border border-[#2E59D9] bg-white px-6 text-[14px] font-semibold text-[#293B93] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {phoneOtpLoading ? "Sending..." : "Send OTP"}
+                                </button>
+
+                                <div className="w-full min-w-0">
+                                    <OtpInput
+                                        value={formik.values.otp}
+                                        onChange={(otp) => {
+                                            formik.setFieldValue("otp", otp);
+                                            if (otp?.length === 6) verifyOtpCode(otp);
+                                        }}
+                                        numInputs={6}
+                                        containerStyle={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            gap: "8px",
+                                            width: "100%",
+                                            maxWidth: "100%",
+                                        }}
+                                        isInputNum
+                                        renderInput={(props) => (
+                                            <input
+                                                {...props}
+                                                type="tel"
+                                                inputMode="numeric"
+                                                pattern="[0-9]*"
+                                            />
+                                        )}
+                                        inputStyle={{
+                                            fontSize: "16px",
+                                            borderRadius: "6px",
+                                            paddingBottom: "10px",
+                                            paddingTop: "10px",
+                                            width: "100%",
+                                            maxWidth: "100%",
+                                            minWidth: "44px",
+                                            textAlign: "center",
+                                            backgroundColor: "#fff",
+                                            color: "#000",
+                                            fontWeight: "700",
+                                            outlineColor: "#2E59D9",
+                                            border:
+                                                formik.touched.otp && formik.errors.otp
+                                                    ? "1px solid red"
+                                                    : "1px solid #E5E7EB",
+                                        }}
+                                    />
+                                </div>
+
+                            </div>
+
+                            {formik.touched.otp && formik.errors.otp && (
+                                <p className="text-xs text-red-500 mt-1">{formik.errors.otp}</p>
+                            )}
+
+                            {/* Disclaimer */}
+                            <p className="mt-6 text-[14px] font-normal leading-[1.5] text-[#7A7A7A] break-words">
+                                <span className="font-medium text-[#293B93]">Disclaimer:</span> By submitting this form,
+                                I acknowledge that I have read, understood, and agree to the{" "}
+                                <a
+                                    className="text-[#293B93] underline break-words"
+                                    href="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/Website+Client+Document/GTC+Global+LTD/Mauritius+TOB+-+Proposed+Clauses+to+add.pdf"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Client Agreement
+                                </a>
+                                . I give my consent for GTCFX to contact me for marketing purposes.
+                            </p>
+
+                            {/* Terms */}
+                            <label className="mt-4 flex items-start gap-3 text-xs md:text-[14px] font-medium text-[#7A7A7A]">
+                                <input
+                                    type="checkbox"
+                                    {...formik.getFieldProps("terms")}
+                                    className="mt-0.5 h-5 w-5 rounded border-[#D1D5DB]"
+                                />
+                                <span className="break-words">
+                                    By Becoming A Partner, You Agree To Our Partnership{" "}
+                                    <a
+                                        className="text-[#293B93] underline"
+                                        href="/privacy-policy"
+                                    >
+                                        Privacy Policy
+                                    </a>
+                                </span>
+                            </label>
+
+                            {formik.touched.terms && formik.errors.terms && (
+                                <p className="text-xs text-red-500 mt-1">{formik.errors.terms}</p>
+                            )}
+
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                disabled={loading || !isOtpVerified}
+                                className={`mt-8 py-4 w-full rounded-full text-[16px] font-medium ${loading || !isOtpVerified
+                                    ? "bg-[#DCDCDC] text-[#868686] cursor-not-allowed"
+                                    : "bg-gradient-to-r from-[#293B93] to-[#0D122D] text-white hover:brightness-110"
+                                    }`}
                             >
-                                Privacy Policy
-                            </a>
-                        </span>
-                    </label>
-
-                    {formik.touched.terms && formik.errors.terms && (
-                        <p className="text-xs text-red-500 mt-1">{formik.errors.terms}</p>
-                    )}
-
-                    {/* Submit */}
-                    <button
-                        type="submit"
-                        disabled={loading || !isOtpVerified}
-                        className={`mt-8 py-4 w-full rounded-full text-[16px] font-medium ${loading || !isOtpVerified
-                            ? "bg-[#DCDCDC] text-[#868686] cursor-not-allowed"
-                            : "bg-gradient-to-r from-[#293B93] to-[#0D122D] text-white hover:brightness-110"
-                            }`}
-                    >
-                        {loading ? "Submitting..." : "Become A Partner"}
-                    </button>
-                    </>
+                                {loading ? "Submitting..." : "Become A Partner"}
+                            </button>
+                        </>
                     )}
                 </div>
             </div>
