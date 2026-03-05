@@ -17,8 +17,8 @@ const awards = [
   { img: "/awards/img-9.webp" },
   { img: "/awards/img-10.webp" },
   { img: "/awards/img-11.webp" },
-  // { img: "/awards/img-12.webp" },
-  // { img: "/awards/img-13.webp" },
+  { img: "/awards/img-1.webp" },
+  { img: "/awards/img-2.webp" },
   { img: "/awards/img-14.webp" },
   { img: "/awards/img-15.webp" },
   { img: "/awards/img-16.webp" },
@@ -56,11 +56,11 @@ export default function AwardsGrid() {
       /> */}
 
       <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8 pt-10 md:pt-12">
-        <div className="grid max-w-5xl mx-auto grid-cols-2 gap-4 md:grid-cols-2 md:gap-6">
+        {/* <div className="grid max-w-5xl mx-auto grid-cols-2 gap-4 md:grid-cols-2 md:gap-6">
           {awardsBig.map((a, idx) => (
             <AwardTile key={idx} img={a.img} imgBig={true} />
           ))}
-        </div>
+        </div> */}
         <div className="grid mt-10 grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {awards.map((a, idx) => (
             <AwardTile key={idx} img={a.img} />
