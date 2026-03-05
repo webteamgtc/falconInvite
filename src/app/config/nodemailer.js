@@ -39,5 +39,5 @@ export const mailgunClient = mg.client({
 export const MAILGUN_DOMAIN = "mx5.gtcmail.com" || "mx5.gtcmail.com";
 
 export const MAILGUN_FROM =
-  "Earn Money <portal@mx5.gtcmail.com>" || `Earn Money <postmaster@${MAILGUN_DOMAIN}>`;    
+  "Golden Falcon Awards 2026 Invitation - Email OTP <portal@mx5.gtcmail.com>" || `Golden Falcon Awards 2026 Invitation - Email OTP <postmaster@${MAILGUN_DOMAIN}>`;    
 
