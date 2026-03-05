@@ -12,7 +12,7 @@ export default function AwardsHero({ activeNavTab, handleNavTabChange }) {
         onTabChange={handleNavTabChange}
       />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8 pt-14 md:pt-18 pb-10 md:pb-14">
+      <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8 pt-14 md:pt-18">
         <div className="text-center">
           <h1
             className="font-serif text-[34px] font-black md:text-[54px] leading-[1.2] lg:text-[60px] tracking-wide"

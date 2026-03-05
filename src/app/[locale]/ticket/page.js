@@ -33,7 +33,7 @@ export default function TicketPage() {
       </div>
       <main className="relative">
         <TicketsHeader />
-        <IBQualificationAccess/>
+        <IBQualificationAccess isIbPage={true}/>
         <IbSection/>
         
         <MainFooter bgColor="#0a0a12"/>
