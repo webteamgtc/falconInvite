@@ -116,7 +116,7 @@ export default function AboutTourTimeline() {
                     <>
                       {/* LEFT: Image when img is "left" */}
                       <div className="order-2 md:order-1 pr-0 md:pr-10 flex justify-start md:justify-end">
-                        <div className="relative h-[100px] w-full md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
+                        <div className="relative h-[120px] w-[140px]  md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
                           <Image src={it?.image} alt="" fill className="object-cover" />
                         </div>
                       </div>
@@ -159,7 +159,7 @@ export default function AboutTourTimeline() {
 
                       {/* RIGHT: Image when img is "right" */}
                       <div className="order-3 pl-0 md:pl-10">
-                        <div className="relative h-[100px] w-full md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
+                        <div className="relative h-[120px] w-[140px]  md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
                           <Image src={it?.image} alt="" fill className="object-cover" />
                         </div>
                       </div>
