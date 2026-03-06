@@ -7,20 +7,20 @@ const items = [
     year: "2026",
     desc: "coming Soon",
     img: "left",
-    image: "/timeline-img4.svg"
+    image: "/timeline1.webp"
   },
    {
     year: "2025",
     desc: "Golden Falcon Awards 2025 delivered elegance and brilliance through powerful panels, honored winners, and unforgettable lucky draw moments.",
     img: "right",
-    image: "/events/2025-2.webp"
+    image: "/timeline-img4.svg"
   },
 
   {
     year: "2024",
     desc: "Golden Falcon Awards 2024 was an evening of elegance, prestige, and global distinction. A red-carpet celebration honoring excellence at the highest level.",
     img: "left",
-    image: "/events/2024-2.webp"
+    image: "/timeline2.webp"
   },
     {
     year: "2023",
@@ -116,7 +116,7 @@ export default function AboutTourTimeline() {
                     <>
                       {/* LEFT: Image when img is "left" */}
                       <div className="order-2 md:order-1 pr-0 md:pr-10 flex justify-start md:justify-end">
-                        <div className="relative h-[100px] w-[120px] md:h-[140px] md:w-[155px] overflow-hidden flex-shrink-0">
+                        <div className="relative h-[120px] w-[140px]  md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
                           <Image src={it?.image} alt="" fill className="object-cover" />
                         </div>
                       </div>
@@ -159,7 +159,7 @@ export default function AboutTourTimeline() {
 
                       {/* RIGHT: Image when img is "right" */}
                       <div className="order-3 pl-0 md:pl-10">
-                        <div className="relative h-[100px] w-[120px] md:h-[140px] md:w-[155px] overflow-hidden flex-shrink-0">
+                        <div className="relative h-[120px] w-[140px]  md:h-[140px] md:w-full overflow-hidden flex-shrink-0">
                           <Image src={it?.image} alt="" fill className="object-cover" />
                         </div>
                       </div>

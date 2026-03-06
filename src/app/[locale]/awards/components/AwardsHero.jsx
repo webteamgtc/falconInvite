@@ -39,7 +39,7 @@ export default function AwardsHero({ activeNavTab, handleNavTabChange }) {
             </div>
             <div className=" relative h-[260px] md:h-[600px] w-full max-w-[320px] md:max-w-[200px]">
               <img
-                src="/trr.png"
+                src="/single-award.webp"
                 alt="Golden Falcon Trophy"
                 className="h-full w-full object-contain drop-shadow-[0_18px_70px_rgba(105,138,193,0.55)]"
               />
