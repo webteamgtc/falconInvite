@@ -34,47 +34,7 @@ export default function VipQualificationProgressPage() {
 
             </section>
 
-            {/* ACCOUNT MANAGER BAR */}
-            <section className="md:my-14 my-6 container mx-auto">
-                <div
-                    className="relative overflow-hidden rounded-2xl border md:rounded-full md:px-8 px-4 md:py-5 py-4"
-                    style={{
-                        background: "#000",
-                        borderColor: "#7C6B4C",
-                    }}
-                >
-                    {/* golden glow from left around avatar */}
-                    <div
-                        className="pointer-events-none absolute left-0 top-1/2 h-32 w-48 -translate-y-1/2 rounded-full opacity-60 blur-3xl"
-                        style={{ background: "radial-gradient(circle, rgba(255,198,108,0.4) 0%, transparent 70%)" }}
-                    />
-                    <div className="relative flex flex-col items-center justify-between gap-4 md:flex-row">
-                        <div className="flex items-center gap-4">
-                            <div
-                                className="flex md:h-[42px] md:w-[42px] h-[32px] w-[32px] shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-black"
-                                style={{
-                                    background: "#FFC66C",
-                                    boxShadow: "0 0 24px rgba(255,198,108,0.5)",
-                                }}
-                            >
-                                JD
-                            </div>
-                            <div className="leading-tight">
-                                <div className="md:text-[20px] text-[14px] font-bold text-white">James Delaney</div>
-                                <div className="mt-0.5 md:text-[14px] text-[12px] text-white">
-                                    Your dedicated account manager
-                                </div>
-                            </div>
-                        </div>
-                        <button
-                            className="inline-flex h-[38px] shrink-0 items-center justify-center rounded-full border px-6 md:text-[14px]  text-[12px] font-semibold text-[#FFD382] transition-colors hover:bg-white/5"
-                            style={{ borderColor: "#FFD382", background: "#000" }}
-                        >
-                            Contact Now
-                        </button>
-                    </div>
-                </div>
-            </section>
+
             <MainFooter bgColor="#0a0a12" />
         </main>
     );
