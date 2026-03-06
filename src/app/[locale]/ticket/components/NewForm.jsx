@@ -53,6 +53,26 @@ const BLOCKED_EMAIL_DOMAINS = [
     "emailnator.com",
 ];
 
+// Session storage: cache verified IB email for 72h (same email can submit without OTP again within 72h)
+const IB_VERIFIED_EMAIL_CACHE_KEY = "falcon_ib_verified_email";
+const IB_VERIFIED_CACHE_HOURS = 72;
+
+function getCachedVerifiedEmail() {
+    if (typeof window === "undefined") return null;
+    try {
+        const raw = sessionStorage.getItem(IB_VERIFIED_EMAIL_CACHE_KEY);
+        if (!raw) return null;
+        const { email, expiresAt } = JSON.parse(raw);
+        if (Date.now() > expiresAt) {
+            sessionStorage.removeItem(IB_VERIFIED_EMAIL_CACHE_KEY);
+            return null;
+        }
+        return email || null;
+    } catch {
+        return null;
+    }
+}
+
 const selectStyles = {
     control: (base, state) => ({
         ...base,
@@ -109,6 +129,7 @@ export default function NewFormDesign({ isIb = false }) {
     const [showEmailOtpSection, setShowEmailOtpSection] = useState(false);
     const [emailOtpVerified, setEmailOtpVerified] = useState(false);
     const [emailOtpError, setEmailOtpError] = useState("");
+    const [emailInRecentCache, setEmailInRecentCache] = useState(false);
 
     const params = useSearchParams();
     const campaign = params.get("utm_source");
@@ -390,9 +411,34 @@ export default function NewFormDesign({ isIb = false }) {
             return;
         }
         setEmailOtpVerified(true);
+        // Cache verified email for 72h (user must still enter OTP again if they use same email later)
+        const email = existingIbEmail.trim().toLowerCase();
+        if (email) {
+            sessionStorage.setItem(
+                IB_VERIFIED_EMAIL_CACHE_KEY,
+                JSON.stringify({
+                    email,
+                    expiresAt: Date.now() + IB_VERIFIED_CACHE_HOURS * 60 * 60 * 1000,
+                })
+            );
+        }
         toast.success("Email verified successfully");
         router.push("/ib-success");
     };
+
+    // When user enters an email that was recently verified (cached), treat as verified – allow submit without OTP
+    useEffect(() => {
+        const email = existingIbEmail.trim().toLowerCase();
+        if (!email) {
+            setEmailInRecentCache(false);
+            setEmailOtpVerified(false);
+            return;
+        }
+        const cached = getCachedVerifiedEmail();
+        const isCached = cached === email;
+        setEmailInRecentCache(isCached);
+        setEmailOtpVerified(isCached);
+    }, [existingIbEmail]);
 
     // verify OTP server-side
     const verifyOtpCode = async (otp) => {
@@ -587,6 +633,11 @@ export default function NewFormDesign({ isIb = false }) {
                                     {emailOtpLoading ? "Sending..." : "Get OTP"}
                                 </button>
                             </div>
+                            {/* {emailInRecentCache && (
+                                <p className="text-[13px] text-[#293B93] font-medium">
+                                    This email was verified in the last 72 hours. You can submit the form.
+                                </p>
+                            )} */}
 
                             {showEmailOtpSection && !emailOtpVerified && (
                                 <>
@@ -681,7 +732,7 @@ export default function NewFormDesign({ isIb = false }) {
                                 <p className="text-xs text-red-500 mt-1">{formik.errors.terms}</p>
                             )}
 
-                            {/* Submit - requires terms + email verified; on click runs verifyEmailOtp */}
+                            {/* Submit - enabled when: (1) email already verified from cache, or (2) OTP section visible + 6 digits entered. Click: redirect if verified, else verify OTP then redirect */}
                             <button
                                 type="button"
                                 onClick={() => {
@@ -690,13 +741,24 @@ export default function NewFormDesign({ isIb = false }) {
                                         toast.error("You must accept the terms to continue.");
                                         return;
                                     }
-                                    verifyEmailOtp();
+                                    if (emailOtpVerified) {
+                                        router.push("/ib-success");
+                                    } else {
+                                        verifyEmailOtp();
+                                    }
                                 }}
-                                disabled={loading || !formik.values.terms || !showEmailOtpSection}
-                                className={`mt-8 py-4 w-full rounded-full text-[16px] font-medium ${loading || !formik.values.terms || !showEmailOtpSection
-                                    ? "bg-[#DCDCDC] text-[#868686] cursor-not-allowed"
-                                    : "bg-gradient-to-r from-[#293B93] to-[#0D122D] text-white hover:brightness-110"
-                                    }`}
+                                disabled={
+                                    loading ||
+                                    !formik.values.terms ||
+                                    !(emailOtpVerified || (showEmailOtpSection && emailOtpInput.length === 6))
+                                }
+                                className={`mt-8 py-4 w-full rounded-full text-[16px] font-medium ${
+                                    loading ||
+                                    !formik.values.terms ||
+                                    !(emailOtpVerified || (showEmailOtpSection && emailOtpInput.length === 6))
+                                        ? "bg-[#DCDCDC] text-[#868686] cursor-not-allowed"
+                                        : "bg-gradient-to-r from-[#293B93] to-[#0D122D] text-white hover:brightness-110"
+                                }`}
                             >
                                 {loading ? "Submitting..." : "Submit"}
                             </button>

@@ -55,7 +55,7 @@ export default function GoldenFalconHeroMobile({
 
   return (
     <section
-      className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/new-bg-without-traphy.png')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
+      className="w-full min-w-full min-h-screen mx-auto overflow-hidden bg-[url('/home-page-bg.webp')] bg-center md:bg-[center_86%] bg-no-repeat md:rounded-none"
       style={{ backgroundSize: "100% 100%" }}
     >
       <div className="relative w-full min-h-screen overflow-hidden">
@@ -88,7 +88,7 @@ export default function GoldenFalconHeroMobile({
           </div>
 
           <div className="flex-1" >
-            <img src="/only-traphy.webp" alt="Golden Falcon Awards" className="w-full md:h-[700px] h-[400px] object-contain" />
+            <img src="/traphy-2026.webp" alt="Golden Falcon Awards" className="w-full md:h-[700px] h-[400px] object-contain" />
           </div>
 
           {/* Button */}
