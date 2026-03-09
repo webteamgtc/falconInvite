@@ -237,7 +237,7 @@ export default function NewFormDesign({ isIb = false }) {
                 // Send to Zapier
                 try {
                     await axios.post(
-                        "https://hooks.zapier.com/hooks/catch/16420445/uwaumm0/",
+                        "https://hooks.zapier.com/hooks/catch/16420445/uxd1qtb/",
                         JSON.stringify({
                             nickname: values.firstName,
                             lastName: values.lastName,
