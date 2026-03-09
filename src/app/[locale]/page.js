@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import GoldenFalconHeroMobile from "./components/HeroSlider";
 import SimpleNavigationMenu from "./components/SimpleNavigationMenu";
 import Meta from "./components/MetaData";
+import MainFooter from './components/MainFooter'
 
 
 export default function NewPage() {
@@ -42,6 +43,7 @@ export default function NewPage() {
         </section>
       </div>
     </div>
+    <MainFooter />
     </>
   );
 }

@@ -109,9 +109,7 @@ export default function GoldenFalconHeroMobile({
             >
               Join Us
             </button>
-            <p className="text-[12px] mt-3  cursor-pointer underline md:text-[14px] text-white"
-            onClick={() => router.push("/privacy-policy")}
-            > T & C Apply</p>
+            <a href="/privacy-policy" className="flex flex-col pt-4 underline italic text-white">Terms & Condtions Apply</a>
           </div>
 
 

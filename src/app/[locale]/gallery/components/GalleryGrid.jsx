@@ -130,7 +130,7 @@ export default function GalleryGrid() {
 
                         return (
                             <div key={year} id={`year-${year}`} className="mb-16 last:mb-0">
-                                <h2 className="text-2xl font-bold text-white mt-2">{year} Highlights</h2>
+                                <h2 className="text-xl md:text-2xl font-bold text-white mt-2">{year} Highlights</h2>
                                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 pt-10">
                                     <div className="flex flex-row flex-nowrap gap-3 overflow-x-auto pb-2 px-1.5 py-1 lg:flex-col lg:flex-nowrap lg:overflow-x-visible lg:overflow-y-auto lg:max-h-[480px] lg:gap-4 lg:max-w-[240px] lg:py-1.5 no-scrollbar">
                                         {gallery.length === 0 ? (

@@ -55,7 +55,7 @@ export default function HeroSection({ userName = "Alexander" }) {
                                     WebkitTextFillColor: "transparent",
                                 }}
                             >
-                                Welcome, {userName}
+                                Welcome
                             </h1>
 
                             <div className="md:mt-6 mt-3 flex flex-wrap items-center gap-3 text-[12px] md:text-[14px]">
@@ -82,8 +82,11 @@ export default function HeroSection({ userName = "Alexander" }) {
                                     <p className="text-[13px] md:text-[16px] font-normal leading-snug italic text-white">
                                         You are on your way to qualifying for our exclusive annual VIP invitation.
                                     </p>
+                                   
                                 </div>
+                                
                             </div>
+                             <a href="/privacy-policy" className="flex flex-col pt-4 underline italic">Terms & Condtions Apply</a>
                         </div>
 
                         <div className="shrink-0">
@@ -142,10 +145,10 @@ export default function HeroSection({ userName = "Alexander" }) {
                         title="Trading Volume"
                         icon="/trade.svg"
                         value="$0"
-                        target="$1,500,000"
-                        targetLabel="Target $1.5M"
+                        target="1,000,000,000"
+                        targetLabel="Target $1 Billion"
                         percent={0}
-                        note="$1,500,000 remaining"
+                        note="$5,000,000 remaining"
                     />
                 </section>
 

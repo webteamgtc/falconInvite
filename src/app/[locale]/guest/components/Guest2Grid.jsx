@@ -4,7 +4,7 @@ import Guest2Card from "./Guest2Card";
 
 const GUESTS = [
   { name: "Oliver Schun Ph.D.", title: "Chief Analyst", image: "/jameel.webp" },
-  { name: "Sarah Chen Ph.D.", title: "Director, Management, Research & Development", image: "/daher.webp" },
+
   { name: "James Wilson", title: "Chief Commercial Officer", image: "/mik.webp" },
   // { name: "Emma Rodriguez", title: "Director, Operations", image: "/guest-person.png" },
   // { name: "Michael Zhang", title: "Head of Innovation", image: "/guest-person.png" },

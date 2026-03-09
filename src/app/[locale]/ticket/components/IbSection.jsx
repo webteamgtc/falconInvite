@@ -32,7 +32,7 @@ export default function IbSection() {
             <div className="mx-auto max-w-6xl px-4 md:px-6">
                 {/* Title */}
                 <div className="text-center">
-                    <h2 className="text-[28px] md:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em]"
+                    <h2 className="text-[24px] md:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em]"
                         style={{
                             background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
                             WebkitBackgroundClip: "text",
@@ -42,7 +42,7 @@ export default function IbSection() {
                     >
                         Become an Introducing Broker and Unlock Unlimited Earning Potential!
                     </h2>
-                    <p className="mx-auto mt-6 max-w-[720px] text-[18px] font-semibold leading-[1.55] text-white">
+                    <p className="mx-auto mt-6 max-w-[720px] text-base  md:text-[18px] font-semibold leading-[1.55] text-white">
                         Power up your business expansion and client network while maximizing the advantages of our IB program.
 
                     </p>
