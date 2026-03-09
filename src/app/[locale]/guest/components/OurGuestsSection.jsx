@@ -19,6 +19,7 @@ export default function OurGuestsSection() {
             <p className="mx-auto  italic text-[18px] lg:text-[32px] font-normal leading-[1.55] text-white">
               A Day of Strategy, Recognition & Celebration
             </p>
+            
             <p className="mx-auto mt-8 italic text-[18px] lg:text-[32px] font-normal leading-[1.55]"
               style={{
                 background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",

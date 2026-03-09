@@ -70,8 +70,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 
 const Footer = () => {
-    const t = useTranslations("footerLink");
-    const t2 = useTranslations("home.hero");
+    
     const pathname = usePathname();
     const router = useRouter();
     const locale = useLocale();
@@ -88,21 +87,21 @@ const Footer = () => {
             >
                 <div className="pointer-events-none absolute inset-0">
                     <img
-                        src="/bg-new-ib.svg"
+                        src="/ab/overlay.webp"
                         alt=""
-                        className="h-full w-full object-cover opacity-55"
+                        className="h-full w-full object-cover"
                         draggable={false}
                     />
                     {/* dark overlay + warm highlights like screenshot */}
-                    <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_50%_12%,rgba(255,210,150,0.14),transparent_60%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(620px_520px_at_22%_30%,rgba(255,180,90,0.10),transparent_68%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_50%_12%,rgba(255,210,150,0.14),transparent_80%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(620px_520px_at_22%_30%,rgba(255,180,90,0.10),transparent_98%)]" />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.30)_0%,rgba(0,0,0,0.30)_38%,rgba(0,0,0,0.30)_100%)]" />
                 </div>
 
 
                 {/* Logo and App Download Section */}
                 <div className="container mx-auto px-3 border-t border-white border-opacity-20 relative z-10">
-                    <div className="flex flex-col lg:flex-row justify-between items-center gap-2 md:gap-8 py-2 sm:py-0">
+                    <div className="flex flex-col lg:flex-row justify-between items-center gap-2 md:gap-8 py-2 sm:py-2">
                         {/* Logo Section */}
                         <div className="flex flex-col items-center lg:items-start">
                             <Link href="/" locale={locale} aria-label="GTCFX">
@@ -118,20 +117,7 @@ const Footer = () => {
                         </div>
 
                         <div className="flex flex-row justify-center">
-                            <Image
-                                src="/footer/iso9001_icon.png"
-                                className="h-22 w-22"
-                                width={80}
-                                height={100}
-                                alt="iso icon"
-                            />
-                            <Image
-                                src="/footer/iso26000_icon.png"
-                                className="h-22 w-22"
-                                width={80}
-                                height={100}
-                                alt="iso icon"
-                            />
+                            <a href="/privacy-policy" className="flex flex-col underline italic text-white">Terms & Condtions Apply</a>
                         </div>
 
                         {/* App Download Buttons */}
@@ -189,7 +175,7 @@ const Footer = () => {
                     <div className="text-xs text-white text-opacity-70 space-y-3 leading-5">
                         <p>This website is owned and operated by GTC Global SA (Pty) Ltd, a private limited company incorporated in South Africa (Company Number: 2020/810937/07) and licensed by the Financial Sector Conduct Authority of South Africa (FSP No. 51545) to operate as an Intermediary. Registered Address: 18 Cavendish Road, Clarement, Cape Town, Western Cape, 7708, South Africa. The financial services and products promoted on this website are offered by GTC Global Trade Capital Co. Limited, a company authorised by the Vanuatu Financial Services Commission of the Republic of Vanuatu (Company License Number: 40354). Registered Address: 1/Floor, B&P House, Kumul Highway, Port Vila, Vanuatu.</p>
                         <p>
-                            <span className="text-secondary">
+                            <span className="text-secondary pr-1">
                             GTC Global SA (Pty) Ltd and GTC Global Trade Capital Co. Limited
                             </span>
                             are part of the GTC Financial Group which comprises a network of entities across the globe.

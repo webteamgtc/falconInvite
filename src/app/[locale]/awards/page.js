@@ -22,7 +22,7 @@ export default function AwardsPage() {
       <main className="relative">
         <div className="pointer-events-none absolute inset-0">
           <Image
-            src="/bg-award-small.webp"
+            src="/ab/new-award.webp"
             alt=""
             fill
             className="object-fill object-center"

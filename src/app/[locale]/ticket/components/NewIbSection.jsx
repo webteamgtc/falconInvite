@@ -31,7 +31,7 @@ export default function IBQualificationAccess({ isIbPage = false }) {
             <div className="mx-auto max-w-6xl px-4 md:px-6">
                 {/* Title */}
                 <div className="text-center">
-                    <h2 className="text-[28px] md:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em]"
+                    <h2 className="text-[24px] md:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em]"
                         style={{
                             background: "linear-gradient(180deg, #956E42 0%, #E9DDCF 100%)",
                             WebkitBackgroundClip: "text",
@@ -41,7 +41,7 @@ export default function IBQualificationAccess({ isIbPage = false }) {
                     >
                         IB Qualification Access
                     </h2>
-                    <p className="mx-auto mt-6 max-w-[720px] text-[18px] font-semibold leading-[1.55] text-white">
+                    <p className="mx-auto mt-6 max-w-[720px] text-base md:text-[18px] font-semibold leading-[1.55] text-white">
                         This category is reserved for Introducing Brokers who have successfully
                         achieved their performance targets.
                     </p>
@@ -63,11 +63,11 @@ export default function IBQualificationAccess({ isIbPage = false }) {
                             {/* content */}
                             <div className="relative flex h-full flex-col items-center justify-end md:p-5 p-3 text-center">
                                 {isIbPage ?
-                                    <div className="text-[20px] md:text-[24px] font-bold leading-[1.2] text-white drop-shadow">
+                                    <div className="text-[16px] md:text-[24px] font-bold leading-[1.2] text-white drop-shadow">
                                         {c.sub}
                                     </div>
                                     :
-                                    <div className="text-[20px] md:text-[24px] font-bold leading-none text-white drop-shadow">
+                                    <div className="text-[16px] md:text-[24px] font-bold leading-none text-white drop-shadow">
                                         {c.title}
                                     </div>
                                 }

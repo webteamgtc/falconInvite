@@ -25,9 +25,7 @@ export default function AwardsHero({ activeNavTab, handleNavTabChange }) {
           >
             Golden Falcon <br /> Awards 2026
           </h1>
-          <p className="mt-1 text-[12px] md:text-[14px] tracking-[1.8px] uppercase text-white/70">
-            Awards
-          </p>
+         
         </div>
 
         {/* Hero trophy block */}
