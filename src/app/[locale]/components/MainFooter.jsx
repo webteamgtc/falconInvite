@@ -182,7 +182,7 @@ const Footer = () => {
                         </p>
                         <p>Investing in derivative products carries significant risks and may not be suitable for all investors. The use of leverage in these instruments can increase both the level of risk and potential for losses. Before making any decision to engage in foreign exchange trading or Contracts for Difference (CFDs), it is essential to carefully consider your investment objectives, level of experience, and risk tolerance. You should only invest funds that you can afford to lose. We strongly encourage you to educate yourself thoroughly on the associated risks and, if you have any questions, seek advice from an independent financial or tax advisor.</p>
                         <p>
-                            <span className="text-secondary">
+                            <span className="text-secondary pr-1">
                             GTC Global SA (Pty) Ltd and GTC Global Trade Capital Co. Limited
                             </span>
                             do not provide services to individuals residing in specific jurisdictions and/or jurisdictions where distribution of such services would be contrary to local law or regulations.

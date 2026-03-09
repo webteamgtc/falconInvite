@@ -28,16 +28,15 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
   ];
 
   return (
-    <nav
-      className={`
-        w-full sticky top-0 z-50
-        transition-all duration-500 ease-in-out
-        ${scrolled
-          ? " backdrop-blur-xl shadow-2xl"
-          : "bg-transparent"
-        }
-      `}
-    >
+<nav
+  className={`
+    sticky top-0 left-0 w-full z-[999]
+    transition-all duration-300
+    ${scrolled
+      ? "bg-[#05083E]/10 backdrop-blur-lg shadow-xl"
+      : "bg-transparent"}
+  `}
+>
       <div className="relative container mx-auto px-4 md:px-6 lg:px-8 max-w-full min-w-0">
         {/* Mobile: stacked layout — logo centered, menu always visible */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between py-2">
