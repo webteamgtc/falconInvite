@@ -23,7 +23,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
 
     { id: "/guest", label: "Guest" },
     { id: "/ticket", label: "Ticket" },
-    // { id: "/partners", label: "Media & Partners" },
+    { id: "/privacy-policy", label: "Terms & Condtions" },
 
   ];
 
@@ -104,7 +104,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
 
           {/* Mobile Navigation — always visible, no hamburger */}
           <div className="flex md:hidden flex-wrap items-center justify-center gap-1 order-2 pt-2">
-            {navItems.map((item) => {
+            {navItems?.slice(0,-1)?.map((item) => {
               const isActive = activeTab === item.id;
               return (
                 <button
