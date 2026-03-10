@@ -53,24 +53,34 @@ const BLOCKED_EMAIL_DOMAINS = [
     "emailnator.com",
 ];
 
-// Session storage: cache verified IB email for 72h (same email can submit without OTP again within 72h)
-const IB_VERIFIED_EMAIL_CACHE_KEY = "falcon_ib_verified_email";
-const IB_VERIFIED_CACHE_HOURS = 72;
+// Cookie: cache verified IB email for 72h (same email can submit without OTP again within 72h)
+const IB_VERIFIED_EMAIL_COOKIE = "falcon_ib_verified_email";
+const IB_VERIFIED_COOKIE_HOURS = 72;
 
-function getCachedVerifiedEmail() {
-    if (typeof window === "undefined") return null;
-    try {
-        const raw = sessionStorage.getItem(IB_VERIFIED_EMAIL_CACHE_KEY);
-        if (!raw) return null;
-        const { email, expiresAt } = JSON.parse(raw);
-        if (Date.now() > expiresAt) {
-            sessionStorage.removeItem(IB_VERIFIED_EMAIL_CACHE_KEY);
-            return null;
+function setCookie(name, value, maxAgeSeconds) {
+    if (typeof document === "undefined") return;
+    const isHttps = typeof window !== "undefined" && window.location?.protocol === "https:";
+    document.cookie = [
+        `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
+        `Max-Age=${maxAgeSeconds}`,
+        "Path=/",
+        "SameSite=Lax",
+        isHttps ? "Secure" : "",
+    ]
+        .filter(Boolean)
+        .join("; ");
+}
+
+function getCookie(name) {
+    if (typeof document === "undefined") return null;
+    const nameEq = `${encodeURIComponent(name)}=`;
+    const parts = document.cookie.split("; ").filter(Boolean);
+    for (const part of parts) {
+        if (part.startsWith(nameEq)) {
+            return decodeURIComponent(part.slice(nameEq.length));
         }
-        return email || null;
-    } catch {
-        return null;
     }
+    return null;
 }
 
 const selectStyles = {
@@ -411,22 +421,20 @@ export default function NewFormDesign({ isIb = false }) {
             return;
         }
         setEmailOtpVerified(true);
-        // Cache verified email for 72h (user must still enter OTP again if they use same email later)
+        // Cache verified email for 72h via cookie
         const email = existingIbEmail.trim().toLowerCase();
         if (email) {
-            sessionStorage.setItem(
-                IB_VERIFIED_EMAIL_CACHE_KEY,
-                JSON.stringify({
-                    email,
-                    expiresAt: Date.now() + IB_VERIFIED_CACHE_HOURS * 60 * 60 * 1000,
-                })
+            setCookie(
+                IB_VERIFIED_EMAIL_COOKIE,
+                email,
+                IB_VERIFIED_COOKIE_HOURS * 60 * 60
             );
         }
         toast.success("Email verified successfully");
         router.push("/ib-success");
     };
 
-    // When user enters an email that was recently verified (cached), treat as verified – allow submit without OTP
+    // When user enters an email that was recently verified (cached in cookie), treat as verified – allow submit without OTP
     useEffect(() => {
         const email = existingIbEmail.trim().toLowerCase();
         if (!email) {
@@ -434,8 +442,8 @@ export default function NewFormDesign({ isIb = false }) {
             setEmailOtpVerified(false);
             return;
         }
-        const cached = getCachedVerifiedEmail();
-        const isCached = cached === email;
+        const cached = (getCookie(IB_VERIFIED_EMAIL_COOKIE) || "").trim().toLowerCase();
+        const isCached = Boolean(cached) && cached === email;
         setEmailInRecentCache(isCached);
         setEmailOtpVerified(isCached);
     }, [existingIbEmail]);
