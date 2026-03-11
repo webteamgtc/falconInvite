@@ -280,7 +280,7 @@ export default function PolicyContent() {
           <li><strong className="text-white/90">Liquidity Partner Excellence Award</strong> — For delivering reliable liquidity solutions and stable trading conditions.</li>
           <li><strong className="text-white/90">Most Trusted &amp; Long-Standing Partner Award</strong> — For demonstrating long-term loyalty, trust, and consistent collaboration.</li>
           <li><strong className="text-white/90">Inspiring Women Award</strong> — For outstanding leadership, influence, and contribution to the trading industry.</li>
-          <li><strong className="text-white/90">Youngest Seven-Figure Trader of the Year 2025</strong> — For achieving verified seven-figure trading performance at a young age.</li>
+          <li><strong className="text-white/90">Youngest Seven-Figure Trader of the Year 2026</strong> — For achieving verified seven-figure trading performance at a young age.</li>
           <li><strong className="text-white/90">Outstanding Gross Deposit Award</strong> — For generating the highest verified client deposit volume during the qualification period.</li>
           <li><strong className="text-white/90">Quality Customer Champion of the Year</strong> — For maintaining exceptional client satisfaction and long-term retention.</li>
           <li><strong className="text-white/90">Top Monthly ROI Award</strong> — For achieving the highest verified monthly return on investment.</li>
