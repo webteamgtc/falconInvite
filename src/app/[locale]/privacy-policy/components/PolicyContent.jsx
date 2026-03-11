@@ -74,7 +74,7 @@ export default function PolicyContent() {
           <li className={CHECK_CLASS}><span className="text-[#B48755]" aria-hidden>✓</span> Real funds</li>
           <li className={CHECK_CLASS}><span className="text-[#B48755]" aria-hidden>✓</span> Successfully credited</li>
           <li className={CHECK_CLASS}><span className="text-[#B48755]" aria-hidden>✓</span> Maintained within the system</li>
-          <li className={CHECK_CLASS}><span className="text-[#B48755]" aria-hidden>✓</span> Qualification period: 2nd February 2026 - 4th of December 2026</li>
+          <li className={CHECK_CLASS}><span className="text-[#B48755]" aria-hidden>✓</span> Qualification period: 2nd February 2026 - 31 of Oct, 2026</li>
         </ul>
         <p className={P_CLASS}>
           Internal transfers, artificial transactions, or any form of manipulation will not be counted.

@@ -28,7 +28,7 @@ export default function OurGuestsSection() {
                 backgroundClip: "text",
               }}
             >
-              12 December 2026
+              December 2026
             </p>
             <p className="mx-auto mt-2 text-[16px] lg:text-[26px] font-normal leading-[1.15]"
               style={{

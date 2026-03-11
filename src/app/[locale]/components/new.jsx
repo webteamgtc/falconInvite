@@ -156,7 +156,7 @@ export default function GoldenFalconHeroMobile({
                   <MiniInfoCard
                     icon="/location.svg"
                     title="Dubai"
-                    line1="12 December 2026"
+                    line1="December 2026"
                     line2="Hosted by GTCFX"
                   />
                 </div>
@@ -185,7 +185,7 @@ export default function GoldenFalconHeroMobile({
                 <MiniInfoCard
                   icon="/location.svg"
                   title="Dubai"
-                  line1="12 December 2026"
+                  line1="December 2026"
                   line2="Hosted by GTCFX"
                 />
                 <MiniInfoCard

@@ -22,7 +22,7 @@ export default function Guest2Page() {
     <div className="w-full relative bg-[url('/guest-small-bg.webp')] bg-cover bg-center bg-no-repeat ">
       <Meta
         title="Our Guests | Golden Falcon Awards 2026 | GTC"
-        description="A Day of Strategy, Recognition & Celebration. 12 December 2026."
+        description="A Day of Strategy, Recognition & Celebration. December 2026."
       />
 
       <main className=" z-10">

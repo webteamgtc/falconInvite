@@ -47,7 +47,7 @@ export default function GuestPage() {
   const annualMeetingData = {
     title: "Annual Meeting & Golden Falcon Awards Night",
     subtitle: "A Day of Strategy, Recognition & Celebration",
-    date: "12 December 2026",
+    date: "December 2026",
     description: "A full day dedicated to strategy, recognition, and celebration.",
     sectionHeading: "Agenda Includes",
     closingText: "An unforgettable night honouring achievements, spirit, and teamwork.",
