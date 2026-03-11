@@ -20,7 +20,7 @@ export default function GuestPage() {
   const preDinnerData = {
     title: "Pre-Dinner Gathering",
     subtitle: "An Elegant Evening of Networking & Connection",
-    date: "11 December 2026",
+    date: "December 2026",
     description: "An elegant pre-dinner evening dedicated to networking and connection.",
     sectionHeading: "Evening Highlights",
     closingText: "This evening will be one for the record books.",

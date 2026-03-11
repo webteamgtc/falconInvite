@@ -23,13 +23,15 @@ function getCookie(name) {
 export default function VipQualificationProgressPage() {
     const router = useRouter();
     const [isAllowed, setIsAllowed] = useState(false);
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
         const cachedEmail = (getCookie(IB_VERIFIED_EMAIL_COOKIE) || "").trim();
         if (!cachedEmail) {
-            router.replace("/");
+            router.replace("/ticket");
             return;
         }
+        setEmail(cachedEmail);
         setIsAllowed(true);
     }, [router]);
 
@@ -37,7 +39,7 @@ export default function VipQualificationProgressPage() {
     return (
         <main className="relative min-h-screen w-full overflow-hidden bg-[#010101] text-white">
 
-            <HeroSection />
+            <HeroSection email={email} />
             <div className="mt-10 md:mt-20">
                 <QualificationSection />
             </div>

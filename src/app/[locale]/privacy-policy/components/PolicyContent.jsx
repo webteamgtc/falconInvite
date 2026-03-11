@@ -20,8 +20,8 @@ export default function PolicyContent() {
           <li><strong className="text-white/90">Event Name:</strong> Golden Falcon Awards 2026</li>
           <li><strong className="text-white/90">Organizer:</strong> GTCFX</li>
           <li><strong className="text-white/90">Location:</strong> Dubai, United Arab Emirates</li>
-          <li><strong className="text-white/90">Pre-Dinner Event:</strong> 11 December 2026</li>
-          <li><strong className="text-white/90">Main Event &amp; Awards Ceremony:</strong> 12 December 2026</li>
+          <li><strong className="text-white/90">Pre-Dinner Event:</strong> December 2026</li>
+          <li><strong className="text-white/90">Main Event &amp; Awards Ceremony:</strong> December 2026</li>
         </ul>
         <p className={P_CLASS}>
           The event includes official meetings, networking sessions, award presentations, and a gala dinner.

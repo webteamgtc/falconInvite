@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import SimpleNavigationMenu from "@/app/[locale]/components/SimpleNavigationMenu";
 import { FaMedal, FaCrown, FaTrophy } from "react-icons/fa";
 import { IoFlame, IoHourglassOutline } from "react-icons/io5";
@@ -8,7 +9,8 @@ import Image from "next/image";
 const GOLD_BORDER = "#7C6B4C";
 const GOLD_ACCENT = "#B48755";
 
-export default function HeroSection({ userName = "Alexander" }) {
+export default function HeroSection({ email = "Alexander" }) {
+    const remainingDays = useRemainingDaysToOct31_2026();
     return (
         <div className="relative mx-auto ">
             <SimpleNavigationMenu activeTab="ib-success" />
@@ -55,7 +57,7 @@ export default function HeroSection({ userName = "Alexander" }) {
                                     WebkitTextFillColor: "transparent",
                                 }}
                             >
-                                Welcome
+                                Welcome, {email}
                             </h1>
 
                             <div className="md:mt-6 mt-3 flex flex-wrap items-center gap-3 text-[12px] md:text-[14px]">
@@ -80,7 +82,7 @@ export default function HeroSection({ userName = "Alexander" }) {
                                     }}
                                 >
                                     <p className="text-[13px] md:text-[16px] font-normal leading-snug italic text-white">
-                                        You are on your way to qualifying for our exclusive annual VIP invitation.
+                                    Your VIP invitation is waiting, achieve the target through Net Deposit or Trading Volume and watch your progress update daily as you move toward exclusive luxury benefits. 
                                     </p>
                                    
                                 </div>
@@ -148,7 +150,7 @@ export default function HeroSection({ userName = "Alexander" }) {
                         target="1,000,000,000"
                         targetLabel="Target $1 Billion"
                         percent={0}
-                        note="$5,000,000 remaining"
+                        note="$1,000,000,000 remaining"
                     />
                 </section>
 
@@ -206,9 +208,9 @@ export default function HeroSection({ userName = "Alexander" }) {
                             CAMPAIGN ENDS IN
                                 </div>
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-[22px] md:text-[32px] font-bold text-white">241</span>
+                                    <span className="text-[22px] md:text-[32px] font-bold text-white">{remainingDays}</span>
                                     <span className="text-[10px] md:text-[14px] font-normal" style={{ color: "#FFD382" }}>
-                                        days
+                                        {remainingDays === 1 ? "day" : "days"}
                                     </span>
                                 </div>
                             </div>
@@ -218,6 +220,27 @@ export default function HeroSection({ userName = "Alexander" }) {
             </div>
         </div>
     )
+}
+
+function calcRemainingDaysToOct31_2026(now = new Date()) {
+    // Local timezone. Count whole days remaining until end of Oct 31, 2026.
+    const target = new Date(2026, 9, 31, 23, 59, 59, 999); // months are 0-based
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const diffMs = target.getTime() - now.getTime();
+    return Math.max(0, Math.ceil(diffMs / msPerDay));
+}
+
+function useRemainingDaysToOct31_2026() {
+    const initial = useMemo(() => calcRemainingDaysToOct31_2026(), []);
+    const [days, setDays] = useState(initial);
+
+    useEffect(() => {
+        // Refresh periodically so it updates after midnight without a reload.
+        const id = setInterval(() => setDays(calcRemainingDaysToOct31_2026()), 60 * 60 * 1000);
+        return () => clearInterval(id);
+    }, []);
+
+    return days;
 }
 
 
