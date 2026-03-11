@@ -48,15 +48,18 @@ function imageEntry(id, title, thumbs) {
 const GALLERY_BY_YEAR = {
     2025: [
         videoEntry("2025-1", "Video 1", "4iFBw0wg82w"),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-1.webp", "/events/2025-2.webp"]),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-2.webp", "/events/2025-2.webp"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-1.jpg", "/events/2025-2.jpg"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-2.jpg", "/events/2025-2.jpg"]),
         videoEntry("2025-2", "Video 2", "fdGXBhPZd7c"),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-3.webp", "/events/2025-3.webp"]),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-4.webp", "/events/2025-4.webp"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-3.jpg", "/events/2025-3.jpg"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-4.jpg", "/events/2025-4.jpg"]),
         videoEntry("2025-4", "Video 3", "kGvHQmUq5vI"),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-5.webp", "/events/2025-5.webp"]),
-        imageEntry("2025-3", "Panel Discussion", ["/events/2025-6.webp", "/events/2025-6.webp"]),
-
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-5.jpg", "/events/2025-5.jpg"]),
+        imageEntry("2025-3", "Panel Discussion", ["/events/2025-6.jpg", "/events/2025-6.jpg"]),
+        imageEntry("2025-7", "Panel Discussion", ["/events/2025-7.jpg", "/events/2025-7.jpg"]),
+        imageEntry("2025-8", "Panel Discussion", ["/events/2025-8.jpg", "/events/2025-8.jpg"]),
+        imageEntry("2025-9", "Panel Discussion", ["/events/2025-9.jpg", "/events/2025-9.jpg"]),
+        imageEntry("2025-10", "Panel Discussion", ["/events/2025-10.jpg", "/events/2025-10.jpg"]),
 
     ],
 
