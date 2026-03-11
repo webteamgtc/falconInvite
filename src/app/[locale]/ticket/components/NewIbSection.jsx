@@ -11,7 +11,7 @@ const CARDS = [
     {
         title: "Second",
         sub: "Conrad Hotel, Dubai",
-        img: "/ib-img2.svg",
+        img: "/ticket-new-hotel.webp",
     },
     {
         title: "Third",

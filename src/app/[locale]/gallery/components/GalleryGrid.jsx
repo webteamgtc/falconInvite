@@ -59,13 +59,13 @@ const GALLERY_BY_YEAR = {
 
 
     ],
+
     2024: [
         imageEntry("2024-1", "Panel Discussion", ["/events/2024-1.webp", "/events/2024-1.webp"]),
         imageEntry("2024-2", "Panel Discussion", ["/events/2024-2.webp", "/events/2024-2.webp"]),
-        videoEntry("2024-2", "Video 1", "ZSgsF3cOTi4"),
+        videoEntry("2024-2", "Video 1", "emWEDdPsqhY"),
         imageEntry("2024-3", "Panel Discussion", ["/events/2024-3.webp", "/events/2024-3.webp"]),
         imageEntry("2024-4", "Panel Discussion", ["/events/2024-4.webp", "/events/2024-4.webp"]),
-        videoEntry("2024-3", "Video 2", "Tah49-OSrx0"),
         imageEntry("2024-5", "Panel Discussion", ["/events/2024-5.webp", "/events/2024-5.webp"]),
         imageEntry("2024-6", "Panel Discussion", ["/events/2024-6.webp", "/events/2024-6.webp"]),
     ],

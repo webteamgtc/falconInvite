@@ -33,7 +33,7 @@ export default function SimpleNavigationMenu({ activeTab, onTabChange }) {
     sticky top-0 left-0 w-full z-[999]
     transition-all duration-300
     ${scrolled
-      ? "bg-[#05083E]/10 backdrop-blur-lg shadow-xl"
+      ? "bg-[#05083E]/50 backdrop-blur-lg shadow-xl"
       : "bg-transparent"}
   `}
 >
