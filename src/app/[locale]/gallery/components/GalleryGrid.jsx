@@ -47,7 +47,7 @@ function imageEntry(id, title, thumbs) {
 // Gallery items by year: mix of images and videos
 const GALLERY_BY_YEAR = {
     2025: [
-        videoEntry("2025-1", "Video 1", "4iFBw0wg82w"),
+        // videoEntry("2025-1", "Video 1", "4iFBw0wg82w"),
         imageEntry("2025-3", "Panel Discussion", ["/events/2025-1.jpg", "/events/2025-2.jpg"]),
         imageEntry("2025-3", "Panel Discussion", ["/events/2025-2.jpg", "/events/2025-2.jpg"]),
         videoEntry("2025-2", "Video 2", "fdGXBhPZd7c"),
@@ -64,9 +64,9 @@ const GALLERY_BY_YEAR = {
     ],
 
     2024: [
+        videoEntry("2024-2", "Video 1", "emWEDdPsqhY"),
         imageEntry("2024-1", "Panel Discussion", ["/events/2024-1.webp", "/events/2024-1.webp"]),
         imageEntry("2024-2", "Panel Discussion", ["/events/2024-2.webp", "/events/2024-2.webp"]),
-        videoEntry("2024-2", "Video 1", "emWEDdPsqhY"),
         imageEntry("2024-3", "Panel Discussion", ["/events/2024-3.webp", "/events/2024-3.webp"]),
         imageEntry("2024-4", "Panel Discussion", ["/events/2024-4.webp", "/events/2024-4.webp"]),
         imageEntry("2024-5", "Panel Discussion", ["/events/2024-5.webp", "/events/2024-5.webp"]),
@@ -86,7 +86,7 @@ const GALLERY_BY_YEAR = {
         videoEntry("2022-1", "GTCFX Partner Awards Ceremony", "XIylpVRmLeM"),
         imageEntry("2022-2", "Panel Discussion", ["/events/2022-2.webp", "/events/2022-2.webp"]),
         imageEntry("2022-3", "Panel Discussion", ["/events/2022-3.webp", "/events/2022-3.webp"]),
-        videoEntry("2022-3", "GTCFX Superstar Performer Sales 2022 - Mr. Leon", "XIylpVRmLeM"), 
+        videoEntry("2022-3", "GTCFX Superstar Performer Sales 2022 - Mr. Leon", "XIylpVRmLeM"),
         imageEntry("2022-4", "Panel Discussion", ["/events/2022-4.webp", "/events/2022-4.webp"]),
     ],
 };
@@ -144,7 +144,7 @@ export default function GalleryGrid() {
                                                 const isSelected = idx === selectedIndex;
                                                 return (
                                                     <button
-                                                        key={entry.id}
+                                                        key={idx}
                                                         type="button"
                                                         onClick={() => handleThumbClick(year, idx)}
                                                         className={cn(
