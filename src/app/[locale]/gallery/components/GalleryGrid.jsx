@@ -108,6 +108,7 @@ export default function GalleryGrid() {
         const value = selectedThumbIndexByYear[key];
         return typeof value === "number" ? value : 0;
     };
+    
 
     const handleThumbClick = (year, idx) => {
         const key = String(year);
