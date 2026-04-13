@@ -65,7 +65,6 @@ export async function POST(req) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Email validation error:", error);
     return NextResponse.json(
       { valid: false, reason: "validation_error", error: error.message },
       { status: 500 }
